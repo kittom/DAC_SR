@@ -1,0 +1,5 @@
+complexity,r,count_on_policy,count_off_policy,expression,traversal,nmse_test,nmse_test_noiseless,success
+10,0.18095468595302633,1,0,x2 + cos(exp(x2)),"add,x2,cos,exp,x2",20.48689737818083,20.48689737818083,False
+12,0.4732449755646756,1,0,cos(x1**2*x2),"cos,add,x1,sub,mul,x2,mul,x1,x1,x1",1.238925951428671,1.238925951428671,False
+13,0.47496441575946224,1,0,exp(-x2),"exp,sub,x2,add,add,x2,sub,x2,x2,x2",1.221955330332619,1.221955330332619,False
+14,0.9999999999996965,1,0,x1/(x2 + 1),"div,x1,add,exp,sub,mul,x1,x2,1.0*x1*x2,x2",9.210497987876385e-26,9.210497987876385e-26,True

@@ -1,0 +1,2 @@
+# This file ensures the Ground_Truth_Noise directory is tracked in git
+# The directory will be empty by default, but noisy data will be generated when running the scripts 
