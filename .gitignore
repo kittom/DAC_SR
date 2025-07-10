@@ -1,11 +1,27 @@
 # Ignore contents of data directories but keep the directories themselves
 DataSets/Ground_Truth/*
 DataSets/Ground_Truth_Noise/*
-
+thesis/
 # Keep the directories themselves (empty .gitkeep files)
 !DataSets/Ground_Truth/.gitkeep
 !DataSets/Ground_Truth_Noise/.gitkeep
 
+# Keep LeadingOnes subdirectories but ignore their contents
+!DataSets/Ground_Truth/LeadingOnes/
+!DataSets/Ground_Truth_Noise/LeadingOnes/
+DataSets/Ground_Truth/LeadingOnes/*
+DataSets/Ground_Truth_Noise/LeadingOnes/*
+
+# Keep continuous and discrete subdirectories but ignore their contents
+!DataSets/Ground_Truth/LeadingOnes/continuous/
+!DataSets/Ground_Truth/LeadingOnes/discrete/
+!DataSets/Ground_Truth_Noise/LeadingOnes/continuous/
+!DataSets/Ground_Truth_Noise/LeadingOnes/discrete/
+DataSets/Ground_Truth/LeadingOnes/continuous/*
+DataSets/Ground_Truth/LeadingOnes/discrete/*
+DataSets/Ground_Truth_Noise/LeadingOnes/continuous/*
+DataSets/Ground_Truth_Noise/LeadingOnes/discrete/*
+SR_algorithms/Q_Lattice/venv
 # Python
 __pycache__/
 *.py[cod]
@@ -46,3 +62,4 @@ venv.bak/
 # OS
 .DS_Store
 Thumbs.db
+

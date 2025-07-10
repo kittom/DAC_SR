@@ -9,7 +9,9 @@ Details:
 DSO
 Sources dso_env (conda)
 Details:
-- Requires config file
+- uses run.py
+- shell script requires 
 
 QLattice
 source: qlat (conda)
+Details

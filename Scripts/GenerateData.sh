@@ -1,39 +1,14 @@
 #!/bin/bash
 
-# GenerateData.sh - Data Generation and Visualization Script
-# This script activates the generation conda environment and runs the complete pipeline
-
-# Get the directory where this script is located
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Navigate to the Generators directory
-cd "$SCRIPT_DIR/../DataSets/Generators"
+# Get the project root
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # Initialize conda for this shell session
-echo "Initializing conda..."
 source ~/miniconda3/etc/profile.d/conda.sh
-
-# Activate the conda environment
-echo "Activating generation conda environment..."
 conda activate generation
 
-# Check if activation was successful
 if [ $? -ne 0 ]; then
     echo "Error: Failed to activate conda environment 'generation'!"
-    echo "Please ensure the 'generation' conda environment exists."
-    exit 1
-fi
-
-echo "Conda environment activated successfully!"
-echo "Python version: $(python --version)"
-echo "Python path: $(which python)"
-
-# Check command line arguments
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <instance_size1> [instance_size2] [instance_size3] ... [--noise-level <level>] [--noise-type <type>]"
-    echo "Example: $0 10 20 30"
-    echo "Example: $0 50 100 --noise-level 0.2 --noise-type gaussian"
-    echo "Example: $0 10 20 30 40 50 --noise-level 0.1 --noise-type uniform"
     exit 1
 fi
 
@@ -42,147 +17,109 @@ INSTANCE_SIZES=()
 NOISE_LEVEL="0.1"
 NOISE_TYPE="gaussian"
 GENERATE_NOISE=false
-
-# Convert arguments to array for easier processing
+DATA_TYPE="continuous"
+PROBLEM_TYPE="LeadingOnes"  # Default to LeadingOnes
 ARGS=("$@")
 i=0
 while [ $i -lt ${#ARGS[@]} ]; do
     case "${ARGS[$i]}" in
         --noise-level)
-            if [ $((i+1)) -lt ${#ARGS[@]} ]; then
-                NOISE_LEVEL="${ARGS[$((i+1))]}"
-                GENERATE_NOISE=true
-                i=$((i+2))
-            else
-                echo "Error: --noise-level requires a value"
-                exit 1
-            fi
+            NOISE_LEVEL="${ARGS[$((i+1))]}"
+            GENERATE_NOISE=true
+            i=$((i+2))
             ;;
         --noise-type)
-            if [ $((i+1)) -lt ${#ARGS[@]} ]; then
-                NOISE_TYPE="${ARGS[$((i+1))]}"
-                GENERATE_NOISE=true
-                i=$((i+2))
-            else
-                echo "Error: --noise-type requires a value"
+            NOISE_TYPE="${ARGS[$((i+1))]}"
+            GENERATE_NOISE=true
+            i=$((i+2))
+            ;;
+        --data-type)
+            DATA_TYPE="${ARGS[$((i+1))]}"
+            i=$((i+2))
+            ;;
+        --problem-type)
+            PROBLEM_TYPE="${ARGS[$((i+1))]}"
+            if [[ "$PROBLEM_TYPE" != "LeadingOnes" && "$PROBLEM_TYPE" != "OneMax" ]]; then
+                echo "Error: problem-type must be 'LeadingOnes' or 'OneMax'"
                 exit 1
             fi
+            i=$((i+2))
             ;;
         *)
-            # Check if it's a number (instance size)
             if [[ "${ARGS[$i]}" =~ ^[0-9]+$ ]]; then
                 INSTANCE_SIZES+=("${ARGS[$i]}")
-            else
-                echo "Warning: Ignoring non-numeric argument: ${ARGS[$i]}"
             fi
             i=$((i+1))
             ;;
     esac
 done
 
-# Check if we have instance sizes
 if [ ${#INSTANCE_SIZES[@]} -eq 0 ]; then
     echo "Error: No valid instance sizes provided!"
     exit 1
 fi
 
-echo "Generating data for instance sizes: ${INSTANCE_SIZES[*]}"
+# Set up directories based on problem type
+GENERATOR_DIR="$PROJECT_ROOT/DataSets/Generators/$PROBLEM_TYPE"
+GT_DIR="$PROJECT_ROOT/DataSets/Ground_Truth/$PROBLEM_TYPE"
+GT_NOISE_DIR="$PROJECT_ROOT/DataSets/Ground_Truth_Noise/$PROBLEM_TYPE"
+
+# Set up file names based on problem type
+if [ "$PROBLEM_TYPE" = "LeadingOnes" ]; then
+    CLEAN_SCRIPT="LeadingOnesGT.py"
+    NOISE_SCRIPT="LeadingOnesGT_Noise.py"
+    CLEAN_FILENAME="GTLeadingOnes.csv"
+    NOISE_FILENAME="GTLeadingOnes_Noise_${NOISE_TYPE}_${NOISE_LEVEL}.csv"
+else  # OneMax
+    CLEAN_SCRIPT="OneMaxGT.py"
+    NOISE_SCRIPT="OneMaxGT_Noise.py"
+    CLEAN_FILENAME="GTOneMax.csv"
+    NOISE_FILENAME="GTOneMax_Noise_${NOISE_TYPE}_${NOISE_LEVEL}.csv"
+fi
+
+# Clear output files only
+CLEAN_DIR="$GT_DIR/$DATA_TYPE"
+NOISE_DIR="$GT_NOISE_DIR/$DATA_TYPE"
+CLEAN_VIZ="$CLEAN_DIR/Visualisations"
+NOISE_VIZ="$NOISE_DIR/Visualisations"
+mkdir -p "$CLEAN_DIR" "$NOISE_DIR" "$CLEAN_VIZ" "$NOISE_VIZ"
+rm -f "$CLEAN_DIR/$CLEAN_FILENAME" "$CLEAN_VIZ"/*.png
 if [ "$GENERATE_NOISE" = true ]; then
-    echo "Noise settings: level=$NOISE_LEVEL, type=$NOISE_TYPE"
+    rm -f "$NOISE_DIR/$NOISE_FILENAME" "$NOISE_VIZ"/*.png
 fi
 
-# Clear output directories
-echo "Clearing output directories..."
-if [ -d "../Ground_Truth" ]; then
-    rm -rf ../Ground_Truth/GTLeadingOnes.csv
-    rm -rf ../Ground_Truth/Visualisations/
-    echo "Cleared ../Ground_Truth/ directory"
-fi
+echo "Generating data for $PROBLEM_TYPE problem..."
+echo "Data type: $DATA_TYPE"
+echo "Instance sizes: ${INSTANCE_SIZES[@]}"
 
-if [ "$GENERATE_NOISE" = true ]; then
-    if [ -d "../Ground_Truth_Noise" ]; then
-        rm -rf ../Ground_Truth_Noise/GTLeadingOnes_Noise_*.csv
-        rm -rf ../Ground_Truth_Noise/Visualisations/
-        echo "Cleared ../Ground_Truth_Noise/ directory"
-    fi
-fi
-
-# Generate the clean data
-echo "Step 1: Generating LeadingOnes ground truth data..."
-python LeadingOnesGT.py "${INSTANCE_SIZES[@]}"
-
-if [ $? -ne 0 ]; then
-    echo "Error: Clean data generation failed!"
-    exit 1
-fi
-
-echo "Clean data generation completed successfully!"
+# Generate clean data
+python "$GENERATOR_DIR/$CLEAN_SCRIPT" "${INSTANCE_SIZES[@]}" --data-type "$DATA_TYPE"
 
 # Generate noisy data if requested
 if [ "$GENERATE_NOISE" = true ]; then
-    echo "Step 2: Generating LeadingOnes ground truth data with noise..."
-    python LeadingOnesGT_Noise.py "${INSTANCE_SIZES[@]}" --noise-level "$NOISE_LEVEL" --noise-type "$NOISE_TYPE"
-    
-    if [ $? -ne 0 ]; then
-        echo "Error: Noisy data generation failed!"
-        exit 1
-    fi
-    
-    echo "Noisy data generation completed successfully!"
+    echo "Generating noisy data with $NOISE_TYPE noise (level: $NOISE_LEVEL)..."
+    python "$GENERATOR_DIR/$NOISE_SCRIPT" "${INSTANCE_SIZES[@]}" --noise-level "$NOISE_LEVEL" --noise-type "$NOISE_TYPE" --data-type "$DATA_TYPE"
 fi
 
 # Generate clean data visualizations
-echo "Step 3: Generating clean data visualizations..."
 for size in "${INSTANCE_SIZES[@]}"; do
-    echo "Generating 2D plot for instance size: $size (clean data)"
-    python visualise_data.py "$size"
-    
-    if [ $? -ne 0 ]; then
-        echo "Warning: Failed to generate clean visualization for instance size $size"
-    fi
+    python "$GENERATOR_DIR/visualise_data.py" "$size" --data-type "$DATA_TYPE"
 done
-
-# Generate the 3D comparison plot for clean data
-echo "Step 4: Generating 3D comparison plot (clean data)..."
-python visualise_data.py all
-
-if [ $? -ne 0 ]; then
-    echo "Warning: Failed to generate 3D comparison plot for clean data"
-fi
+python "$GENERATOR_DIR/visualise_data.py" all --data-type "$DATA_TYPE"
 
 # Generate noisy data visualizations if noise was generated
 if [ "$GENERATE_NOISE" = true ]; then
-    echo "Step 5: Generating noisy data visualizations..."
-    
-    # Get the noise filename that was generated
-    NOISE_FILENAME="GTLeadingOnes_Noise_${NOISE_TYPE}_${NOISE_LEVEL}.csv"
-    
     for size in "${INSTANCE_SIZES[@]}"; do
-        echo "Generating 2D plot for instance size: $size (noisy data)"
-        python visualise_data_noise.py "$size" "$NOISE_FILENAME" "$NOISE_TYPE" "$NOISE_LEVEL"
-        
-        if [ $? -ne 0 ]; then
-            echo "Warning: Failed to generate noisy visualization for instance size $size"
-        fi
+        python "$GENERATOR_DIR/visualise_data_noise.py" "$size" "$NOISE_FILENAME" "$NOISE_TYPE" "$NOISE_LEVEL" --data-type "$DATA_TYPE"
     done
-    
-    # Generate the 3D comparison plot for noisy data
-    echo "Step 6: Generating 3D comparison plot (noisy data)..."
-    python visualise_data_noise.py all "$NOISE_FILENAME" "$NOISE_TYPE" "$NOISE_LEVEL"
-    
-    if [ $? -ne 0 ]; then
-        echo "Warning: Failed to generate 3D comparison plot for noisy data"
-    fi
+    python "$GENERATOR_DIR/visualise_data_noise.py" all "$NOISE_FILENAME" "$NOISE_TYPE" "$NOISE_LEVEL" --data-type "$DATA_TYPE"
 fi
 
-echo "All visualizations completed!"
-
-# Deactivate the conda environment when done
-echo "Deactivating conda environment..."
 conda deactivate
 
 echo "Data generation and visualization pipeline completed!"
-echo "Check the ../Ground_Truth/Visualisations/ directory for clean data plots."
+echo "Problem type: $PROBLEM_TYPE"
+echo "Check $CLEAN_DIR/Visualisations for clean data plots."
 if [ "$GENERATE_NOISE" = true ]; then
-    echo "Check the ../Ground_Truth_Noise/Visualisations/ directory for noisy data plots."
+    echo "Check $NOISE_DIR/Visualisations for noisy data plots."
 fi 

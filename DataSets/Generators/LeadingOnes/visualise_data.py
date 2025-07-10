@@ -4,17 +4,20 @@ import numpy as np
 import sys
 import os
 
-def visualize_leading_ones_data(instance_size=None):
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
+
+def visualize_leading_ones_data(instance_size=None, data_type='continuous'):
     """
     Visualize the LeadingOnes ground truth data.
     
     Args:
         instance_size (int, optional): If provided, shows 2D plot for that specific instance size.
                                       If None, shows 3D plot of all data.
+        data_type (str): Type of data to visualize - 'continuous' or 'discrete'
     """
     
     # Load the data first to determine valid instance sizes
-    data_path = '../Ground_Truth/GTLeadingOnes.csv'
+    data_path = os.path.join(PROJECT_ROOT, f'DataSets/Ground_Truth/LeadingOnes/{data_type}/GTLeadingOnes.csv')
     if not os.path.exists(data_path):
         print(f"Error: Data file not found at {data_path}")
         return
@@ -34,8 +37,10 @@ def visualize_leading_ones_data(instance_size=None):
     else:
         print("Visualizing all data in 3D")
     
+    # Create Visualisations directory if it doesn't exist
+    viz_dir = os.path.join(PROJECT_ROOT, f'DataSets/Ground_Truth/LeadingOnes/{data_type}/Visualisations')
+    os.makedirs(viz_dir, exist_ok=True)
 
-    
     if instance_size is not None:
         # Filter data for specific instance size
         df_filtered = df[df['InstanceSize'] == instance_size]
@@ -57,14 +62,11 @@ def visualize_leading_ones_data(instance_size=None):
         
         plt.xlabel('Current State')
         plt.ylabel('Bitflip Value')
-        plt.title(f'LeadingOnes: Bitflip vs Current State (Instance Size = {instance_size})')
+        title = f'LeadingOnes ({data_type.capitalize()}): Bitflip vs Current State (Instance Size = {instance_size})'
+        plt.title(title)
         plt.legend()
         plt.grid(True, alpha=0.3)
         plt.tight_layout()
-        
-        # Create Visualisations directory if it doesn't exist
-        viz_dir = '../Ground_Truth/Visualisations'
-        os.makedirs(viz_dir, exist_ok=True)
         
         # Save the plot
         output_path = os.path.join(viz_dir, f'LeadingOnes_{instance_size}_2D.png')
@@ -102,57 +104,55 @@ def visualize_leading_ones_data(instance_size=None):
         ax.set_xlabel('Instance Size')
         ax.set_ylabel('Current State')
         ax.set_zlabel('Bitflip Value')
-        ax.set_title('LeadingOnes: 3D Visualization of All Data')
+        title = f'LeadingOnes ({data_type.capitalize()}): 3D Visualization of All Data'
+        ax.set_title(title)
         ax.legend()
-        
-        # Create Visualisations directory if it doesn't exist
-        viz_dir = '../Ground_Truth/Visualisations'
-        os.makedirs(viz_dir, exist_ok=True)
         
         # Save the plot
         output_path = os.path.join(viz_dir, 'LeadingOnes_3D.png')
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
         print(f"3D plot saved to: {output_path}")
     
-    plt.show()
+    plt.close()
 
 def main():
     """Main function to handle command line arguments and run visualization."""
     
-    # Check command line arguments
-    if len(sys.argv) > 1:
-        if sys.argv[1] == 'all':
+    # Default values
+    instance_size = None
+    data_type = 'continuous'
+    
+    # Parse command line arguments
+    i = 1
+    while i < len(sys.argv):
+        if sys.argv[i] == '--data-type':
+            if i + 1 < len(sys.argv):
+                data_type = sys.argv[i + 1]
+                if data_type not in ['continuous', 'discrete']:
+                    print("Error: data_type must be 'continuous' or 'discrete'")
+                    sys.exit(1)
+                i += 2
+            else:
+                print("Error: --data-type requires a value")
+                sys.exit(1)
+        elif sys.argv[i] == 'all':
             # Show 3D plot of all data
-            visualize_leading_ones_data()
+            visualize_leading_ones_data(None, data_type)
+            return
         else:
+            # Check if it's a number (instance size)
             try:
-                # Try to parse as instance size
-                instance_size = int(sys.argv[1])
-                visualize_leading_ones_data(instance_size)
+                instance_size = int(sys.argv[i])
+                i += 1
             except ValueError:
-                # Try to get valid instance sizes from data for better error message
-                try:
-                    data_path = '../Ground_Truth/GTLeadingOnes.csv'
-                    if os.path.exists(data_path):
-                        df = pd.read_csv(data_path, header=None, names=['InstanceSize', 'CurrentState', 'Bitflip'])
-                        valid_sizes = sorted(df['InstanceSize'].unique())
-                        print("Usage: python visualise_data.py [instance_size|all]")
-                        print(f"  instance_size: One of {valid_sizes}")
-                        print("  all: Show 3D plot of all data")
-                        print("  (no argument): Show 3D plot of all data")
-                    else:
-                        print("Usage: python visualise_data.py [instance_size|all]")
-                        print("  instance_size: Integer value from the data file")
-                        print("  all: Show 3D plot of all data")
-                        print("  (no argument): Show 3D plot of all data")
-                except:
-                    print("Usage: python visualise_data.py [instance_size|all]")
-                    print("  instance_size: Integer value from the data file")
-                    print("  all: Show 3D plot of all data")
-                    print("  (no argument): Show 3D plot of all data")
+                print(f"Warning: Ignoring non-numeric argument: {sys.argv[i]}")
+                i += 1
+    
+    if instance_size is not None:
+        visualize_leading_ones_data(instance_size, data_type)
     else:
         # No arguments provided, show 3D plot of all data
-        visualize_leading_ones_data()
+        visualize_leading_ones_data(None, data_type)
 
 if __name__ == "__main__":
     main() 
