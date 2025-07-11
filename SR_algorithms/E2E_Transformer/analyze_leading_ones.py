@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Script to analyze GTLeadingOnes.csv data using e2e_Transformer
-to find the equation relating columns 1 and 2 to column 3.
+Script to analyze CSV data using e2e_Transformer
+to find the equation relating input columns to output column.
 
 Author: AI Assistant
 Date: 2024
@@ -23,14 +23,14 @@ warnings.filterwarnings('ignore')
 sys.path.append('./e2e_Transformer')
 import symbolicregression
 
-class LeadingOnesAnalyzer:
-    def __init__(self, model_path="model1.pt", data_path="../../DataSets/Ground_Truth/LeadingOnes/discrete/GTLeadingOnes.csv"):
+class E2ETransformerAnalyzer:
+    def __init__(self, model_path="model1.pt", data_path=None):
         """
         Initialize the analyzer.
         
         Args:
             model_path (str): Path to the pre-trained model
-            data_path (str): Path to the GTLeadingOnes.csv file
+            data_path (str): Path to the CSV file
         """
         self.model_path = model_path
         self.data_path = data_path
@@ -61,7 +61,7 @@ class LeadingOnesAnalyzer:
             return False
     
     def load_data(self):
-        """Load and prepare the GTLeadingOnes.csv data."""
+        """Load and prepare the CSV data."""
         print("\n2. Loading data...")
         
         try:
@@ -69,23 +69,25 @@ class LeadingOnesAnalyzer:
             df = pd.read_csv(self.data_path, header=None)
             print(f"Data loaded successfully. Shape: {df.shape}")
             
-            # Extract features (columns 1 and 2) and target (column 3)
-            self.X = df.iloc[:, [0, 1]].values  # Columns 1 and 2 (0-indexed)
-            self.y = df.iloc[:, 2].values       # Column 3 (0-indexed)
+            # Extract features (all columns except the last) and target (last column)
+            n_features = len(df.columns) - 1
+            self.X = df.iloc[:, :n_features].values  # All columns except the last
+            self.y = df.iloc[:, -1].values           # Last column
             
             print(f"Features (X) shape: {self.X.shape}")
             print(f"Target (y) shape: {self.y.shape}")
             
             # Display data statistics
             print(f"\nData Statistics:")
-            print(f"Column 1 (X[:,0]): min={self.X[:,0].min()}, max={self.X[:,0].max()}, mean={self.X[:,0].mean():.2f}")
-            print(f"Column 2 (X[:,1]): min={self.X[:,1].min()}, max={self.X[:,1].max()}, mean={self.X[:,1].mean():.2f}")
-            print(f"Column 3 (y): min={self.y.min()}, max={self.y.max()}, mean={self.y.mean():.2f}")
+            for i in range(self.X.shape[1]):
+                print(f"Column {i+1} (X[:,{i}]): min={self.X[:,i].min()}, max={self.X[:,i].max()}, mean={self.X[:,i].mean():.2f}")
+            print(f"Target (y): min={self.y.min()}, max={self.y.max()}, mean={self.y.mean():.2f}")
             
             # Show sample data
             print(f"\nSample data (first 5 rows):")
             for i in range(min(5, len(self.y))):
-                print(f"Row {i}: X1={self.X[i,0]}, X2={self.X[i,1]}, y={self.y[i]:.6f}")
+                feature_str = ", ".join([f"X{j+1}={self.X[i,j]:.2f}" for j in range(self.X.shape[1])])
+                print(f"Row {i}: {feature_str}, y={self.y[i]:.6f}")
             
             return True
             
@@ -169,16 +171,12 @@ class LeadingOnesAnalyzer:
             # Create the correct symbols based on what's in the equation
             symbol_list = []
             for symbol in free_symbols:
-                if str(symbol) == 'x_0':
-                    symbol_list.append(sp.symbols('x_0'))
-                elif str(symbol) == 'x_1':
-                    symbol_list.append(sp.symbols('x_1'))
+                if str(symbol).startswith('x_'):
+                    symbol_list.append(symbol)
             
-            if len(symbol_list) != 2:
-                print(f"Warning: Expected 2 symbols, found {len(symbol_list)}")
+            if len(symbol_list) != self.X.shape[1]:
+                print(f"Warning: Expected {self.X.shape[1]} symbols, found {len(symbol_list)}")
                 return self._manual_evaluation(equation_expr)
-            
-            x_0, x_1 = symbol_list
             
             # Try to simplify the expression first
             try:
@@ -191,13 +189,13 @@ class LeadingOnesAnalyzer:
             equation_func = None
             lambdify_attempts = [
                 # Try with numpy first
-                lambda expr: sp.lambdify((x_0, x_1), expr, modules=['numpy']),
+                lambda expr: sp.lambdify(symbol_list, expr, modules=['numpy']),
                 # Try with math module as fallback
-                lambda expr: sp.lambdify((x_0, x_1), expr, modules=['math', 'numpy']),
+                lambda expr: sp.lambdify(symbol_list, expr, modules=['math', 'numpy']),
                 # Try with sympy's own functions
-                lambda expr: sp.lambdify((x_0, x_1), expr, modules=['sympy']),
+                lambda expr: sp.lambdify(symbol_list, expr, modules=['sympy']),
                 # Try with minimal modules
-                lambda expr: sp.lambdify((x_0, x_1), expr, modules=['numpy', {'sin': np.sin, 'cos': np.cos, 'exp': np.exp, 'log': np.log, 'sqrt': np.sqrt, 'abs': np.abs}])
+                lambda expr: sp.lambdify(symbol_list, expr, modules=['numpy', {'sin': np.sin, 'cos': np.cos, 'exp': np.exp, 'log': np.log, 'sqrt': np.sqrt, 'abs': np.abs}])
             ]
             
             for i, lambdify_func in enumerate(lambdify_attempts):
@@ -206,7 +204,8 @@ class LeadingOnesAnalyzer:
                     equation_func = lambdify_func(equation_expr)
                     
                     # Test the function with a simple case
-                    test_result = equation_func(1.0, 1.0)
+                    test_inputs = [1.0] * len(symbol_list)
+                    test_result = equation_func(*test_inputs)
                     if not np.isnan(test_result) and not np.isinf(test_result):
                         print(f"Lambdify method {i+1} successful!")
                         break
@@ -224,7 +223,15 @@ class LeadingOnesAnalyzer:
                 return self._manual_evaluation(equation_expr)
             
             # Make predictions
-            predictions = equation_func(self.X[:, 0], self.X[:, 1])
+            predictions = []
+            for i in range(len(self.X)):
+                try:
+                    pred = equation_func(*self.X[i])
+                    predictions.append(pred)
+                except:
+                    predictions.append(np.nan)
+            
+            predictions = np.array(predictions)
             
             # Check for invalid predictions
             if np.any(np.isnan(predictions)) or np.any(np.isinf(predictions)):
@@ -279,12 +286,8 @@ class LeadingOnesAnalyzer:
             # Create the correct symbols based on what's in the equation
             symbol_map = {}
             for symbol in free_symbols:
-                if str(symbol) == 'x_0':
-                    symbol_map[symbol] = sp.symbols('x_0')
-                elif str(symbol) == 'x_1':
-                    symbol_map[symbol] = sp.symbols('x_1')
-                else:
-                    print(f"Warning: Unknown symbol {symbol}")
+                if str(symbol).startswith('x_'):
+                    symbol_map[symbol] = symbol
             
             predictions = []
             
@@ -292,10 +295,9 @@ class LeadingOnesAnalyzer:
                 try:
                     # Map the data to the correct symbols
                     substitutions = []
-                    if sp.symbols('x_0') in symbol_map:
-                        substitutions.append((symbol_map[sp.symbols('x_0')], self.X[i, 0]))
-                    if sp.symbols('x_1') in symbol_map:
-                        substitutions.append((symbol_map[sp.symbols('x_1')], self.X[i, 1]))
+                    for j, symbol in enumerate(symbol_map.keys()):
+                        if j < len(self.X[i]):
+                            substitutions.append((symbol, self.X[i, j]))
                     
                     # Substitute values into the expression
                     result = equation_expr.subs(substitutions)
@@ -399,114 +401,9 @@ class LeadingOnesAnalyzer:
             self.results['evaluation_status'] = 'evaluation_failed'
             return True  # Return True to continue with saving results
     
-    def create_visualizations(self):
-        """Create visualizations of the results."""
-        print("\n5. Creating visualizations...")
-        
-        try:
-            if 'predictions' not in self.results:
-                print("No predictions available for visualization")
-                return False
-            
-            predictions = np.array(self.results['predictions'])
-            
-            # Check if we have valid predictions
-            valid_mask = ~np.isnan(predictions)
-            if np.sum(valid_mask) < len(predictions) * 0.5:
-                print("Too few valid predictions for meaningful visualization")
-                print("Creating data-only visualization...")
-                
-                # Create a simpler visualization showing just the data
-                fig, axes = plt.subplots(1, 2, figsize=(15, 6))
-                fig.suptitle('e2e_Transformer Analysis Results for GTLeadingOnes.csv', fontsize=16)
-                
-                # 1. Data scatter plot
-                axes[0].scatter(self.X[:, 0], self.y, alpha=0.7, label='Column 1 vs Target')
-                axes[0].scatter(self.X[:, 1], self.y, alpha=0.7, label='Column 2 vs Target')
-                axes[0].set_xlabel('Feature Values')
-                axes[0].set_ylabel('Target Values')
-                axes[0].set_title('Data Distribution')
-                axes[0].legend()
-                axes[0].grid(True, alpha=0.3)
-                
-                # 2. Target distribution
-                axes[1].hist(self.y, bins=15, alpha=0.7, color='blue')
-                axes[1].set_xlabel('Target Values')
-                axes[1].set_ylabel('Frequency')
-                axes[1].set_title('Target Distribution')
-                axes[1].grid(True, alpha=0.3)
-                
-                plt.tight_layout()
-                
-                # Save the plot
-                plot_path = 'leading_ones_analysis_plots.png'
-                plt.savefig(plot_path, dpi=300, bbox_inches='tight')
-                print(f"Data visualization saved as: {plot_path}")
-                
-                self.results['plot_path'] = plot_path
-                self.results['visualization_type'] = 'data_only'
-                
-                return True
-            
-            # Create full visualization with predictions
-            fig, axes = plt.subplots(2, 2, figsize=(15, 12))
-            fig.suptitle('e2e_Transformer Analysis Results for GTLeadingOnes.csv', fontsize=16)
-            
-            valid_predictions = predictions[valid_mask]
-            valid_actual = self.y[valid_mask]
-            
-            # 1. Predictions vs Actual
-            axes[0, 0].scatter(valid_actual, valid_predictions, alpha=0.7)
-            axes[0, 0].plot([valid_actual.min(), valid_actual.max()], [valid_actual.min(), valid_actual.max()], 'r--', lw=2)
-            axes[0, 0].set_xlabel('Actual Values')
-            axes[0, 0].set_ylabel('Predicted Values')
-            axes[0, 0].set_title('Predictions vs Actual Values')
-            axes[0, 0].grid(True, alpha=0.3)
-            
-            # 2. Residuals
-            residuals = valid_predictions - valid_actual
-            axes[0, 1].scatter(valid_predictions, residuals, alpha=0.7)
-            axes[0, 1].axhline(y=0, color='r', linestyle='--')
-            axes[0, 1].set_xlabel('Predicted Values')
-            axes[0, 1].set_ylabel('Residuals')
-            axes[0, 1].set_title('Residual Plot')
-            axes[0, 1].grid(True, alpha=0.3)
-            
-            # 3. Data distribution
-            axes[1, 0].hist(valid_actual, bins=15, alpha=0.7, label='Actual', density=True)
-            axes[1, 0].hist(valid_predictions, bins=15, alpha=0.7, label='Predicted', density=True)
-            axes[1, 0].set_xlabel('Values')
-            axes[1, 0].set_ylabel('Density')
-            axes[1, 0].set_title('Distribution Comparison')
-            axes[1, 0].legend()
-            axes[1, 0].grid(True, alpha=0.3)
-            
-            # 4. Error distribution
-            axes[1, 1].hist(residuals, bins=15, alpha=0.7, color='orange')
-            axes[1, 1].set_xlabel('Prediction Error')
-            axes[1, 1].set_ylabel('Frequency')
-            axes[1, 1].set_title('Error Distribution')
-            axes[1, 1].grid(True, alpha=0.3)
-            
-            plt.tight_layout()
-            
-            # Save the plot
-            plot_path = 'leading_ones_analysis_plots.png'
-            plt.savefig(plot_path, dpi=300, bbox_inches='tight')
-            print(f"Visualization saved as: {plot_path}")
-            
-            self.results['plot_path'] = plot_path
-            self.results['visualization_type'] = 'full_analysis'
-            
-            return True
-            
-        except Exception as e:
-            print(f"Error creating visualizations: {e}")
-            return False
-    
     def save_results(self):
         """Save all results to files."""
-        print("\n6. Saving results...")
+        print("\n5. Saving results...")
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
@@ -519,13 +416,14 @@ class LeadingOnesAnalyzer:
         # Save summary report
         report_path = f'leading_ones_report_{timestamp}.txt'
         with open(report_path, 'w') as f:
-            f.write("=== e2e_Transformer Analysis Report for GTLeadingOnes.csv ===\n\n")
-            f.write(f"Analysis Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+            f.write("=== e2e_Transformer Analysis Report ===\n\n")
+            f.write(f"Analysis Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"Data file: {self.data_path}\n\n")
             
             f.write("DATA SUMMARY:\n")
             f.write(f"Dataset shape: {self.X.shape}\n")
-            f.write(f"Features: Column 1 (X1) and Column 2 (X2)\n")
-            f.write(f"Target: Column 3 (y)\n\n")
+            f.write(f"Features: {self.X.shape[1]} input columns\n")
+            f.write(f"Target: Last column\n\n")
             
             f.write("FOUND EQUATION:\n")
             f.write(f"Raw: {self.results.get('raw_equation', 'N/A')}\n")
@@ -539,7 +437,7 @@ class LeadingOnesAnalyzer:
                 f.write("\n")
             
             f.write("INTERPRETATION:\n")
-            f.write("The equation shows the relationship between columns 1 and 2 (features) and column 3 (target).\n")
+            f.write("The equation shows the relationship between input features and target output.\n")
             f.write("Lower error metrics indicate better fit.\n")
             f.write("R² closer to 1.0 indicates better predictive performance.\n")
         
@@ -549,7 +447,7 @@ class LeadingOnesAnalyzer:
     
     def run_analysis(self):
         """Run the complete analysis pipeline."""
-        print("=== e2e_Transformer Analysis of GTLeadingOnes.csv ===\n")
+        print("=== e2e_Transformer Analysis ===\n")
         
         # Step 1: Load model
         if not self.load_model():
@@ -567,10 +465,7 @@ class LeadingOnesAnalyzer:
         if not self.evaluate_equation():
             return False
         
-        # Step 5: Create visualizations
-        self.create_visualizations()
-        
-        # Step 6: Save results
+        # Step 5: Save results
         json_path, report_path = self.save_results()
         
         print("\n=== Analysis Complete ===")
@@ -581,11 +476,19 @@ class LeadingOnesAnalyzer:
 
 def main():
     """Main function to run the analysis."""
-    analyzer = LeadingOnesAnalyzer()
+    if len(sys.argv) != 2:
+        print("Usage: python analyze_leading_ones.py <csv_file_path>")
+        sys.exit(1)
+    
+    csv_file = sys.argv[1]
+    analyzer = E2ETransformerAnalyzer(data_path=csv_file)
     success = analyzer.run_analysis()
     
     if success:
         print("\n✅ Analysis completed successfully!")
+        # Return the equation for the shell script to capture
+        if 'raw_equation' in analyzer.results:
+            print(f"EQUATION: {analyzer.results['raw_equation']}")
     else:
         print("\n❌ Analysis failed!")
 
