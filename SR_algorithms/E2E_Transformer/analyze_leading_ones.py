@@ -24,7 +24,7 @@ sys.path.append('./e2e_Transformer')
 import symbolicregression
 
 class LeadingOnesAnalyzer:
-    def __init__(self, model_path="model1.pt", data_path="../../DataSets/Ground_Truth/LeadingOnes/continuous/GTLeadingOnes.csv"):
+    def __init__(self, model_path="model1.pt", data_path="../../DataSets/Ground_Truth/LeadingOnes/discrete/GTLeadingOnes.csv"):
         """
         Initialize the analyzer.
         
