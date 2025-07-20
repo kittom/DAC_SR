@@ -1,17 +1,5 @@
-Pipelines of each algorithm
-
-AI Feynman:
-Sources: Feynman
-Details: 
-- Format Data into txt files
-- results generated in the 
-
-DSO
-Sources dso_env (conda)
-Details:
-- uses run.py
-- shell script requires 
-
-QLattice
-source: qlat (conda)
-Details
+Setup steps for each conda environment. 
+DeepSR
+E2E_transformer
+pykan
+Q_lattice
