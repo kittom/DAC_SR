@@ -60,7 +60,7 @@ if [ ${#INSTANCE_SIZES[@]} -eq 0 ]; then
 fi
 
 # Set up directories based on problem type
-GENERATOR_DIR="$PROJECT_ROOT/DataSets/Generators/$PROBLEM_TYPE"
+GENERATOR_DIR="$PROJECT_ROOT/DataGeneration/Generators/$PROBLEM_TYPE"
 GT_DIR="$PROJECT_ROOT/DataSets/Ground_Truth/$PROBLEM_TYPE"
 GT_NOISE_DIR="$PROJECT_ROOT/DataSets/Ground_Truth_Noise/$PROBLEM_TYPE"
 

@@ -36,6 +36,14 @@ conda create -n kan python=3.10 -y
 echo "Creating q_lat environment for Q_Lattice (Python 3.13)..."
 conda create -n q_lat python=3.13 -y
 
+# Create generation environment for data generation and DeepRL models
+echo "Creating generation environment for data generation and DeepRL models (Python 3.10)..."
+conda create -n generation python=3.10 -y
+
+# Create PySR environment (pysr_env) with Python 3.10
+# PySR requires Python >=3.8, using 3.10 for compatibility
+conda create -n pysr_env python=3.10 -y
+
 echo ""
 echo "All conda environments created successfully!"
 echo ""
@@ -47,5 +55,7 @@ echo "  conda activate dso_env      # For DeepSR"
 echo "  conda activate e2e_transformer  # For E2E_Transformer"
 echo "  conda activate kan          # For pykan"
 echo "  conda activate q_lat        # For Q_Lattice"
+echo "  conda activate generation   # For data generation and DeepRL models"
+echo "  conda activate pysr_env        # For PySR"
 echo ""
 echo "Setup complete!" 
