@@ -1,5 +1,0 @@
-Setup steps for each conda environment. 
-DeepSR
-E2E_transformer
-pykan
-Q_lattice

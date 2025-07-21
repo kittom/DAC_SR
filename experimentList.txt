@@ -1,0 +1,5 @@
+list of experiments to perform
+Handling ground truth data for all models
+
+Leading Ones & OneMAx data
+- 

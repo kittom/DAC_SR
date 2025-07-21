@@ -26,7 +26,7 @@ conda create -n dso_env python=3.7 -y
 
 # Create E2E_Transformer environment (e2e_transformer) with Python 3.8
 echo "Creating e2e_transformer environment for E2E_Transformer (Python 3.8)..."
-conda create -n e2e_transformer python=3.8 -y
+conda env create --name e2e_transformer --file=SR_algorithms/E2E_Transformer/e2e_Transformer/environment.yml
 
 # Create pykan environment (kan) with Python 3.10
 echo "Creating kan environment for pykan (Python 3.10)..."
@@ -34,7 +34,7 @@ conda create -n kan python=3.10 -y
 
 # Create Q_Lattice environment (q_lat) with latest Python
 echo "Creating q_lat environment for Q_Lattice (Python 3.13)..."
-conda create -n q_lat python=3.13 -y
+conda create -n q_lat python=3.8 -y
 
 # Create generation environment for data generation and DeepRL models
 echo "Creating generation environment for data generation and DeepRL models (Python 3.10)..."
@@ -43,6 +43,42 @@ conda create -n generation python=3.10 -y
 # Create PySR environment (pysr_env) with Python 3.10
 # PySR requires Python >=3.8, using 3.10 for compatibility
 conda create -n pysr_env python=3.10 -y
+
+# Install requirements for each environment
+
+# Ensure conda activate works in this shell
+source ~/miniconda3/etc/profile.d/conda.sh
+
+# DeepSR
+echo "Installing requirements for DeepSR..."
+conda activate dso_env
+pip install --upgrade setuptools pip
+pip install -e ./SR_algorithms/DeepSR/deep-symbolic-optimization/dso
+conda deactivate
+
+# E2E_Transformer
+echo "Installing requirements for E2E_Transformer..."
+conda activate e2e_transformer
+pip install git+https://github.com/pakamienny/sympytorch
+conda deactivate
+
+# pykan
+echo "Installing requirements for pykan..."
+conda activate kan
+pip install -r SR_algorithms/pykan/requirements.txt
+conda deactivate
+
+# Q_Lattice
+echo "Installing requirements for Q_Lattice..."
+conda activate q_lat
+pip3 install -r SR_algorithms/Q_Lattice/Code/requirements.txt
+conda deactivate
+
+# PySR
+echo "Installing requirements for PySR..."
+conda activate pysr_env
+pip install -r SR_algorithms/PySR/requirements.txt
+conda deactivate
 
 echo ""
 echo "All conda environments created successfully!"

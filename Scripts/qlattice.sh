@@ -36,12 +36,12 @@ source ~/miniconda3/etc/profile.d/conda.sh
 
 # Activate the conda environment
 echo "Activating Q-Lattice conda environment..."
-conda activate qlat
+conda activate q_lat
 
 # Check if activation was successful
 if [ $? -ne 0 ]; then
-    echo "Error: Failed to activate conda environment 'qlat'!"
-    echo "Please ensure the 'qlat' conda environment exists."
+    echo "Error: Failed to activate conda environment 'q_lat'!"
+    echo "Please ensure the 'q_lat' conda environment exists."
     exit 1
 fi
 
