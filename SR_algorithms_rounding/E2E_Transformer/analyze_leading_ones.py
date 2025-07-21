@@ -477,6 +477,7 @@ class E2ETransformerAnalyzer:
         csv_dir = os.path.dirname(self.data_path)
         results_file = os.path.join(csv_dir, "results_rounding.csv")
         try:
+            equation_str = self.results.get('raw_equation', 'ERROR: No equation')
             if os.path.exists(results_file):
                 results_df = pd.read_csv(results_file)
                 if 'e2e_transformer' not in results_df.columns:

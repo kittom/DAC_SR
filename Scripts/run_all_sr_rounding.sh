@@ -48,13 +48,5 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Run KAN (rounding)
-echo "\n--- Running KAN (rounding) ---"
-bash "$SCRIPTS_DIR/rounded/kan.sh" "$CSV_FILE"
-if [ $? -ne 0 ]; then
-    echo "Error: KAN (rounding) failed! Exiting."
-    exit 1
-fi
-
 
 echo "\nAll (rounding-enabled) symbolic regression algorithms completed." 
