@@ -1,5 +1,32 @@
 list of experiments to perform
 Handling ground truth data for all models
 
+
 Leading Ones & OneMAx data
-- 
+- Exploring model performance after the given maximum porfolio
+- Exploring model performance on unseen instance sizes within the model bounds.
+
+- Varying threshold value for DeepSR for DeepRL model performance within noisy data
+
+- With continuous data + rounding
+- With data after rounding
+
+PSA-CMA-ES
+- Exploring ground truth ability to learn model when given the Alpha and Beta Values
+- Exploring noisy ability to learn model when given the Alpha and Beta Values
+- Exploring ground truth ability to learn model when not given the Alpha and Beta Values
+- Exploring noisy ability to learn model when not given the Alpha and Beta ValueseepRL
+
+- With continuous data + rounding
+- With data after rounding
+
+- Varying threshold value for DeepSR for DeepRL model performance within noisy data
+
+- Using porfolio and DDQN network vs using PPO 
+
+- Building a DeepRL KAN
+
+- Using DSO for optimisations for CMA-ES hyperparameters
+
+Notes:
+Added rounding to DeepSR. It works, but it can't use rounding with respect to polyfit and inversions

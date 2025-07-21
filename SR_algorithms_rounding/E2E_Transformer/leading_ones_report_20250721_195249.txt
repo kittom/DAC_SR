@@ -1,0 +1,25 @@
+=== e2e_Transformer Analysis Report ===
+
+Analysis Date: 2025-07-21 19:52:49
+Data file: /home/mk422/Documents/DAC_SR/DataSets/Ground_Truth/LeadingOnes/continuous/GTLeadingOnes.csv
+
+DATA SUMMARY:
+Dataset shape: (32, 2)
+Features: 2 input columns
+Target: Last column
+
+FOUND EQUATION:
+Raw: (((0.028100000000000003 + (0.00874 * (-3.487143983286775 + (0.21054454238712605 * x_0)))) * (-0.562 + (-0.467 * 1/((-0.0067599999999999995 + (-0.00413 * (-1.4385400158977264 + (0.17371049248576317 * x_1)))))))) - (0.020900000000000002 + (0.0485 * (-3.487143983286775 + (0.21054454238712605 * x_0)))))
+Parsed: -0.010211410305775614*x_0 + (-0.562 - 0.467/(-0.00071742433396620189*x_1 - 0.00081882973434238949))*(0.0018401593004634816*x_0 - 0.0023776384139264089) + 0.14822648318940859
+LaTeX: - 0.010211410305775614 x_{0} + \left(-0.562 - \frac{0.467}{- 0.00071742433396620189 x_{1} - 0.00081882973434238949}\right) \left(0.0018401593004634816 x_{0} - 0.0023776384139264089\right) + 0.14822648318940859
+
+EVALUATION METRICS:
+MSE: 23.36528074
+RMSE: 4.83376466
+MAE: 2.71084119
+R2: -0.61501188
+
+INTERPRETATION:
+The equation shows the relationship between input features and target output.
+Lower error metrics indicate better fit.
+R² closer to 1.0 indicates better predictive performance.

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# DeepSR Activation and Execution Script
-# This script activates the dso_env conda environment and runs the deep symbolic optimization
+# DeepSR Activation and Execution Script (Unrounded)
+# This script activates the dso_env conda environment and runs the deep symbolic optimization (unrounded)
 
 if [ $# -lt 1 ]; then
     echo "Error: No CSV file provided!"
@@ -23,13 +23,14 @@ if [ ! -f "$CSV_FILE" ]; then
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR/../SR_algorithms/DeepSR/deep-symbolic-optimization"
+DEEPSR_DIR="$SCRIPT_DIR/../../SR_algorithms/DeepSR/deep-symbolic-optimization"
+cd "$DEEPSR_DIR"
 
 # Initialize conda for this shell session
 echo "Initializing conda..."
 source ~/miniconda3/etc/profile.d/conda.sh
 
-echo "Activating DeepSR conda environment..."
+echo "Activating dso_env conda environment..."
 conda activate dso_env
 
 if [ $? -ne 0 ]; then
@@ -48,12 +49,10 @@ THRESHOLD=1e-12
 REWARD_NOISE=0.0
 if (( $(echo "$NOISE > 0" | bc -l) )); then
     THRESHOLD="$NOISE"
-    REWARD_NOISE="$NOISE"
 fi
 
 sed -e "s|__DATASET__|$CSV_FILE|g" \
     -e "s|__THRESHOLD__|$THRESHOLD|g" \
-    -e "s|__REWARD_NOISE__|$REWARD_NOISE|g" \
     config_template.json > config.json
 
 echo "Running Deep Symbolic Regression on CSV data..."

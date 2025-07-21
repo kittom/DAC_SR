@@ -31,7 +31,7 @@ run_and_check() {
     echo "==============================="
     echo "Running $script_name on $CSV_FILE $@"
     echo "==============================="
-    bash "$SCRIPTS_DIR/$script_name" "$CSV_FILE" "$@"
+    bash "$SCRIPTS_DIR/unrounded/$script_name" "$CSV_FILE" "$@"
     if [ $? -ne 0 ]; then
         echo "Error: $script_name failed! Exiting."
         exit 1

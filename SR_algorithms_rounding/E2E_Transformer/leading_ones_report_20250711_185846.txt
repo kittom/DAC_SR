@@ -1,0 +1,25 @@
+=== e2e_Transformer Analysis Report ===
+
+Analysis Date: 2025-07-11 18:58:46
+Data file: /home/mk422/Documents/DAC_SR/Scripts/../DataSets/Ground_Truth/LeadingOnes/continuous/GTLeadingOnes.csv
+
+DATA SUMMARY:
+Dataset shape: (32, 2)
+Features: 2 input columns
+Target: Last column
+
+FOUND EQUATION:
+Raw: (((3.77 + (-3.487143983286775 + (0.21054454238712605 * x_0))) * (-0.09290000000000001 + (-0.007339999999999999 * (-3.487143983286775 + (0.21054454238712605 * x_0))))) * (-0.0708 + (60.7 * 1/((((-0.14 * (-3.487143983286775 + (0.21054454238712605 * x_0))) - (11.8 + (7.28 * (-1.4385400158977264 + (0.17371049248576317 * x_1))))) + (-0.00041999999999999996 + (-0.028700000000000003 * (-1.4385400158977264 + (0.17371049248576317 * x_1)))))))))
+Parsed: (-0.0708 + 60.7/(-0.02947623593419765*x_0 - 1.2695978764306973*x_1 - 0.79836242814813886))*(-0.001545396941121505*x_0 - 0.06730436316267509)*(0.21054454238712605*x_0 + 0.282856016713225)
+LaTeX: \left(-0.0708 + \frac{60.7}{- 0.02947623593419765 x_{0} - 1.2695978764306973 x_{1} - 0.79836242814813886}\right) \left(- 0.001545396941121505 x_{0} - 0.06730436316267509\right) \left(0.21054454238712605 x_{0} + 0.282856016713225\right)
+
+EVALUATION METRICS:
+MSE: 0.05474526
+RMSE: 0.23397705
+MAE: 0.13859622
+R2: 0.99621600
+
+INTERPRETATION:
+The equation shows the relationship between input features and target output.
+Lower error metrics indicate better fit.
+R² closer to 1.0 indicates better predictive performance.
