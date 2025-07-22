@@ -38,6 +38,21 @@ def generate_one_max_ground_truth(instance_sizes=None, data_type='continuous'):
     out_path = os.path.join(out_dir, 'GTOneMax.csv')
     df.to_csv(out_path, index=False, header=False)
     print(f"Output saved to: {out_path}")
+    
+    # Create results.csv with ground truth equation
+    ground_truth_equation = "sqrt(n/(n-k))" if data_type == 'continuous' else "round(sqrt(n/(n-k)))"
+    results_filename = 'results_rounding.csv' if data_type == 'discrete' else 'results.csv'
+    results_path = os.path.join(out_dir, results_filename)
+    
+    # Create results DataFrame with ground truth as first column
+    results_data = {
+        'ground_truth': [ground_truth_equation]
+    }
+    results_df = pd.DataFrame(results_data)
+    results_df.to_csv(results_path, index=False)
+    print(f"Ground truth results saved to: {results_path}")
+    print(f"Ground truth equation: {ground_truth_equation}")
+    
     return df
 
 if __name__ == "__main__":
