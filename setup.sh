@@ -44,6 +44,10 @@ conda create -n generation python=3.10 -y
 # PySR requires Python >=3.8, using 3.10 for compatibility
 conda create -n pysr_env python=3.10 -y
 
+# Create evaluation environment (evaluation) with Python 3.10
+echo "Creating evaluation environment for results analysis and visualization (Python 3.10)..."
+conda create -n evaluation python=3.10 -y
+
 # Install requirements for each environment
 
 # Ensure conda activate works in this shell
@@ -80,6 +84,12 @@ conda activate pysr_env
 pip install -r SR_algorithms/PySR/requirements.txt
 conda deactivate
 
+# Evaluation
+echo "Installing requirements for evaluation..."
+conda activate evaluation
+pip install -r Evaluation/requirements.txt
+conda deactivate
+
 echo ""
 echo "All conda environments created successfully!"
 echo ""
@@ -93,5 +103,6 @@ echo "  conda activate kan          # For pykan"
 echo "  conda activate q_lat        # For Q_Lattice"
 echo "  conda activate generation   # For data generation and DeepRL models"
 echo "  conda activate pysr_env        # For PySR"
+echo "  conda activate evaluation   # For evaluation"
 echo ""
 echo "Setup complete!" 

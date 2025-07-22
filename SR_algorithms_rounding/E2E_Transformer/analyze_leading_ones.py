@@ -17,11 +17,19 @@ import json
 import matplotlib.pyplot as plt
 from datetime import datetime
 import warnings
+import signal
+import time
 warnings.filterwarnings('ignore')
 
 # Add the e2e_Transformer directory to the path
 sys.path.append('./e2e_Transformer')
 import symbolicregression
+
+class TimeoutError(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutError("Operation timed out")
 
 class E2ETransformerAnalyzer:
     def __init__(self, model_path="model1.pt", data_path=None):
@@ -112,9 +120,31 @@ class E2ETransformerAnalyzer:
             print("Fitting the model...")
             est.fit(self.X, self.y, verbose=True)
             
-            # Retrieve the best equation
+            # Retrieve the best equation with timeout
             print("\nRetrieving the best equation...")
-            result = est.retrieve_tree(with_infos=True)
+            
+            # Set up timeout for retrieve_tree operation
+            signal.signal(signal.SIGALRM, timeout_handler)
+            signal.alarm(30)  # 30 second timeout
+            
+            try:
+                result = est.retrieve_tree(with_infos=True)
+                signal.alarm(0)  # Cancel the alarm
+            except TimeoutError:
+                signal.alarm(0)  # Cancel the alarm
+                print("WARNING: Tree retrieval timed out. Using fallback approach...")
+                # Try without with_infos=True
+                try:
+                    signal.alarm(30)  # 30 second timeout
+                    result = est.retrieve_tree(with_infos=False)
+                    signal.alarm(0)  # Cancel the alarm
+                    if result is not None:
+                        # Create a simple result structure
+                        result = {"relabed_predicted_tree": result}
+                except TimeoutError:
+                    signal.alarm(0)  # Cancel the alarm
+                    print("ERROR: Tree retrieval failed even with fallback. Using dummy result.")
+                    result = None
             
             if result is None:
                 print("No equation found!")
@@ -458,12 +488,14 @@ class E2ETransformerAnalyzer:
             return False
         
         # Step 3: Analyze data
-        if not self.analyze_data():
-            return False
+        analysis_success = self.analyze_data()
         
-        # Step 4: Evaluate equation
-        if not self.evaluate_equation():
-            return False
+        # Step 4: Evaluate equation (only if analysis was successful)
+        if analysis_success:
+            if not self.evaluate_equation():
+                print("Warning: Equation evaluation failed, but continuing...")
+        else:
+            print("Warning: Analysis failed, but continuing to save results...")
         
         # Step 5: Save results
         json_path, report_path = self.save_results()
@@ -477,7 +509,7 @@ class E2ETransformerAnalyzer:
         csv_dir = os.path.dirname(self.data_path)
         results_file = os.path.join(csv_dir, "results_rounding.csv")
         try:
-            equation_str = self.results.get('raw_equation', 'ERROR: No equation')
+            equation_str = self.results.get('raw_equation', 'ERROR: No equation found')
             if os.path.exists(results_file):
                 results_df = pd.read_csv(results_file)
                 if 'e2e_transformer' not in results_df.columns:

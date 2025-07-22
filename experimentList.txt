@@ -2,9 +2,11 @@ list of experiments to perform
 Handling ground truth data for all models
 
 
-Leading Ones & OneMAx data
+Leading Ones & OneMax data
 - Exploring model performance after the given maximum porfolio
 - Exploring model performance on unseen instance sizes within the model bounds.
+- Jumble data so it is not in order and looks similar to what would be expected from a model.
+- Can these models learn the equation on a single instance if not given the instance size (i.e. Can they learn the hyperparameter)
 
 - Varying threshold value for DeepSR for DeepRL model performance within noisy data
 
