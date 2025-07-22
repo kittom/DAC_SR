@@ -161,6 +161,166 @@ class SymbolicRegressionEvaluator:
         
         return equation_str
     
+    def safe_evaluate_expression(self, equation_str, variable_values):
+        """
+        Safely evaluate an expression with given variable values.
+        Handles round functions and other potential issues.
+        
+        Args:
+            equation_str (str): The equation string
+            variable_values (dict): Dictionary of variable names to values
+            
+        Returns:
+            float or np.nan: The evaluated result
+        """
+        try:
+            # Create a local namespace with the round function
+            local_dict = {
+                'round': lambda x: round(float(x)),
+                'sin': np.sin,
+                'cos': np.cos,
+                'exp': np.exp,
+                'log': np.log,
+                'sqrt': np.sqrt,
+                'abs': np.abs,
+                'tan': np.tan,
+                'asin': np.arcsin,
+                'acos': np.arccos,
+                'atan': np.arctan,
+                'sinh': np.sinh,
+                'cosh': np.cosh,
+                'tanh': np.tanh,
+                'pi': np.pi,
+                'e': np.e
+            }
+            
+            # Add variable values to the namespace
+            local_dict.update(variable_values)
+            
+            # Evaluate the expression
+            result = eval(equation_str, {"__builtins__": {}}, local_dict)
+            
+            # Check if result is valid
+            if isinstance(result, (int, float)) and not np.isnan(result) and not np.isinf(result):
+                return float(result)
+            else:
+                return np.nan
+                
+        except Exception as e:
+            # If eval fails, try sympy approach
+            try:
+                # Parse with sympy
+                expr = sp.sympify(equation_str)
+                
+                # Substitute values
+                for var_name, var_value in variable_values.items():
+                    expr = expr.subs(sp.Symbol(var_name), var_value)
+                
+                # Evaluate
+                result = float(expr)
+                if not np.isnan(result) and not np.isinf(result):
+                    return result
+                else:
+                    return np.nan
+                    
+            except Exception as e2:
+                return np.nan
+    
+    def parse_deepsr_functional_notation(self, equation_str):
+        """
+        Parse DeepSR's functional notation and convert to standard mathematical notation.
+        
+        Examples:
+        - Add(x1, x2) -> x1 + x2
+        - Mul(x1, x2) -> x1 * x2
+        - Pow(x1, -1) -> x1**(-1)
+        - round(expr) -> round(expr)
+        
+        Args:
+            equation_str (str): The functional notation string
+            
+        Returns:
+            str: Standard mathematical notation
+        """
+        if not equation_str or pd.isna(equation_str):
+            return equation_str
+        
+        equation_str = str(equation_str).strip()
+        
+        # Check if it's already in standard notation (no functional notation)
+        if not any(func in equation_str for func in ['Add(', 'Mul(', 'Pow(', 'Sub(', 'Div(']):
+            return equation_str
+        
+        print(f"    Parsing DeepSR functional notation: {equation_str}")
+        
+        # Use a simpler approach with better regex patterns
+        result = equation_str
+        
+        # Process functions in order of complexity (innermost first)
+        # Start with Pow (powers)
+        while 'Pow(' in result:
+            # Match Pow(function, exponent) or Pow(variable, exponent)
+            pow_pattern = r'Pow\(([^,]+),([^)]+)\)'
+            match = re.search(pow_pattern, result)
+            if match:
+                base = match.group(1).strip()
+                exponent = match.group(2).strip()
+                replacement = f"({base})**({exponent})"
+                result = result.replace(match.group(0), replacement)
+            else:
+                break
+        
+        # Then Mul (multiplication)
+        while 'Mul(' in result:
+            mul_pattern = r'Mul\(([^,]+),([^)]+)\)'
+            match = re.search(mul_pattern, result)
+            if match:
+                left = match.group(1).strip()
+                right = match.group(2).strip()
+                replacement = f"({left}) * ({right})"
+                result = result.replace(match.group(0), replacement)
+            else:
+                break
+        
+        # Then Div (division)
+        while 'Div(' in result:
+            div_pattern = r'Div\(([^,]+),([^)]+)\)'
+            match = re.search(div_pattern, result)
+            if match:
+                left = match.group(1).strip()
+                right = match.group(2).strip()
+                replacement = f"({left}) / ({right})"
+                result = result.replace(match.group(0), replacement)
+            else:
+                break
+        
+        # Then Sub (subtraction)
+        while 'Sub(' in result:
+            sub_pattern = r'Sub\(([^,]+),([^)]+)\)'
+            match = re.search(sub_pattern, result)
+            if match:
+                left = match.group(1).strip()
+                right = match.group(2).strip()
+                replacement = f"({left}) - ({right})"
+                result = result.replace(match.group(0), replacement)
+            else:
+                break
+        
+        # Finally Add (addition)
+        while 'Add(' in result:
+            add_pattern = r'Add\(([^,]+),([^)]+)\)'
+            match = re.search(add_pattern, result)
+            if match:
+                left = match.group(1).strip()
+                right = match.group(2).strip()
+                replacement = f"({left}) + ({right})"
+                result = result.replace(match.group(0), replacement)
+            else:
+                break
+        
+        print(f"    Converted to: {result}")
+        return result
+    
     def get_equation_complexity(self, equation_str):
         """Calculate a simple complexity score for the equation."""
         if not equation_str:
@@ -204,6 +364,10 @@ class SymbolicRegressionEvaluator:
             print(f"\nProcessing {algorithm}: {equation}")
             
             try:
+                # Parse DeepSR functional notation if needed
+                if algorithm == 'DeepSR':
+                    equation = self.parse_deepsr_functional_notation(equation)
+                
                 # Standardize variable names
                 standardized_eq = self.standardize_variable_names(equation)
                 print(f"  Standardized: {standardized_eq}")
@@ -244,25 +408,33 @@ class SymbolicRegressionEvaluator:
     def _plot_1d(self, algorithm, equation):
         """Create a 1D line plot."""
         try:
-            # Parse the equation
-            x0 = sp.Symbol('x0')
-            expr = sp.sympify(equation)
-            
             # Create x values
             x_data = self.original_data.iloc[:, 0]
-            x_range = np.linspace(x_data.min(), x_data.max(), 100)
             
-            # Evaluate the equation
+            # Check for valid data
+            if x_data.isna().all():
+                raise ValueError("All x data values are NaN")
+            
+            x_min, x_max = x_data.min(), x_data.max()
+            
+            # Check for valid range
+            if np.isnan(x_min) or np.isnan(x_max):
+                raise ValueError("x data range contains NaN values")
+            if np.isinf(x_min) or np.isinf(x_max):
+                raise ValueError("x data range contains infinite values")
+            
+            x_range = np.linspace(x_min, x_max, 100)
+            
+            # Evaluate the equation using safe evaluation
             y_values = []
             for x_val in x_range:
-                try:
-                    y_val = expr.subs(x0, x_val)
-                    if y_val.is_real:
-                        y_values.append(float(y_val))
-                    else:
-                        y_values.append(np.nan)
-                except:
-                    y_values.append(np.nan)
+                variable_values = {'x0': x_val}
+                y_val = self.safe_evaluate_expression(equation, variable_values)
+                y_values.append(y_val)
+            
+            # Check if we have valid y values
+            if np.all(np.isnan(y_values)):
+                raise ValueError("All equation evaluations resulted in NaN")
             
             # Plot
             plt.plot(x_range, y_values, label=algorithm, linewidth=2)
@@ -273,6 +445,7 @@ class SymbolicRegressionEvaluator:
             plt.grid(True, alpha=0.3)
             
         except Exception as e:
+            print(f"    Error in 1D plotting: {e}")
             plt.text(0.5, 0.5, f'Error plotting {algorithm}:\n{str(e)}', 
                     ha='center', va='center', transform=plt.gca().transAxes)
             plt.title(f'{algorithm} - Plot Error')
@@ -280,93 +453,132 @@ class SymbolicRegressionEvaluator:
     def _plot_2d(self, algorithm, equation):
         """Create a 2D plot showing y as the output of the equation."""
         try:
-            # Parse the equation
-            x0, x1 = sp.Symbol('x0'), sp.Symbol('x1')
-            expr = sp.sympify(equation)
-            
             # Get data ranges
             x0_data = self.original_data.iloc[:, 0]
             x1_data = self.original_data.iloc[:, 1]
             
-            x0_range = np.linspace(x0_data.min(), x0_data.max(), 50)
-            x1_range = np.linspace(x1_data.min(), x1_data.max(), 50)
+            # Check for valid data ranges
+            if x0_data.isna().all() or x1_data.isna().all():
+                raise ValueError("All data values are NaN")
+            
+            x0_min, x0_max = x0_data.min(), x0_data.max()
+            x1_min, x1_max = x1_data.min(), x1_data.max()
+            
+            # Check for valid ranges
+            if np.isnan(x0_min) or np.isnan(x0_max) or np.isnan(x1_min) or np.isnan(x1_max):
+                raise ValueError("Data range contains NaN values")
+            if np.isinf(x0_min) or np.isinf(x0_max) or np.isinf(x1_min) or np.isinf(x1_max):
+                raise ValueError("Data range contains infinite values")
+            
+            x0_range = np.linspace(x0_min, x0_max, 50)
+            x1_range = np.linspace(x1_min, x1_max, 50)
             
             X0, X1 = np.meshgrid(x0_range, x1_range)
             Z = np.zeros_like(X0)
             
-            # Evaluate the equation
+            # Evaluate the equation using safe evaluation
             for i in range(X0.shape[0]):
                 for j in range(X0.shape[1]):
-                    try:
-                        val = expr.subs([(x0, X0[i, j]), (x1, X1[i, j])])
-                        if val.is_real:
-                            Z[i, j] = float(val)
-                        else:
-                            Z[i, j] = np.nan
-                    except:
-                        Z[i, j] = np.nan
+                    variable_values = {'x0': X0[i, j], 'x1': X1[i, j]}
+                    Z[i, j] = self.safe_evaluate_expression(equation, variable_values)
+            
+            # Check if Z contains valid values
+            if np.all(np.isnan(Z)):
+                raise ValueError("All equation evaluations resulted in NaN")
+            
+            # Check for extreme values that could cause plotting issues
+            Z_finite = Z[np.isfinite(Z)]
+            if len(Z_finite) > 0:
+                z_min, z_max = np.nanmin(Z), np.nanmax(Z)
+                # If the range is extremely large, clip the values
+                if abs(z_max - z_min) > 1e10:
+                    # Clip extreme values to a reasonable range
+                    Z_clipped = np.clip(Z, -1e6, 1e6)
+                    Z = Z_clipped
             
             # Create subplots: 3D surface and line plots
             fig = plt.figure(figsize=(16, 10))
             
             # 3D Surface plot
             ax1 = fig.add_subplot(2, 2, 1, projection='3d')
-            surf = ax1.plot_surface(X0, X1, Z, cmap='viridis', alpha=0.8)
+            try:
+                # Check if Z has valid finite values for surface
+                Z_finite = Z[np.isfinite(Z)]
+                if len(Z_finite) > 0:
+                    surf = ax1.plot_surface(X0, X1, Z, cmap='viridis', alpha=0.8)
+                    fig.colorbar(surf, ax=ax1, shrink=0.5, aspect=5)
+                else:
+                    ax1.text(0.5, 0.5, 'No valid data for surface', ha='center', va='center', transform=ax1.transAxes)
+            except Exception as surface_error:
+                ax1.text(0.5, 0.5, f'3D surface failed:\n{str(surface_error)}', ha='center', va='center', transform=ax1.transAxes)
+            
             ax1.set_xlabel('x0')
             ax1.set_ylabel('x1')
             ax1.set_zlabel('y (equation output)')
             ax1.set_title(f'{algorithm} - 3D Surface')
-            fig.colorbar(surf, ax=ax1, shrink=0.5, aspect=5)
             
             # Line plot: y vs x0 with x1 fixed at mean
             ax2 = fig.add_subplot(2, 2, 2)
             x1_fixed = x1_data.mean()
-            y_values_x0 = []
-            for x0_val in x0_range:
-                try:
-                    y_val = expr.subs([(x0, x0_val), (x1, x1_fixed)])
-                    if y_val.is_real:
-                        y_values_x0.append(float(y_val))
-                    else:
-                        y_values_x0.append(np.nan)
-                except:
-                    y_values_x0.append(np.nan)
-            
-            ax2.plot(x0_range, y_values_x0, 'b-', linewidth=2, label=f'x1 = {x1_fixed:.2f}')
-            ax2.set_xlabel('x0')
-            ax2.set_ylabel('y')
-            ax2.set_title(f'{algorithm} - y vs x0 (x1 fixed)')
-            ax2.legend()
-            ax2.grid(True, alpha=0.3)
+            if not np.isnan(x1_fixed):
+                y_values_x0 = []
+                for x0_val in x0_range:
+                    variable_values = {'x0': x0_val, 'x1': x1_fixed}
+                    y_val = self.safe_evaluate_expression(equation, variable_values)
+                    y_values_x0.append(y_val)
+                
+                ax2.plot(x0_range, y_values_x0, 'b-', linewidth=2, label=f'x1 = {x1_fixed:.2f}')
+                ax2.set_xlabel('x0')
+                ax2.set_ylabel('y')
+                ax2.set_title(f'{algorithm} - y vs x0 (x1 fixed)')
+                ax2.legend()
+                ax2.grid(True, alpha=0.3)
+            else:
+                ax2.text(0.5, 0.5, 'x1 mean is NaN', ha='center', va='center', transform=ax2.transAxes)
+                ax2.set_title(f'{algorithm} - y vs x0 (x1 fixed)')
             
             # Line plot: y vs x1 with x0 fixed at mean
             ax3 = fig.add_subplot(2, 2, 3)
             x0_fixed = x0_data.mean()
-            y_values_x1 = []
-            for x1_val in x1_range:
-                try:
-                    y_val = expr.subs([(x0, x0_fixed), (x1, x1_val)])
-                    if y_val.is_real:
-                        y_values_x1.append(float(y_val))
-                    else:
-                        y_values_x1.append(np.nan)
-                except:
-                    y_values_x1.append(np.nan)
-            
-            ax3.plot(x1_range, y_values_x1, 'r-', linewidth=2, label=f'x0 = {x0_fixed:.2f}')
-            ax3.set_xlabel('x1')
-            ax3.set_ylabel('y')
-            ax3.set_title(f'{algorithm} - y vs x1 (x0 fixed)')
-            ax3.legend()
-            ax3.grid(True, alpha=0.3)
+            if not np.isnan(x0_fixed):
+                y_values_x1 = []
+                for x1_val in x1_range:
+                    variable_values = {'x0': x0_fixed, 'x1': x1_val}
+                    y_val = self.safe_evaluate_expression(equation, variable_values)
+                    y_values_x1.append(y_val)
+                
+                ax3.plot(x1_range, y_values_x1, 'r-', linewidth=2, label=f'x0 = {x0_fixed:.2f}')
+                ax3.set_xlabel('x1')
+                ax3.set_ylabel('y')
+                ax3.set_title(f'{algorithm} - y vs x1 (x0 fixed)')
+                ax3.legend()
+                ax3.grid(True, alpha=0.3)
+            else:
+                ax3.text(0.5, 0.5, 'x0 mean is NaN', ha='center', va='center', transform=ax3.transAxes)
+                ax3.set_title(f'{algorithm} - y vs x1 (x0 fixed)')
             
             # Contour plot for reference
             ax4 = fig.add_subplot(2, 2, 4)
-            contour = ax4.contourf(X0, X1, Z, levels=20, cmap='viridis')
+            try:
+                # Check if Z has valid finite values for contour
+                Z_finite = Z[np.isfinite(Z)]
+                if len(Z_finite) > 0:
+                    # Use explicit levels to avoid arange error
+                    z_min, z_max = np.nanmin(Z), np.nanmax(Z)
+                    if not np.isnan(z_min) and not np.isnan(z_max) and z_max > z_min:
+                        levels = np.linspace(z_min, z_max, 20)
+                        contour = ax4.contourf(X0, X1, Z, levels=levels, cmap='viridis')
+                        fig.colorbar(contour, ax=ax4)
+                    else:
+                        ax4.text(0.5, 0.5, 'Invalid data range for contour', ha='center', va='center', transform=ax4.transAxes)
+                else:
+                    ax4.text(0.5, 0.5, 'No valid data for contour', ha='center', va='center', transform=ax4.transAxes)
+            except Exception as contour_error:
+                ax4.text(0.5, 0.5, f'Contour plot failed:\n{str(contour_error)}', ha='center', va='center', transform=ax4.transAxes)
+            
             ax4.set_xlabel('x0')
             ax4.set_ylabel('x1')
             ax4.set_title(f'{algorithm} - Contour (y values)')
-            fig.colorbar(contour, ax=ax4)
             
             # Add equation text
             fig.suptitle(f'{algorithm} Equation: {equation}', fontsize=12, y=0.98)

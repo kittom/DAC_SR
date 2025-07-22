@@ -19,18 +19,16 @@ def run_qlattice_analysis(csv_file_path):
     # Load the dataset into a pandas dataframe
     df = pd.read_csv(csv_file_path, header=None)
     
-    # Set column names based on the LeadingOnes dataset structure
-    if len(df.columns) == 3:
-        df.columns = ['n', 'k', 'leading_ones']
-        output_name = 'leading_ones'
-    else:
-        # For other datasets, use generic column names
-        df.columns = [f'col_{i}' for i in range(len(df.columns))]
-        output_name = df.columns[-1]  # Use the last column as output
+    # Set standard column names: x_1, x_2, ..., y
+    num_features = len(df.columns) - 1
+    feature_columns = [f'x_{i+1}' for i in range(num_features)]
+    output_column = 'y'
+    
+    df.columns = feature_columns + [output_column]
     
     print(f"Dataset shape: {df.shape}")
-    print(f"Columns: {list(df.columns)}")
-    print(f"Output column: {output_name}")
+    print(f"Feature columns: {feature_columns}")
+    print(f"Output column: {output_column}")
     
     # Train/test split
     train, test = split(df, ratio=[0.8, 0.2])
@@ -42,7 +40,7 @@ def run_qlattice_analysis(csv_file_path):
     print("Running Q-Lattice auto_run...")
     models = ql.auto_run(
         data=train,
-        output_name=output_name
+        output_name=output_column
     )
     
     # Select the best Model
