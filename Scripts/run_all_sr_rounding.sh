@@ -26,7 +26,7 @@ SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Run DeepSR (rounding)
 echo "\n--- Running DeepSR (rounding) ---"
-bash "$SCRIPTS_DIR/rounded/DeepSR.sh" "$CSV_FILE" "$NOISE"
+bash "$SCRIPTS_DIR/rounded/deepsr.sh" "$CSV_FILE" "$NOISE"
 if [ $? -ne 0 ]; then
     echo "Error: DeepSR (rounding) failed! Exiting."
     exit 1

@@ -12,15 +12,17 @@ echo "================================="
 run_evaluation() {
     local dataset_path="$1"
     local dataset_name="$2"
-    
+    local noise_level="${3:-1e-12}"
+
     echo ""
     echo "Evaluating $dataset_name..."
     echo "Dataset: $dataset_path"
+    echo "Noise level: $noise_level"
     echo "----------------------------------------"
-    
+
     # Run all symbolic regression algorithms
-    bash "$SCRIPT_DIR/../../Scripts/run_all_sr.sh" "$dataset_path"
-    
+    bash "$SCRIPT_DIR/../../Scripts/run_all_sr.sh" "$dataset_path" "$noise_level"
+
     echo "Completed evaluation for $dataset_name"
 }
 
@@ -44,7 +46,12 @@ PSA_BENCHMARKS=("sphere" "ellipsoid" "rastrigin" "noisy_ellipsoid" "schaffer" "n
 for benchmark in "${PSA_BENCHMARKS[@]}"; do
     benchmark_path="$DATASETS_DIR/PSACMAES/$benchmark/psa_vars.csv"
     if [ -f "$benchmark_path" ]; then
-        run_evaluation "$benchmark_path" "PSA-CMA-ES ($benchmark)"
+        # For noisy benchmarks, use a higher noise threshold
+        if [[ "$benchmark" == *"noisy"* ]]; then
+            run_evaluation "$benchmark_path" "PSA-CMA-ES ($benchmark)" "0.1"
+        else
+            run_evaluation "$benchmark_path" "PSA-CMA-ES ($benchmark)"
+        fi
     else
         echo "Warning: PSA-CMA-ES $benchmark dataset not found at $benchmark_path"
     fi
@@ -52,7 +59,7 @@ done
 
 # Evaluate PSA-CMA-ES aggregated dataset
 if [ -f "$DATASETS_DIR/PSACMAES/all_benchmarks.csv" ]; then
-    run_evaluation "$DATASETS_DIR/PSACMAES/all_benchmarks.csv" "PSA-CMA-ES (All Benchmarks)"
+    run_evaluation "$DATASETS_DIR/PSACMAES/all_benchmarks.csv" "PSA-CMA-ES (All Benchmarks)" "0.1"
 else
     echo "Warning: PSA-CMA-ES aggregated dataset not found at $DATASETS_DIR/PSACMAES/all_benchmarks.csv"
 fi

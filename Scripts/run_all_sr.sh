@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Run all symbolic regression algorithms on a provided CSV file
-# Usage: run_all_sr.sh <path_to_csv_file> [noise]
+# Script to run all symbolic regression algorithms on a given CSV file
+# This script orchestrates the execution of various SR algorithms and updates results.csv
 
-if [ $# -eq 0 ]; then
+if [ $# -lt 1 ]; then
     echo "Error: No CSV file provided!"
     echo "Usage: $0 <path_to_csv_file> [noise]"
+    echo "Example: $0 ../../DataSets/Ground_Truth/LeadingOnes/continuous/GTLeadingOnes.csv 0.05"
     exit 1
 fi
 
 CSV_FILE="$1"
-NOISE="${2:-0}"
+NOISE="${2:-1e-12}"
 
-# Convert to absolute path if it's relative
 if [[ ! "$CSV_FILE" = /* ]]; then
     CSV_FILE="$(pwd)/$CSV_FILE"
 fi
@@ -22,28 +22,67 @@ if [ ! -f "$CSV_FILE" ]; then
     exit 1
 fi
 
-SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+echo "=========================================="
+echo "Running All Symbolic Regression Algorithms"
+echo "=========================================="
+echo "CSV File: $CSV_FILE"
+echo "Noise Parameter: $NOISE"
+echo "=========================================="
+
+# Function to run an algorithm and check for success
 run_and_check() {
-    local script_name="$1"
-    shift
+    local algorithm_name="$1"
+    local script_path="$2"
+    
     echo ""
-    echo "==============================="
-    echo "Running $script_name on $CSV_FILE $@"
-    echo "==============================="
-    bash "$SCRIPTS_DIR/unrounded/$script_name" "$CSV_FILE" "$@"
-    if [ $? -ne 0 ]; then
-        echo "Error: $script_name failed! Exiting."
-        exit 1
+    echo "Running $algorithm_name..."
+    echo "----------------------------------------"
+    
+    if [ -f "$script_path" ]; then
+        bash "$script_path" "$CSV_FILE" "$NOISE"
+        if [ $? -eq 0 ]; then
+            echo "✓ $algorithm_name completed successfully"
+        else
+            echo "✗ $algorithm_name failed"
+        fi
+    else
+        echo "✗ Script not found: $script_path"
     fi
 }
-run_and_check DeepSR.sh "$NOISE"
-run_and_check e2e_transformer.sh
-run_and_check qlattice.sh
-run_and_check kan.sh
-run_and_check pysr.sh
-run_and_check tpsr.sh
-run_and_check linear.sh
+
+# Run all algorithms with noise parameter
+run_and_check "DeepSR" "$SCRIPT_DIR/unrounded/deepsr.sh"
+run_and_check "PySR" "$SCRIPT_DIR/unrounded/pysr.sh"
+run_and_check "KAN" "$SCRIPT_DIR/unrounded/kan.sh"
+run_and_check "Q-Lattice" "$SCRIPT_DIR/unrounded/qlattice.sh"
+run_and_check "E2E Transformer" "$SCRIPT_DIR/unrounded/e2e_transformer.sh"
+run_and_check "TPSR" "$SCRIPT_DIR/unrounded/tpsr.sh"
+run_and_check "Linear Regression" "$SCRIPT_DIR/unrounded/linear.sh"
 
 echo ""
-echo "All symbolic regression algorithms completed." 
+echo "=========================================="
+echo "All algorithms completed!"
+echo "=========================================="
+
+# Display final results
+CSV_DIR="$(dirname "$CSV_FILE")"
+RESULTS_FILE="$CSV_DIR/results.csv"
+
+if [ -f "$RESULTS_FILE" ]; then
+    echo ""
+    echo "Final Results Summary:"
+    echo "======================"
+    cat "$RESULTS_FILE"
+    echo ""
+    echo "Results saved to: $RESULTS_FILE"
+else
+    echo ""
+    echo "Warning: No results.csv file found at: $RESULTS_FILE"
+fi
+
+echo ""
+echo "=========================================="
+echo "Symbolic Regression Evaluation Complete!"
+echo "==========================================" 

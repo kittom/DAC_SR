@@ -31,6 +31,15 @@ class E2ETransformerAnalyzer:
         Args:
             model_path (str): Path to the pre-trained model
             data_path (str): Path to the CSV file
+            
+        Note: E2E Transformer is a pre-trained model that can discover:
+        - Basic operations: +, -, *, /, **
+        - Trigonometric: sin, cos, tan, arcsin, arccos, arctan
+        - Exponential/Logarithmic: exp, log, log10
+        - Other: sqrt, abs, sign, floor, ceil, round
+        - Complex nested expressions and mathematical relationships
+        The model was trained on a diverse dataset of mathematical expressions
+        and can handle square roots and other complex functions automatically.
         """
         self.model_path = model_path
         self.data_path = data_path

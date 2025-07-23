@@ -15,4 +15,41 @@ Data Storage:
 - All generated datasets and results for this experiment will be stored in the Datasets directory within this subdirectory.
 
 Evaluation:
-- Model performance will be evaluated using the run_all scripts in the Scripts directory, comparing learned equations to ground truth. 
+- Model performance will be evaluated using the run_all scripts in the Scripts directory, comparing learned equations to ground truth.
+
+FAIRNESS CONSIDERATIONS FOR EXPERIMENT 1:
+=========================================
+
+1. Stopping Criteria Implementation:
+   - DeepSR: Uses threshold-based stopping with noise level as convergence criterion
+   - Linear Regression: Uses sklearn's built-in convergence
+   - PySR: Modified to use convergence-based stopping (max 100 iterations, min 10 iterations)
+   - KAN: Modified to use convergence-based stopping (max 100 steps, min 20 steps)
+   - TPSR: Modified to use convergence-based stopping (max 200 horizon, min 10 horizon)
+   - Q-Lattice: Limited to time/complexity-based stopping (no loss-based control)
+   - E2E Transformer: No stopping criteria (inference only)
+
+2. Convergence Threshold:
+   - All algorithms use noise_level as the convergence threshold
+   - For noiseless data: threshold = 1e-12 (machine precision)
+   - For noisy data: threshold = noise_level
+   - Ensures fair comparison based on problem difficulty
+
+3. Algorithm-Specific Fairness Measures:
+   - Each algorithm uses its native loss function (no forced standardization)
+   - Computational budgets are balanced through iteration/time limits
+   - All algorithms receive the same datasets and evaluation metrics
+   - Linear regression serves as baseline control
+
+4. Evaluation Standardization:
+   - All final comparisons use NMSE (Normalized Mean Square Error)
+   - Ground truth equations use standardized x1, x2, ..., xn notation
+   - Results stored in consistent CSV format across all algorithms
+
+5. Limitations and Caveats:
+   - Q-Lattice and E2E Transformer have limited stopping criteria control
+   - Different algorithms may have different convergence behaviors
+   - Some algorithms may not converge within the specified limits
+   - All limitations are documented in results and analysis
+
+This experiment follows the fairness standards outlined in the root standards.md document. 

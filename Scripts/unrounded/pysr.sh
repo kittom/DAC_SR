@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # PySR Activation and Execution Script (Unrounded)
-# This script activates the pysr_env conda environment and runs the PySR symbolic regression (unrounded)
+# This script activates the pysr conda environment and runs PySR symbolic regression (unrounded)
 
-if [ $# -eq 0 ]; then
+if [ $# -lt 1 ]; then
     echo "Error: No CSV file provided!"
-    echo "Usage: $0 <path_to_csv_file>"
-    echo "Example: $0 ../../DataSets/Ground_Truth/LeadingOnes/continuous/GTLeadingOnes.csv"
+    echo "Usage: $0 <path_to_csv_file> [noise]"
+    echo "Example: $0 ../../DataSets/Ground_Truth/LeadingOnes/continuous/GTLeadingOnes.csv 0.05"
     exit 1
 fi
 
 CSV_FILE="$1"
+NOISE="${2:-1e-12}"
 
 if [[ ! "$CSV_FILE" = /* ]]; then
     CSV_FILE="$(pwd)/$CSV_FILE"
@@ -40,9 +41,10 @@ echo "Conda environment activated successfully!"
 echo "Python version: $(python --version)"
 echo "Python path: $(which python)"
 echo "Input CSV file: $CSV_FILE"
+echo "Noise parameter: $NOISE"
 
 echo "Running PySR symbolic regression on CSV data..."
-python run_pysr.py "$CSV_FILE"
+python run_pysr.py "$CSV_FILE" --noise "$NOISE"
 
 if [ $? -eq 0 ]; then
     echo "PySR execution completed successfully!"

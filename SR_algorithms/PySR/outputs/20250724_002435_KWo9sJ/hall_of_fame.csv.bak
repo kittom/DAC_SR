@@ -1,0 +1,9 @@
+Complexity,Loss,Equation
+1,2.4381878,"1.8762431"
+4,1.7041639,"exp(x1 / x0)"
+6,1.5763906,"abs(x1 / x0) * 3.6178787"
+7,1.4708189,"exp((x1 / abs(x0)) * 1.3399472)"
+9,1.3381697,"exp((x1 / abs(x0)) * 1.578836) - 0.5658628"
+11,1.0002106,"abs(tan(tan(tan(tanh(x1 / x0)))) + tanh(x0))"
+12,0.9895784,"tan(tan(tan(tanh(x1 / x0)))) + tanh(abs(tanh(x0)))"
+13,0.9765323,"abs(tanh(x0 ^ 0.05431464) + tan(tan(tan(tanh(x1 / x0)))))"

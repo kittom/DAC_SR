@@ -11,7 +11,7 @@ if [ $# -lt 1 ]; then
 fi
 
 CSV_FILE="$1"
-NOISE="${2:-0}"
+NOISE="${2:-1e-12}"
 
 if [[ ! "$CSV_FILE" = /* ]]; then
     CSV_FILE="$(pwd)/$CSV_FILE"

@@ -35,9 +35,17 @@ def run_qlattice_analysis(csv_file_path):
     
     print("Instantiating QLattice...")
     # Instantiate a QLattice
+    # Note: Q-Lattice uses feyn library which has built-in support for:
+    # - Basic operations: +, -, *, /, **
+    # - Trigonometric: sin, cos, tan, arcsin, arccos, arctan
+    # - Exponential/Logarithmic: exp, log, log10
+    # - Other: sqrt, abs, sign, floor, ceil, round
+    # The library automatically selects appropriate functions based on data patterns
     ql = feyn.QLattice()
     
     print("Running Q-Lattice auto_run...")
+    # Q-Lattice will automatically discover mathematical relationships
+    # including square roots, trigonometric functions, and other complex operations
     models = ql.auto_run(
         data=train,
         output_name=output_column
