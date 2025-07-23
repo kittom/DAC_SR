@@ -11,8 +11,8 @@ from scipy.sparse import diags
 from scipy.linalg import sqrtm
 from scipy.stats import norm
 
-from .utils import AnnotatedStruct
-from .sampling import (
+from utils import AnnotatedStruct
+from sampling import (
     gaussian_sampling,
     orthogonal_sampling,
     mirrored_sampling,

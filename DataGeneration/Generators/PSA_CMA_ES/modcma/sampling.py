@@ -5,6 +5,8 @@ from collections.abc import Iterator
 import numpy as np
 from scipy import stats
 
+from utils import AnnotatedStruct
+
 
 class QmcSampler(Iterator):
     """Wrapper around scipy.stats.qmc quasi random samplers."""

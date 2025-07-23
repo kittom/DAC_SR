@@ -110,6 +110,24 @@ class E2ETransformerAnalyzer:
             )
             
             print("Fitting the model...")
+            # Pre-fit data checks
+            print("Checking data for NaNs, Infs, and shape mismatches...")
+            if self.X is None or self.y is None:
+                print("ERROR: Data not loaded correctly (X or y is None)")
+                return False
+            if len(self.X.shape) != 2 or len(self.y.shape) != 1:
+                print(f"ERROR: Unexpected data shapes: X shape {self.X.shape}, y shape {self.y.shape}")
+                return False
+            if self.X.shape[0] != self.y.shape[0]:
+                print(f"ERROR: Number of samples in X and y do not match: {self.X.shape[0]} vs {self.y.shape[0]}")
+                return False
+            if np.isnan(self.X).any() or np.isnan(self.y).any():
+                print("ERROR: NaN values detected in X or y. Aborting fit.")
+                return False
+            if np.isinf(self.X).any() or np.isinf(self.y).any():
+                print("ERROR: Inf values detected in X or y. Aborting fit.")
+                return False
+            print("Data checks passed. Proceeding to fit.")
             est.fit(self.X, self.y, verbose=True)
             
             # Retrieve the best equation

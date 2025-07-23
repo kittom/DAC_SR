@@ -1,6 +1,7 @@
 """TImplemention for the Population object used in the ModularCMA-ES."""
 from typing import Any
 import numpy as np
+from parameters import Parameters
 
 
 class Population:

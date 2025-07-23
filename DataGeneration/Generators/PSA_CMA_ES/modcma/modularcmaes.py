@@ -6,9 +6,9 @@ from typing import List, Callable
 
 import numpy as np
 
-from .parameters import Parameters
-from .population import Population
-from .utils import timeit, ert
+from parameters import Parameters
+from population import Population
+from utils import AnnotatedStruct, timeit, ert
 
 
 class ModularCMAES:

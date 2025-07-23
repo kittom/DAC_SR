@@ -2,7 +2,7 @@
 
 from argparse import ArgumentParser
 
-from .modularcmaes import evaluate_bbob
+from modularcmaes import ModularCMAES
 
 
 parser = ArgumentParser(description="Run single function CMAES")

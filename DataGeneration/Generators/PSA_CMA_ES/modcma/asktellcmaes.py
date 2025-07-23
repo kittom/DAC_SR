@@ -4,7 +4,7 @@ import typing
 from collections import deque
 from functools import wraps
 import numpy as np
-from .modularcmaes import ModularCMAES
+from modularcmaes import ModularCMAES
 
 
 def check_break_conditions(f: typing.Callable) -> typing.Callable:

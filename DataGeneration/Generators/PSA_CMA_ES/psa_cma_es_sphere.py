@@ -5,7 +5,7 @@ import numpy as np
 import csv
 
 # Add ModularCMAES to path (assume it's now a sibling directory or update as needed)
-modularcmaes_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../thesis/ModularCMAES'))
+modularcmaes_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'modcma'))
 sys.path.append(modularcmaes_path)
 from modcma import ModularCMAES
 

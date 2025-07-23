@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# E2E Transformer Activation and Execution Script (Rounding)
-# This script activates the e2e_transformer conda environment and runs the E2E Transformer symbolic regression with rounding support
+# TPSR Activation and Execution Script (Unrounded)
+# This script activates the tpsr conda environment and runs TPSR symbolic regression (unrounded)
 
 if [ $# -eq 0 ]; then
     echo "Error: No CSV file provided!"
@@ -22,17 +22,17 @@ if [ ! -f "$CSV_FILE" ]; then
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR/../../SR_algorithms_rounding/E2E_Transformer"
+cd "$SCRIPT_DIR/../../SR_algorithms/TPSR"
 
 # Initialize conda for this shell session
 echo "Initializing conda..."
 source ~/miniconda3/etc/profile.d/conda.sh
 
-echo "Activating e2e_transformer conda environment..."
-conda activate e2e_transformer
+echo "Activating tpsr conda environment..."
+conda activate tpsr
 
 if [ $? -ne 0 ]; then
-    echo "Error: Failed to activate conda environment 'e2e_transformer'!"
+    echo "Error: Failed to activate conda environment 'tpsr'!"
     exit 1
 fi
 
@@ -41,13 +41,13 @@ echo "Python version: $(python --version)"
 echo "Python path: $(which python)"
 echo "Input CSV file: $CSV_FILE"
 
-echo "Running E2E Transformer symbolic regression (with rounding) on CSV data..."
-python analyze_leading_ones.py "$CSV_FILE"
+echo "Running TPSR symbolic regression on CSV data..."
+python run_tpsr_on_csv.py "$CSV_FILE"
 
 if [ $? -eq 0 ]; then
-    echo "E2E Transformer (rounding) execution completed successfully!"
+    echo "TPSR execution completed successfully!"
     CSV_DIR="$(dirname "$CSV_FILE")"
-    RESULTS_FILE="$CSV_DIR/results_rounding.csv"
+    RESULTS_FILE="$CSV_DIR/results.csv"
     if [ -f "$RESULTS_FILE" ]; then
         echo "Results saved to: $RESULTS_FILE"
         echo "Results content:"
@@ -56,11 +56,11 @@ if [ $? -eq 0 ]; then
         echo "Warning: Results file not found at expected location: $RESULTS_FILE"
     fi
 else
-    echo "Error: E2E Transformer (rounding) execution failed!"
+    echo "Error: TPSR execution failed!"
     exit 1
 fi
 
 echo "Deactivating conda environment..."
 conda deactivate
 
-echo "E2E Transformer (rounding) execution completed!" 
+echo "TPSR execution completed!" 
