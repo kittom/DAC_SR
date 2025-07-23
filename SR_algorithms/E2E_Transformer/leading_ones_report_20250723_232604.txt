@@ -1,0 +1,25 @@
+=== e2e_Transformer Analysis Report ===
+
+Analysis Date: 2025-07-23 23:26:04
+Data file: /home/mk422/Documents/DAC_SR/Experiments/Experiment1/Datasets/OneMax/GTOneMax.csv
+
+DATA SUMMARY:
+Dataset shape: (958, 2)
+Features: 2 input columns
+Target: Last column
+
+FOUND EQUATION:
+Raw: (0.433 + (-22.7 * 1/(((0.167 + (2.6 * (-1.0963929984341112 + (0.006854915924293545 * x_1)))) + (((6.36 * (-1.0963929984341112 + (0.006854915924293545 * x_1))) + (76.3 + (-0.005039999999999999 * (-1.6387790396277389 + (0.005123022744210715 * x_0))))) + ((-87.5 + (0.033100000000000004 * sqrt((18.7 + (0.0040999999999999995 * (-1.0963929984341112 + (0.006854915924293545 * x_1))))))) - (11.9 + (0.00599 * (-1.6387790396277389 + (0.005123022744210715 * x_0))))))))))
+Parsed: 0.433 - 22.7/(-5.650694086864418e-5*x_0 + 0.06142004668167017*x_1 + 0.14311876886542395*sqrt(1.5033108550554513e-6*x_1 + 1) - 32.738605533162546)
+LaTeX: 0.433 - \frac{22.7}{- 5.650694086864418 \cdot 10^{-5} x_{0} + 0.06142004668167017 x_{1} + 0.14311876886542395 \sqrt{1.5033108550554513 \cdot 10^{-6} x_{1} + 1} - 32.738605533162546}
+
+EVALUATION METRICS:
+MSE: 1.64849379
+RMSE: 1.28393683
+MAE: 0.66794919
+R2: 0.32388588
+
+INTERPRETATION:
+The equation shows the relationship between input features and target output.
+Lower error metrics indicate better fit.
+R² closer to 1.0 indicates better predictive performance.
