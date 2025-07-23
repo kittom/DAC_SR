@@ -22,7 +22,7 @@ BENCHMARKS = [
 OUTPUT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../DataSets/Ground_Truth/PSACMAES'))
 
 # Only these columns (no generation, no benchmark)
-CSV_COLS = ['lambda', 'psa_beta', 'ptnorm', 'alpha', 'update_term', 'exp_update_value', 'next_lambda_unrounded']
+CSV_COLS = ['lambda', 'psa_beta', 'ptnorm', 'alpha', 'gamma_theta', 'next_lambda_unrounded']
 
 
 def run_psa_cmaes_benchmark(benchmark_name, fid, iterations, output_dir):
@@ -38,6 +38,8 @@ def run_psa_cmaes_benchmark(benchmark_name, fid, iterations, output_dir):
     )
     os.makedirs(output_dir, exist_ok=True)
     csv_path = os.path.join(output_dir, 'psa_vars.csv')
+    results_path = os.path.join(output_dir, 'results.csv')
+    ground_truth_equation = 'x1 * exp(x2 * (x5 - (x3 / x4)))'
     try:
         cma = ModularCMAES(
             problem,
@@ -58,11 +60,10 @@ def run_psa_cmaes_benchmark(benchmark_name, fid, iterations, output_dir):
             psa_beta = cma.parameters.psa_beta
             ptnorm = cma.parameters.ptnorm
             alpha = cma.parameters.alpha
-            update_term = 1 - (ptnorm / alpha)
-            exp_update_value = psa_beta * update_term
-            next_lambda_unrounded = lambda_ * np.exp(exp_update_value)
+            gamma_theta = 0.0  # Initialize gamma_theta to 0
+            next_lambda_unrounded = lambda_ * np.exp(psa_beta * (gamma_theta - (ptnorm / alpha)))
             writer.writerow([
-                lambda_, psa_beta, ptnorm, alpha, update_term, exp_update_value, next_lambda_unrounded
+                lambda_, psa_beta, ptnorm, alpha, gamma_theta, next_lambda_unrounded
             ])
             for _ in range(iterations-1):
                 cma.step()
@@ -70,12 +71,17 @@ def run_psa_cmaes_benchmark(benchmark_name, fid, iterations, output_dir):
                 psa_beta = cma.parameters.psa_beta
                 ptnorm = cma.parameters.ptnorm
                 alpha = cma.parameters.alpha
-                update_term = 1 - (ptnorm / alpha)
-                exp_update_value = psa_beta * update_term
-                next_lambda_unrounded = lambda_ * np.exp(exp_update_value)
+                # Update gamma_theta: gamma_theta = (1-psa_beta)^2 * gamma_theta + psa_beta * (2-psa_beta)
+                gamma_theta = (1 - psa_beta)**2 * gamma_theta + psa_beta * (2 - psa_beta)
+                next_lambda_unrounded = lambda_ * np.exp(psa_beta * (gamma_theta - (ptnorm / alpha)))
                 writer.writerow([
-                    lambda_, psa_beta, ptnorm, alpha, update_term, exp_update_value, next_lambda_unrounded
+                    lambda_, psa_beta, ptnorm, alpha, gamma_theta, next_lambda_unrounded
                 ])
+        # Write results.csv with ground truth equation
+        with open(results_path, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['ground_truth'])
+            writer.writerow([ground_truth_equation])
     except Exception as e:
         print(f"Error writing CSV for {benchmark_name}: {e}")
     print(f"{benchmark_name}: best y={problem.state.current_best.y}")
@@ -94,13 +100,24 @@ def aggregate_csvs(benchmark_csvs, output_path):
         writer = csv.writer(f)
         # No header row
         writer.writerows(rows)
+    # Write results.csv for the aggregated file
+    results_path = os.path.join(os.path.dirname(output_path), 'results.csv')
+    ground_truth_equation = 'x1 * exp(x2 * (x5 - (x3 / x4)))'
+    with open(results_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['ground_truth'])
+        writer.writerow([ground_truth_equation])
 
 def main():
     parser = argparse.ArgumentParser(description="Generate PSA-CMA-ES ground truth data for multiple benchmarks.")
     parser.add_argument('--iterations', type=int, required=True, help='Number of generations to run for each benchmark')
+    parser.add_argument('--output-root', type=str, default=None, help='Optional output root directory for CSVs')
     args = parser.parse_args()
     iterations = args.iterations
-    output_root = os.path.join(OUTPUT_ROOT, str(iterations))
+    if args.output_root is not None:
+        output_root = os.path.abspath(args.output_root)
+    else:
+        output_root = os.path.join(OUTPUT_ROOT, str(iterations))
     benchmark_csvs = []
     for benchmark_name, fid in BENCHMARKS:
         output_dir = os.path.join(output_root, benchmark_name)

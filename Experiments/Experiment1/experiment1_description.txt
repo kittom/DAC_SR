@@ -1,0 +1,18 @@
+Experiment 1: Learning Ground Truth Equations for Benchmark Problems
+
+Objective:
+Evaluate how well different models can learn the ground truth equations for three benchmark problems: LeadingOnes, OneMax, and PSA-CMA-ES benchmarks (Sphere, Ellipsoid, Rastrigin, Noisy Ellipsoid, Schaffer, Noisy Rastrigin).
+
+Setup:
+- For LeadingOnes and OneMax:
+  - Generate datasets with portfolio sizes: 10, 20, 30, 40, 50, 100, 200, 500.
+  - Each dataset will be used to train and evaluate the model's ability to learn the ground truth equation.
+- For PSA-CMA-ES:
+  - Run 1000 iterations of the model for each benchmark (Sphere, Ellipsoid, Rastrigin, Noisy Ellipsoid, Schaffer, Noisy Rastrigin).
+  - Output a separate CSV file for each benchmark, containing the relevant variables and results.
+
+Data Storage:
+- All generated datasets and results for this experiment will be stored in the Datasets directory within this subdirectory.
+
+Evaluation:
+- Model performance will be evaluated using the run_all scripts in the Scripts directory, comparing learned equations to ground truth. 

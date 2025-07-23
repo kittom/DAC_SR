@@ -42,6 +42,8 @@ run_and_check e2e_transformer.sh
 run_and_check qlattice.sh
 run_and_check kan.sh
 run_and_check pysr.sh
+run_and_check tpsr.sh
+run_and_check linear.sh
 
 echo ""
 echo "All symbolic regression algorithms completed." 

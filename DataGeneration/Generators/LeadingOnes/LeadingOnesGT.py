@@ -4,7 +4,7 @@ import sys
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
 
-def generate_leading_ones_ground_truth(instance_sizes=None, data_type='continuous'):
+def generate_leading_ones_ground_truth(instance_sizes=None, data_type='continuous', output_dir=None):
     """
     Generate ground truth data for LeadingOnes problem.
     """
@@ -27,14 +27,17 @@ def generate_leading_ones_ground_truth(instance_sizes=None, data_type='continuou
         'Bitflip': bitflip_data
     })
     # Save to correct directory
-    out_dir = os.path.join(PROJECT_ROOT, f'DataSets/Ground_Truth/LeadingOnes/{data_type}')
+    if output_dir is None:
+        out_dir = os.path.join(PROJECT_ROOT, f'DataSets/Ground_Truth/LeadingOnes/{data_type}')
+    else:
+        out_dir = output_dir
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, 'GTLeadingOnes.csv')
     df.to_csv(out_path, index=False, header=False)
     print(f"Output saved to: {out_path}")
     
     # Create results.csv with ground truth equation
-    ground_truth_equation = "n/(k + 1)" if data_type == 'continuous' else "round(n/(k + 1))"
+    ground_truth_equation = "x1/(x2 + 1)" if data_type == 'continuous' else "round(x1/(x2 + 1))"
     results_filename = 'results_rounding.csv' if data_type == 'discrete' else 'results.csv'
     results_path = os.path.join(out_dir, results_filename)
     
@@ -73,4 +76,14 @@ if __name__ == "__main__":
             except ValueError:
                 print(f"Warning: Ignoring non-numeric argument: {sys.argv[i]}")
                 i += 1
-    df = generate_leading_ones_ground_truth(instance_sizes, data_type) 
+    output_dir = None
+    # Parse --output-dir argument
+    if '--output-dir' in sys.argv:
+        idx = sys.argv.index('--output-dir')
+        if idx + 1 < len(sys.argv):
+            output_dir = sys.argv[idx + 1]
+            i = idx + 2
+        else:
+            print("Error: --output-dir requires a value")
+            sys.exit(1)
+    df = generate_leading_ones_ground_truth(instance_sizes, data_type, output_dir) 
