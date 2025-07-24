@@ -41,7 +41,7 @@ echo "=========================================="
 
 # Change to KAN directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-KAN_DIR="$SCRIPT_DIR/../../SR_algorithms/pykan"
+KAN_DIR="$SCRIPT_DIR/../../../SR_algorithms/pykan"
 
 if [ ! -d "$KAN_DIR" ]; then
     echo "Error: KAN directory not found at $KAN_DIR"

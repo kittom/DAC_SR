@@ -1,0 +1,8 @@
+Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
+1	:	1753325977.625	     0.007	0	70	0	0	run_job 1 'NOISE_LEVEL=1e-12'
+4	:	1753325977.648	     1.638	0	1542	0	0	run_job 4 'bash Scripts/unrounded/algorithm_library/linear_lib.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv one_max $NOISE_LEVEL'
+9	:	1753325977.685	     1.828	0	1616	0	0	run_job 9 'bash Scripts/unrounded/algorithm_library/linear_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL'
+5	:	1753325977.656	    10.660	0	1423	0	0	run_job 5 'bash Scripts/unrounded/algorithm_library/deepsr_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL'
+6	:	1753325977.663	   233.208	0	63252	0	0	run_job 6 'bash Scripts/unrounded/algorithm_library/pysr_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL'
+2	:	1753325977.633	   267.676	0	48897	0	0	run_job 2 'bash Scripts/unrounded/algorithm_library/kan_lib.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv one_max $NOISE_LEVEL'
+7	:	1753325977.670	   371.155	0	49179	0	0	run_job 7 'bash Scripts/unrounded/algorithm_library/kan_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL'

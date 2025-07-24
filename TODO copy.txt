@@ -1,0 +1,86 @@
+# TODO: Atomized Evaluation Script Calls for All Datasets
+
+# This file lists every individual shell script call that would be made if we were to run
+# evaluate_control_library.sh, evaluate_rounding.sh, and evaluate_tailored_library.sh
+# for every dataset in the Experiments codebase. Each call is written as it would appear
+# in a shell script, with explicit arguments.
+
+# Example noise level (adjust as needed)
+NOISE_LEVEL=1e-12
+
+# =============================
+# OneMax (continuous)
+# =============================
+# Dataset: Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv
+
+# Control Library (full)
+bash Scripts/unrounded/control_library/deepsr.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/pysr.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/kan.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/tpsr.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/linear.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/qlattice.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/e2e_transformer.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv $NOISE_LEVEL
+
+# Tailored Library (minimal)
+bash Scripts/unrounded/algorithm_library/kan_lib.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv one_max $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/tpsr_lib.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv one_max $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/linear_lib.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv one_max $NOISE_LEVEL
+
+# Rounding (discrete)
+bash Scripts/rounded/deepsr.sh Experiments/Experiment1/Datasets/OneMax/discrete/GTOneMax.csv $NOISE_LEVEL
+bash Scripts/rounded/pysr.sh Experiments/Experiment1/Datasets/OneMax/discrete/GTOneMax.csv $NOISE_LEVEL
+
+# =============================
+# LeadingOnes (continuous)
+# =============================
+# Dataset: Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv
+
+# Control Library (full)
+bash Scripts/unrounded/control_library/deepsr.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/pysr.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/kan.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/tpsr.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/linear.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/qlattice.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/e2e_transformer.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv $NOISE_LEVEL
+
+# Tailored Library (minimal)
+bash Scripts/unrounded/algorithm_library/deepsr_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/pysr_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/kan_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/tpsr_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/linear_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+
+# Rounding (discrete)
+bash Scripts/rounded/deepsr.sh Experiments/Experiment1/Datasets/LeadingOnes/discrete/GTLeadingOnes.csv $NOISE_LEVEL
+bash Scripts/rounded/pysr.sh Experiments/Experiment1/Datasets/LeadingOnes/discrete/GTLeadingOnes.csv $NOISE_LEVEL
+
+# =============================
+# PSA-CMA-ES (continuous)
+# =============================
+# Dataset: Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv
+
+# Control Library (full)
+bash Scripts/unrounded/control_library/deepsr.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/pysr.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/kan.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/tpsr.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/linear.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/qlattice.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv $NOISE_LEVEL
+bash Scripts/unrounded/control_library/e2e_transformer.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv $NOISE_LEVEL
+
+# Tailored Library (minimal)
+bash Scripts/unrounded/algorithm_library/deepsr_lib.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv psa $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/pysr_lib.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv psa $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/kan_lib.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv psa $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/tpsr_lib.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv psa $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/linear_lib.sh Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv psa $NOISE_LEVEL
+
+# Rounding (discrete)
+bash Scripts/rounded/deepsr.sh Experiments/Experiment1/Datasets/PSACMAES/discrete/GTPSACMAES.csv $NOISE_LEVEL
+bash Scripts/rounded/pysr.sh Experiments/Experiment1/Datasets/PSACMAES/discrete/GTPSACMAES.csv $NOISE_LEVEL
+
+# =============================
+# (Add more datasets below as needed)
+# ============================= 

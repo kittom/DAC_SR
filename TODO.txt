@@ -1,0 +1,46 @@
+# TODO: Atomized Evaluation Script Calls for All Datasets
+
+# This file lists every individual shell script call that would be made if we were to run
+# evaluate_control_library.sh, evaluate_rounding.sh, and evaluate_tailored_library.sh
+# for every dataset in the Experiments codebase. Each call is written as it would appear
+# in a shell script, with explicit arguments.
+
+# Example noise level (adjust as needed)
+NOISE_LEVEL=1e-12
+
+# =============================
+# OneMax (continuous)
+# =============================
+# Dataset: Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv
+
+# Control Library (full)
+
+# Tailored Library (minimal)
+bash Scripts/unrounded/algorithm_library/kan_lib.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv one_max $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/tpsr_lib.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv one_max $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/linear_lib.sh Experiments/Experiment1/Datasets/OneMax/continuous/GTOneMax.csv one_max $NOISE_LEVEL
+
+# Rounding (discrete)
+
+# =============================
+# LeadingOnes (continuous)
+# =============================
+# Dataset: Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv
+
+
+# Tailored Library (minimal)
+bash Scripts/unrounded/algorithm_library/deepsr_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/pysr_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/kan_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/tpsr_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+bash Scripts/unrounded/algorithm_library/linear_lib.sh Experiments/Experiment1/Datasets/LeadingOnes/continuous/GTLeadingOnes.csv leading_ones $NOISE_LEVEL
+
+# =============================
+# PSA-CMA-ES (continuous)
+# =============================
+# Dataset: Experiments/Experiment1/Datasets/PSACMAES/continuous/GTPSACMAES.csv
+
+
+# =============================
+# (Add more datasets below as needed)
+# ============================= 

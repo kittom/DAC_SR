@@ -22,7 +22,7 @@ if [ ! -f "$CSV_FILE" ]; then
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR/../../SR_algorithms/E2E_Transformer"
+cd "$SCRIPT_DIR/../../../SR_algorithms/E2E_Transformer"
 
 # Initialize conda for this shell session
 echo "Initializing conda..."

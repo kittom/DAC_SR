@@ -41,7 +41,7 @@ echo "=========================================="
 
 # Change to PySR directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PYSR_DIR="$SCRIPT_DIR/../../SR_algorithms/PySR"
+PYSR_DIR="$SCRIPT_DIR/../../../SR_algorithms/PySR"
 
 if [ ! -d "$PYSR_DIR" ]; then
     echo "Error: PySR directory not found at $PYSR_DIR"

@@ -42,7 +42,7 @@ echo "=========================================="
 
 # Change to Linear directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LINEAR_DIR="$SCRIPT_DIR/../../SR_algorithms/Linear"
+LINEAR_DIR="$SCRIPT_DIR/../../../SR_algorithms/Linear"
 
 if [ ! -d "$LINEAR_DIR" ]; then
     echo "Error: Linear directory not found at $LINEAR_DIR"
@@ -70,7 +70,7 @@ echo "Problem type: $PROBLEM_TYPE"
 echo "Noise parameter: $NOISE (not used for linear regression)"
 
 echo "Running linear regression on CSV data..."
-python run_linear_on_csv.py "$CSV_FILE" --noise "$NOISE"
+python run_linear_lib.py "$CSV_FILE" "$PROBLEM_TYPE" --noise "$NOISE"
 
 if [ $? -eq 0 ]; then
     echo "Linear regression execution completed successfully!"

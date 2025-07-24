@@ -41,7 +41,7 @@ echo "=========================================="
 
 # Change to DeepSR directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DEEPSR_DIR="$SCRIPT_DIR/../../SR_algorithms/DeepSR/deep-symbolic-optimization"
+DEEPSR_DIR="$SCRIPT_DIR/../../../SR_algorithms/DeepSR/deep-symbolic-optimization"
 
 if [ ! -d "$DEEPSR_DIR" ]; then
     echo "Error: DeepSR directory not found at $DEEPSR_DIR"

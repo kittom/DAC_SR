@@ -41,7 +41,7 @@ echo "=========================================="
 
 # Change to TPSR directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TPSR_DIR="$SCRIPT_DIR/../../SR_algorithms/TPSR"
+TPSR_DIR="$SCRIPT_DIR/../../../SR_algorithms/TPSR"
 
 if [ ! -d "$TPSR_DIR" ]; then
     echo "Error: TPSR directory not found at $TPSR_DIR"

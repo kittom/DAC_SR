@@ -23,7 +23,7 @@ if [ ! -f "$CSV_FILE" ]; then
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DEEPSR_DIR="$SCRIPT_DIR/../../SR_algorithms/DeepSR/deep-symbolic-optimization"
+DEEPSR_DIR="$SCRIPT_DIR/../../../SR_algorithms/DeepSR/deep-symbolic-optimization"
 cd "$DEEPSR_DIR"
 
 # Initialize conda for this shell session

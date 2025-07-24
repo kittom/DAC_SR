@@ -23,7 +23,7 @@ if [ ! -f "$CSV_FILE" ]; then
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR/../../SR_algorithms/Linear"
+cd "$SCRIPT_DIR/../../../SR_algorithms/Linear"
 
 # Initialize conda for this shell session
 echo "Initializing conda..."
