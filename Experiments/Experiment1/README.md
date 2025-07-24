@@ -23,13 +23,14 @@ Experiment1/
 ├── Datasets/                     # Generated datasets
 │   ├── OneMax/
 │   │   ├── continuous/           # Continuous data for control/tailored evaluation
+│   │   │   ├── results.csv       # Control library results (with ground truth)
+│   │   │   ├── results_lib.csv   # Tailored library results (with ground truth)
+│   │   │   └── GTOneMax.csv      # Dataset
 │   │   └── discrete/             # Discrete data for rounding evaluation
-│   ├── LeadingOnes/
-│   │   ├── continuous/           # Continuous data for control/tailored evaluation
-│   │   └── discrete/             # Discrete data for rounding evaluation
-│   └── PSACMAES/
-│       ├── continuous/           # Continuous data for control/tailored evaluation
-│       └── discrete/             # Discrete data for rounding evaluation
+│   │       ├── results_rounding.csv # Rounding results (with ground truth)
+│   │       └── GTOneMax.csv      # Dataset
+│   ├── LeadingOnes/ (same structure)
+│   └── PSACMAES/ (same structure)
 └── experiment1_description.txt   # Detailed experiment description
 ```
 
@@ -104,11 +105,11 @@ The `run_all_evaluations.sh` script provides a simplified interface for common e
 
 ## Results Files
 
-Each dataset will generate three types of results:
+Each dataset will generate three types of results files, each with the ground truth equation as the first column:
 
-1. **results.csv**: Control library results (full mathematical function set) - from continuous data
-2. **results_lib.csv**: Tailored library results (minimal function set) - from continuous data
-3. **results_rounding.csv**: Rounding-enabled results - from discrete data
+ 1. **results.csv**: Control library results (full mathematical function set) - from continuous data
+ 2. **results_lib.csv**: Tailored library results (minimal function set) - from continuous data
+ 3. **results_rounding.csv**: Rounding-enabled results - from discrete data
 
 ## Data Types
 

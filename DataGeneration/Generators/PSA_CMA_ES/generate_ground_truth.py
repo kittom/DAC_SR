@@ -87,18 +87,36 @@ def run_psa_cmaes_benchmark(benchmark_name, fid, iterations, output_dir, data_ty
                 writer.writerow([
                     lambda_, psa_beta, ptnorm, alpha, gamma_theta, next_lambda_unrounded
                 ])
-        # Write ground_truth.csv with ground truth equation
-        with open(ground_truth_path, 'w', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerow(['ground_truth'])
-            writer.writerow([ground_truth_equation])
+        # Write results files based on data type with ground truth as first column
+        if data_type == 'continuous':
+            # Create two results files for continuous data
+            # 1. For control library evaluation (results.csv)
+            control_results_path = os.path.join(output_dir, 'results.csv')
+            with open(control_results_path, 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(['ground_truth'])
+                writer.writerow([ground_truth_equation])
+            
+            # 2. For tailored library evaluation (results_lib.csv)
+            tailored_results_path = os.path.join(output_dir, 'results_lib.csv')
+            with open(tailored_results_path, 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(['ground_truth'])
+                writer.writerow([ground_truth_equation])
+        else:  # discrete
+            # Create one results file for discrete data (rounding evaluation)
+            rounding_results_path = os.path.join(output_dir, 'results_rounding.csv')
+            with open(rounding_results_path, 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(['ground_truth'])
+                writer.writerow([ground_truth_equation])
     except Exception as e:
         print(f"Error writing CSV for {benchmark_name}: {e}")
     print(f"{benchmark_name}: best y={problem.state.current_best.y}")
     problem.reset()
     return csv_path
 
-def aggregate_csvs(benchmark_csvs, output_path):
+def aggregate_csvs(benchmark_csvs, output_path, data_type='continuous'):
     rows = []
     for benchmark_name, csv_path in benchmark_csvs:
         with open(csv_path, 'r') as f:
@@ -110,13 +128,31 @@ def aggregate_csvs(benchmark_csvs, output_path):
         writer = csv.writer(f)
         # No header row
         writer.writerows(rows)
-    # Write ground_truth.csv for the aggregated file
-    ground_truth_path = os.path.join(os.path.dirname(output_path), 'ground_truth.csv')
+    # Write results files for the aggregated file based on data type
     ground_truth_equation = 'x1 * exp(x2 * (x5 - (x3 / x4)))'
-    with open(ground_truth_path, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(['ground_truth'])
-        writer.writerow([ground_truth_equation])
+    
+    if data_type == 'continuous':
+        # Create two results files for continuous data
+        # 1. For control library evaluation (results.csv)
+        control_results_path = os.path.join(os.path.dirname(output_path), 'results.csv')
+        with open(control_results_path, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['ground_truth'])
+            writer.writerow([ground_truth_equation])
+        
+        # 2. For tailored library evaluation (results_lib.csv)
+        tailored_results_path = os.path.join(os.path.dirname(output_path), 'results_lib.csv')
+        with open(tailored_results_path, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['ground_truth'])
+            writer.writerow([ground_truth_equation])
+    else:  # discrete
+        # Create one results file for discrete data (rounding evaluation)
+        rounding_results_path = os.path.join(os.path.dirname(output_path), 'results_rounding.csv')
+        with open(rounding_results_path, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['ground_truth'])
+            writer.writerow([ground_truth_equation])
 
 def main():
     parser = argparse.ArgumentParser(description="Generate PSA-CMA-ES ground truth data for multiple benchmarks.")
@@ -135,7 +171,7 @@ def main():
         output_dir = os.path.join(output_root, benchmark_name)
         csv_path = run_psa_cmaes_benchmark(benchmark_name, fid, iterations, output_dir, data_type)
         benchmark_csvs.append((benchmark_name, csv_path))
-    aggregate_csvs(benchmark_csvs, os.path.join(output_root, 'all_benchmarks.csv'))
+    aggregate_csvs(benchmark_csvs, os.path.join(output_root, 'all_benchmarks.csv'), data_type)
     print(f"Aggregated CSV written to {os.path.join(output_root, 'all_benchmarks.csv')}")
 
 if __name__ == "__main__":

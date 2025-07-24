@@ -23,10 +23,11 @@ Evaluation:
   1. Control Library: Using run_all_sr.sh with complete mathematical function libraries (on continuous data)
   2. Tailored Library: Using run_all_library.sh with problem-specific minimal function libraries (on continuous data)
   3. Rounding: Using run_all_sr_rounding.sh with rounding-enabled evaluation (on discrete data)
-- Results will be saved to:
-  - results.csv: Control library results (full mathematical function set) - from continuous data
-  - results_lib.csv: Tailored library results (minimal function set) - from continuous data
-  - results_rounding.csv: Rounding-enabled results - from discrete data
+           - Results will be saved to:
+           - results.csv: Control library results (full mathematical function set) - from continuous data
+           - results_lib.csv: Tailored library results (minimal function set) - from continuous data
+           - results_rounding.csv: Rounding-enabled results - from discrete data
+           - Each results file contains the ground truth equation as the first column for easy analysis
 - This allows direct comparison between control, tailored library, and rounding performance on appropriate data types.
 
 Scripts:

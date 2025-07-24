@@ -42,17 +42,39 @@ def generate_one_max_ground_truth(instance_sizes=None, data_type='continuous', o
     df.to_csv(out_path, index=False, header=False)
     print(f"Output saved to: {out_path}")
     
-    # Create ground_truth.csv with ground truth equation
+    # Create ground truth equation
     ground_truth_equation = "sqrt(x1/(x1-x2))" if data_type == 'continuous' else "round(sqrt(x1/(x1-x2)))"
-    ground_truth_path = os.path.join(out_dir, 'ground_truth.csv')
     
-    # Create results DataFrame with ground truth as first column
-    results_data = {
-        'ground_truth': [ground_truth_equation]
-    }
-    results_df = pd.DataFrame(results_data)
-    results_df.to_csv(ground_truth_path, index=False)
-    print(f"Ground truth saved to: {ground_truth_path}")
+    if data_type == 'continuous':
+        # Create two results files for continuous data with ground truth as first column
+        # 1. For control library evaluation (results.csv)
+        control_results_path = os.path.join(out_dir, 'results.csv')
+        control_results_data = {
+            'ground_truth': [ground_truth_equation]
+        }
+        control_results_df = pd.DataFrame(control_results_data)
+        control_results_df.to_csv(control_results_path, index=False)
+        print(f"Control library results file created: {control_results_path}")
+        
+        # 2. For tailored library evaluation (results_lib.csv)
+        tailored_results_path = os.path.join(out_dir, 'results_lib.csv')
+        tailored_results_data = {
+            'ground_truth': [ground_truth_equation]
+        }
+        tailored_results_df = pd.DataFrame(tailored_results_data)
+        tailored_results_df.to_csv(tailored_results_path, index=False)
+        print(f"Tailored library results file created: {tailored_results_path}")
+        
+    else:  # discrete
+        # Create one results file for discrete data (rounding evaluation)
+        rounding_results_path = os.path.join(out_dir, 'results_rounding.csv')
+        rounding_results_data = {
+            'ground_truth': [ground_truth_equation]
+        }
+        rounding_results_df = pd.DataFrame(rounding_results_data)
+        rounding_results_df.to_csv(rounding_results_path, index=False)
+        print(f"Rounding results file created: {rounding_results_path}")
+    
     print(f"Ground truth equation: {ground_truth_equation}")
     
     return df
