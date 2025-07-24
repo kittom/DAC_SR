@@ -53,13 +53,13 @@ run_and_check() {
 }
 
 # Run all algorithms with noise parameter
-run_and_check "DeepSR" "$SCRIPT_DIR/unrounded/deepsr.sh"
-run_and_check "PySR" "$SCRIPT_DIR/unrounded/pysr.sh"
-run_and_check "KAN" "$SCRIPT_DIR/unrounded/kan.sh"
-run_and_check "Q-Lattice" "$SCRIPT_DIR/unrounded/qlattice.sh"
-run_and_check "E2E Transformer" "$SCRIPT_DIR/unrounded/e2e_transformer.sh"
-run_and_check "TPSR" "$SCRIPT_DIR/unrounded/tpsr.sh"
-run_and_check "Linear Regression" "$SCRIPT_DIR/unrounded/linear.sh"
+run_and_check "DeepSR" "$SCRIPT_DIR/unrounded/control_library/deepsr.sh"
+run_and_check "PySR" "$SCRIPT_DIR/unrounded/control_library/pysr.sh"
+run_and_check "KAN" "$SCRIPT_DIR/unrounded/control_library/kan.sh"
+run_and_check "Q-Lattice" "$SCRIPT_DIR/unrounded/control_library/qlattice.sh"
+run_and_check "E2E Transformer" "$SCRIPT_DIR/unrounded/control_library/e2e_transformer.sh"
+run_and_check "TPSR" "$SCRIPT_DIR/unrounded/control_library/tpsr.sh"
+run_and_check "Linear Regression" "$SCRIPT_DIR/unrounded/control_library/linear.sh"
 
 echo ""
 echo "=========================================="

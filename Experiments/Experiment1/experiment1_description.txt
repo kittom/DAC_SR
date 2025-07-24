@@ -16,6 +16,15 @@ Data Storage:
 
 Evaluation:
 - Model performance will be evaluated using the run_all scripts in the Scripts directory, comparing learned equations to ground truth.
+- Three evaluation approaches will be run simultaneously:
+  1. Control Library: Using run_all_sr.sh with complete mathematical function libraries
+  2. Tailored Library: Using run_all_library.sh with problem-specific minimal function libraries
+  3. Rounding: Using run_all_rounding.sh with rounding-enabled evaluation
+- Results will be saved to:
+  - results.csv: Control library results (full mathematical function set)
+  - results_lib.csv: Tailored library results (minimal function set)
+  - results_rounding.csv: Rounding-enabled results
+- This allows direct comparison between control, tailored library, and rounding performance on identical datasets.
 
 FAIRNESS CONSIDERATIONS FOR EXPERIMENT 1:
 =========================================

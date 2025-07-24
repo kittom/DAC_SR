@@ -22,6 +22,7 @@ DataSets/Ground_Truth/LeadingOnes/discrete/*
 DataSets/Ground_Truth_Noise/LeadingOnes/continuous/*
 DataSets/Ground_Truth_Noise/LeadingOnes/discrete/*
 SR_algorithms/Q_Lattice/venv
+SR_algorithms/PySR/outputs/
 # Python
 __pycache__/
 *.py[cod]
