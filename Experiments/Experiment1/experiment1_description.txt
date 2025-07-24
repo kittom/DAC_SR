@@ -13,18 +13,27 @@ Setup:
 
 Data Storage:
 - All generated datasets and results for this experiment will be stored in the Datasets directory within this subdirectory.
+- Each problem type (OneMax, LeadingOnes, PSA-CMA-ES) has two subdirectories:
+  - continuous/: Contains continuous data for control and tailored library evaluations
+  - discrete/: Contains discrete data (with rounded values) for rounding evaluations
 
 Evaluation:
-- Model performance will be evaluated using the run_all scripts in the Scripts directory, comparing learned equations to ground truth.
-- Three evaluation approaches will be run simultaneously:
-  1. Control Library: Using run_all_sr.sh with complete mathematical function libraries
-  2. Tailored Library: Using run_all_library.sh with problem-specific minimal function libraries
-  3. Rounding: Using run_all_rounding.sh with rounding-enabled evaluation
+- Model performance will be evaluated using modular scripts that call the run_all scripts in the Scripts directory.
+- Three evaluation approaches are available:
+  1. Control Library: Using run_all_sr.sh with complete mathematical function libraries (on continuous data)
+  2. Tailored Library: Using run_all_library.sh with problem-specific minimal function libraries (on continuous data)
+  3. Rounding: Using run_all_sr_rounding.sh with rounding-enabled evaluation (on discrete data)
 - Results will be saved to:
-  - results.csv: Control library results (full mathematical function set)
-  - results_lib.csv: Tailored library results (minimal function set)
-  - results_rounding.csv: Rounding-enabled results
-- This allows direct comparison between control, tailored library, and rounding performance on identical datasets.
+  - results.csv: Control library results (full mathematical function set) - from continuous data
+  - results_lib.csv: Tailored library results (minimal function set) - from continuous data
+  - results_rounding.csv: Rounding-enabled results - from discrete data
+- This allows direct comparison between control, tailored library, and rounding performance on appropriate data types.
+
+Scripts:
+- generate_data.sh: Modular data generation with options for individual datasets
+- run_evaluation.sh: Modular evaluation with options for evaluation types and datasets
+- run_all_evaluations.sh: Master script for running all evaluation types
+- script_utils/: Contains reusable generation and evaluation components
 
 FAIRNESS CONSIDERATIONS FOR EXPERIMENT 1:
 =========================================

@@ -2,7 +2,7 @@
 set -e
 
 # PSA-CMA-ES Data Generation Script
-# This script generates PSA-CMA-ES datasets for all benchmarks
+# This script generates PSA-CMA-ES datasets for all benchmarks (continuous and discrete)
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
@@ -21,24 +21,20 @@ echo "=========================================="
 echo "PSA-CMA-ES Data Generation"
 echo "=========================================="
 
-# Create datasets directory if it doesn't exist
-mkdir -p "$OUTPUT_DIR/PSACMAES"
+# Create datasets directories if they don't exist
+mkdir -p "$OUTPUT_DIR/PSACMAES/continuous"
+mkdir -p "$OUTPUT_DIR/PSACMAES/discrete"
 
-# Define benchmarks
-BENCHMARKS=("sphere" "ellipsoid" "rastrigin" "noisy_ellipsoid" "schaffer" "noisy_rastrigin")
+# Generate continuous PSA-CMA-ES datasets
+echo "Generating continuous PSA-CMA-ES datasets for all benchmarks..."
+python3 "$PYTHON_SCRIPT" --iterations 1000 --data-type continuous --output-root "$OUTPUT_DIR/PSACMAES/continuous"
 
-# Generate datasets for each benchmark
-for benchmark in "${BENCHMARKS[@]}"; do
-    echo "Generating PSA-CMA-ES dataset for $benchmark..."
-    mkdir -p "$OUTPUT_DIR/PSACMAES/$benchmark"
-    python3 "$PYTHON_SCRIPT" --benchmark "$benchmark" --iterations 1000 --output-root "$OUTPUT_DIR/PSACMAES/$benchmark"
-done
-
-# Generate aggregated dataset
-echo "Generating aggregated PSA-CMA-ES dataset..."
-python3 "$PYTHON_SCRIPT" --benchmark all --iterations 1000 --output-root "$OUTPUT_DIR/PSACMAES"
+# Generate discrete PSA-CMA-ES datasets
+echo "Generating discrete PSA-CMA-ES datasets for all benchmarks..."
+python3 "$PYTHON_SCRIPT" --iterations 1000 --data-type discrete --output-root "$OUTPUT_DIR/PSACMAES/discrete"
 
 echo "=========================================="
 echo "PSA-CMA-ES data generation completed!"
-echo "Datasets saved to: $OUTPUT_DIR/PSACMAES"
+echo "Continuous datasets saved to: $OUTPUT_DIR/PSACMAES/continuous"
+echo "Discrete datasets saved to: $OUTPUT_DIR/PSACMAES/discrete"
 echo "==========================================" 
