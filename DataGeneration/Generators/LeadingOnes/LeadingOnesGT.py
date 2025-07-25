@@ -39,30 +39,29 @@ def generate_leading_ones_ground_truth(instance_sizes=None, data_type='continuou
     # Create ground truth equation
     ground_truth_equation = "x1/(x2 + 1)" if data_type == 'continuous' else "round(x1/(x2 + 1))"
     
-    if data_type == 'continuous':
-        # Create results file based on evaluation type
-        if evaluation_type == 'control' or evaluation_type is None:
-            # For control library evaluation (results.csv)
-            control_results_path = os.path.join(out_dir, 'results.csv')
-            control_results_data = {
-                'ground_truth': [ground_truth_equation]
-            }
-            control_results_df = pd.DataFrame(control_results_data)
-            control_results_df.to_csv(control_results_path, index=False)
-            print(f"Control library results file created: {control_results_path}")
-        
-        if evaluation_type == 'library' or evaluation_type is None:
-            # For tailored library evaluation (results_lib.csv)
-            tailored_results_path = os.path.join(out_dir, 'results_lib.csv')
-            tailored_results_data = {
-                'ground_truth': [ground_truth_equation]
-            }
-            tailored_results_df = pd.DataFrame(tailored_results_data)
-            tailored_results_df.to_csv(tailored_results_path, index=False)
-            print(f"Tailored library results file created: {tailored_results_path}")
-        
-    else:  # discrete
-        # Create one results file for discrete data (rounding evaluation)
+    # Create results files based on evaluation type
+    if evaluation_type == 'control' or evaluation_type is None:
+        # For control library evaluation (results.csv)
+        control_results_path = os.path.join(out_dir, 'results.csv')
+        control_results_data = {
+            'ground_truth': [ground_truth_equation]
+        }
+        control_results_df = pd.DataFrame(control_results_data)
+        control_results_df.to_csv(control_results_path, index=False)
+        print(f"Control library results file created: {control_results_path}")
+    
+    if evaluation_type == 'library' or evaluation_type is None:
+        # For tailored library evaluation (results_lib.csv)
+        tailored_results_path = os.path.join(out_dir, 'results_lib.csv')
+        tailored_results_data = {
+            'ground_truth': [ground_truth_equation]
+        }
+        tailored_results_df = pd.DataFrame(tailored_results_data)
+        tailored_results_df.to_csv(tailored_results_path, index=False)
+        print(f"Tailored library results file created: {tailored_results_path}")
+    
+    if evaluation_type == 'rounding' or evaluation_type is None:
+        # For rounding evaluation (results_rounding.csv)
         rounding_results_path = os.path.join(out_dir, 'results_rounding.csv')
         rounding_results_data = {
             'ground_truth': [ground_truth_equation]

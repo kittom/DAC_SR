@@ -79,6 +79,14 @@ class ExperimentRunner:
         config_copy_path = experiment_dir / 'config.json'
         shutil.copy2(self.config_path, config_copy_path)
         
+        # Copy run.sh script to experiment directory for parallel execution
+        run_script_src = self.project_root / 'run.sh'
+        run_script_dst = experiment_dir / 'run.sh'
+        if run_script_src.exists():
+            shutil.copy2(run_script_src, run_script_dst)
+            # Make it executable
+            run_script_dst.chmod(0o755)
+        
         return experiment_dir
     
     def generate_data(self):
@@ -134,11 +142,22 @@ class ExperimentRunner:
         
         # Run the generator with conda environment activation
         conda_env = 'generation'  # Use the generation environment for data generation
-        evaluation_type_arg = f"--evaluation-type {enabled_evaluations[0]}" if len(enabled_evaluations) == 1 else ""
+        
+        # If rounding is enabled, prioritize it for data generation to ensure results_rounding.csv is created
+        # Otherwise use the first enabled evaluation type
+        if 'rounding' in enabled_evaluations:
+            evaluation_type = 'rounding'
+        elif len(enabled_evaluations) > 0:
+            evaluation_type = enabled_evaluations[0]
+        else:
+            evaluation_type = None
+        
+        evaluation_type_arg = f"--evaluation-type {evaluation_type}" if evaluation_type else ""
         cmd = [
-            'bash', '-c',
-            f'source ~/miniconda3/etc/profile.d/conda.sh && conda activate {conda_env} && python3 {generator_script} {" ".join(size_args)} --data-type {data_type} --output-dir {benchmark_dir} {evaluation_type_arg}'
-        ]
+            '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script)
+        ] + size_args + ['--data-type', data_type, '--output-dir', str(benchmark_dir)]
+        if evaluation_type:
+            cmd.extend(['--evaluation-type', evaluation_type])
         
         self.logger.info(f"Running data generation for {benchmark_name} in {conda_env} environment")
         result = subprocess.run(cmd, capture_output=True, text=True)
@@ -162,10 +181,48 @@ class ExperimentRunner:
         
         # Run the generator with conda environment activation
         conda_env = 'generation'  # Use the generation environment for data generation
+        
+        # Determine which evaluation types are enabled
+        eval_config = self.config['evaluation']['analysis_styles']
+        enabled_evaluations = []
+        if eval_config['control']['enabled']:
+            enabled_evaluations.append('control')
+        if eval_config['library']['enabled']:
+            enabled_evaluations.append('library')
+        if eval_config['rounding']['enabled']:
+            enabled_evaluations.append('rounding')
+        
+        # If rounding is enabled, prioritize it for data generation to ensure results_rounding.csv is created
+        # Otherwise use the first enabled evaluation type
+        if 'rounding' in enabled_evaluations:
+            evaluation_type = 'rounding'
+        elif len(enabled_evaluations) > 0:
+            evaluation_type = enabled_evaluations[0]
+        else:
+            evaluation_type = None
+        
         cmd = [
-            'bash', '-c',
-            f'source ~/miniconda3/etc/profile.d/conda.sh && conda activate {conda_env} && python3 {generator_script} --iterations {iterations} --data-type {data_type} --output-root {benchmark_dir}'
+            '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script),
+            '--iterations', str(iterations), '--data-type', data_type, '--output-root', str(benchmark_dir)
         ]
+        if evaluation_type:
+            cmd.extend(['--evaluation-type', evaluation_type])
+        
+        # Add compare flag if enabled in config
+        if config.get('compare', False):
+            cmd.append('--compare')
+        
+        # Add individual_benchmarks flag if enabled in config
+        individual_benchmarks = config.get('individual_benchmarks', True)
+        cmd.extend(['--individual-benchmarks', str(individual_benchmarks).lower()])
+        
+        # Add all_benchmarks flag if enabled in config
+        all_benchmarks = config.get('all_benchmarks', True)
+        cmd.extend(['--all-benchmarks', str(all_benchmarks).lower()])
+        
+        # Add sub-benchmarks from config
+        if 'sub_benchmarks' in config:
+            cmd.extend(['--sub-benchmarks'] + config['sub_benchmarks'])
         
         self.logger.info(f"Running PSA-CMA-ES data generation in {conda_env} environment")
         result = subprocess.run(cmd, capture_output=True, text=True)
@@ -184,27 +241,66 @@ class ExperimentRunner:
 
     
     def run_evaluations(self):
-        """Run SR algorithm evaluations based on configuration."""
-        self.logger.info("Starting SR algorithm evaluations...")
+        """Generate TODO.txt with evaluation commands for parallel execution."""
+        self.logger.info("Generating evaluation commands for parallel execution...")
         
         eval_config = self.config['evaluation']
         datasets_dir = self.experiment_dir / 'Datasets'
         results_dir = self.experiment_dir / 'Results'
         
-        # Run each enabled analysis style
-        for style_name, style_config in eval_config['analysis_styles'].items():
-            if not style_config['enabled']:
-                continue
-                
-            self.logger.info(f"Running {style_name} evaluation...")
-            self._run_analysis_style(style_name, datasets_dir, results_dir)
+        # Create TODO.txt file with evaluation commands
+        todo_path = self.experiment_dir / 'TODO.txt'
+        
+        with open(todo_path, 'w') as f:
+            f.write("# Evaluation commands for parallel execution\n")
+            f.write(f"# Experiment: {self.config['experiment']['name']}\n")
+            f.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+            
+            # Generate commands for each enabled analysis style
+            for style_name, style_config in eval_config['analysis_styles'].items():
+                if not style_config['enabled']:
+                    continue
+                    
+                self.logger.info(f"Generating commands for {style_name} evaluation...")
+                self._generate_evaluation_commands(style_name, datasets_dir, results_dir, f)
+        
+        self.logger.info(f"Generated TODO.txt with evaluation commands: {todo_path}")
+        self.logger.info("Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel")
     
-    def _run_analysis_style(self, style_name: str, datasets_dir: Path, results_dir: Path):
-        """Run a specific analysis style (control, library, rounding)."""
-        utils_dir = self.project_root / 'Experiments' / 'script_utils' / 'evaluation'
+    def _generate_evaluation_commands(self, style_name: str, datasets_dir: Path, results_dir: Path, todo_file):
+        """Generate evaluation commands for individual algorithms based on script contents."""
+        scripts_dir = self.project_root / 'Scripts'
         
         # Get noise level from config
         noise_level = self.config['data_generation']['noise']['level']
+        
+        # Define which algorithms are in each evaluation type
+        algorithm_sets = {
+            'control': [
+                ('deepsr', 'unrounded/control_library/deepsr.sh'),
+                ('pysr', 'unrounded/control_library/pysr.sh'),
+                ('kan', 'unrounded/control_library/kan.sh'),
+                ('qlattice', 'unrounded/control_library/qlattice.sh'),
+                ('e2e_transformer', 'unrounded/control_library/e2e_transformer.sh'),
+                ('tpsr', 'unrounded/control_library/tpsr.sh'),
+                ('linear', 'unrounded/control_library/linear.sh')
+            ],
+            'library': [
+                ('deepsr', 'unrounded/algorithm_library/deepsr_lib.sh'),
+                ('pysr', 'unrounded/algorithm_library/pysr_lib.sh'),
+                ('tpsr', 'unrounded/algorithm_library/tpsr_lib.sh'),
+                ('linear', 'unrounded/algorithm_library/linear_lib.sh')
+            ],
+            'rounding': [
+                ('deepsr', 'rounded/deepsr.sh'),
+                ('pysr', 'rounded/pysr.sh'),
+                ('tpsr', 'rounded/tpsr.sh'),
+                ('linear', 'rounded/linear.sh')
+            ]
+        }
+        
+        # Get the algorithms for this evaluation type
+        algorithms = algorithm_sets.get(style_name, [])
         
         # Process each benchmark's CSV files
         for benchmark_name, benchmark_config in self.config['data_generation']['benchmarks'].items():
@@ -222,65 +318,130 @@ class ExperimentRunner:
                 csv_path = datasets_dir / benchmark_name.capitalize() / csv_filename
                 
                 if csv_path.exists():
-                    self.logger.info(f"Processing {benchmark_name} {data_type} data: {csv_path}")
+                    self.logger.info(f"Adding individual algorithm commands for {benchmark_name} {data_type} data: {csv_path}")
                     
-                    if style_name == 'control':
-                        script_path = utils_dir / 'evaluate_control_library.sh'
-                        cmd = ['bash', str(script_path), str(csv_path), str(noise_level)]
-                    elif style_name == 'library':
-                        script_path = utils_dir / 'evaluate_tailored_library.sh'
-                        problem_type = 'leading_ones' if benchmark_name == 'leadingones' else 'one_max'
-                        cmd = ['bash', str(script_path), problem_type, str(csv_path), str(noise_level)]
-                    elif style_name == 'rounding':
-                        script_path = utils_dir / 'evaluate_rounding.sh'
-                        cmd = ['bash', str(script_path), str(csv_path), str(noise_level)]
-                    else:
-                        raise ValueError(f"Unknown analysis style: {style_name}")
-                    
-                    self.logger.info(f"Running: {' '.join(cmd)}")
-                    result = subprocess.run(cmd, capture_output=True, text=True)
-                    
-                    if result.returncode != 0:
-                        self.logger.error(f"{style_name} evaluation failed for {benchmark_name}: {result.stderr}")
-                        raise RuntimeError(f"{style_name} evaluation failed for {benchmark_name}")
-                    else:
-                        self.logger.info(f"Successfully completed {style_name} evaluation for {benchmark_name}")
+                    # Generate commands for each algorithm in this evaluation type
+                    for alg_name, script_path in algorithms:
+                        full_script_path = scripts_dir / script_path
+                        
+                        # Use relative path for CSV file since run.sh will be executed from experiment directory
+                        relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                        
+                        if style_name == 'control':
+                            cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                        elif style_name == 'library':
+                            problem_type = 'leading_ones' if benchmark_name == 'leadingones' else 'one_max'
+                            cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{problem_type}" "{noise_level}"'
+                        elif style_name == 'rounding':
+                            cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                        else:
+                            raise ValueError(f"Unknown analysis style: {style_name}")
+                        
+                        todo_file.write(f"# {style_name} {alg_name} for {benchmark_name}\n")
+                        todo_file.write(f"{cmd}\n\n")
                 else:
                     self.logger.warning(f"CSV file not found: {csv_path}")
             
             elif benchmark_name == 'psacmaes':
                 # Handle PSA-CMA-ES benchmarks
-                for sub_benchmark in benchmark_config['benchmarks']:
-                    # PSA-CMA-ES creates subdirectories with lowercase names
-                    sub_benchmark_lower = sub_benchmark.lower().replace('_', '')
-                    csv_filename = "psa_vars.csv"  # The actual data file
-                    csv_path = datasets_dir / 'PSACMAES' / sub_benchmark_lower / csv_filename
-                    
-                    if csv_path.exists():
-                        self.logger.info(f"Processing PSA-CMA-ES {sub_benchmark} {data_type} data: {csv_path}")
+                # Only generate commands for individual benchmarks if they are enabled
+                if benchmark_config.get('individual_benchmarks', True):
+                    for sub_benchmark in benchmark_config['sub_benchmarks']:
+                        # PSA-CMA-ES creates subdirectories with lowercase names
+                        sub_benchmark_lower = sub_benchmark.lower().replace('_', '')
+                        csv_filename = "psa_vars.csv"  # The actual data file
+                        csv_path = datasets_dir / 'PSACMAES' / sub_benchmark_lower / csv_filename
                         
-                        if style_name == 'control':
-                            script_path = utils_dir / 'evaluate_control_library.sh'
-                            cmd = ['bash', str(script_path), str(csv_path), str(noise_level)]
-                        elif style_name == 'library':
-                            script_path = utils_dir / 'evaluate_tailored_library.sh'
-                            cmd = ['bash', str(script_path), 'psacmaes', str(csv_path), str(noise_level)]
-                        elif style_name == 'rounding':
-                            script_path = utils_dir / 'evaluate_rounding.sh'
-                            cmd = ['bash', str(script_path), str(csv_path), str(noise_level)]
+                        if csv_path.exists():
+                            self.logger.info(f"Adding individual algorithm commands for PSA-CMA-ES {sub_benchmark} {data_type} data: {csv_path}")
+                            
+                            # Generate commands for each algorithm in this evaluation type
+                            for alg_name, script_path in algorithms:
+                                full_script_path = scripts_dir / script_path
+                                
+                                # Use relative path for CSV file since run.sh will be executed from experiment directory
+                                relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                                
+                                if style_name == 'control':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                elif style_name == 'library':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                elif style_name == 'rounding':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                else:
+                                    raise ValueError(f"Unknown analysis style: {style_name}")
+                                
+                                todo_file.write(f"# {style_name} {alg_name} for PSA-CMA-ES {sub_benchmark}\n")
+                                todo_file.write(f"{cmd}\n\n")
                         else:
-                            raise ValueError(f"Unknown analysis style: {style_name}")
+                            self.logger.warning(f"CSV file not found: {csv_path}")
+                else:
+                    self.logger.info("Skipping individual PSA-CMA-ES benchmark commands (individual_benchmarks disabled)")
+                
+                # Handle all_benchmarks.csv if enabled
+                if benchmark_config.get('all_benchmarks', True):
+                    all_benchmarks_csv_path = datasets_dir / 'PSACMAES' / 'all_benchmarks.csv'
+                    if all_benchmarks_csv_path.exists():
+                        self.logger.info(f"Adding individual algorithm commands for PSA-CMA-ES all_benchmarks {data_type} data: {all_benchmarks_csv_path}")
                         
-                        self.logger.info(f"Running: {' '.join(cmd)}")
-                        result = subprocess.run(cmd, capture_output=True, text=True)
-                        
-                        if result.returncode != 0:
-                            self.logger.error(f"{style_name} evaluation failed for PSA-CMA-ES {sub_benchmark}: {result.stderr}")
-                            raise RuntimeError(f"{style_name} evaluation failed for PSA-CMA-ES {sub_benchmark}")
-                        else:
-                            self.logger.info(f"Successfully completed {style_name} evaluation for PSA-CMA-ES {sub_benchmark}")
+                        # Generate commands for each algorithm in this evaluation type
+                        for alg_name, script_path in algorithms:
+                            full_script_path = scripts_dir / script_path
+                            
+                            # Use relative path for CSV file since run.sh will be executed from experiment directory
+                            relative_csv_path = all_benchmarks_csv_path.relative_to(self.experiment_dir)
+                            
+                            if style_name == 'control':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                            elif style_name == 'library':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                            elif style_name == 'rounding':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                            else:
+                                raise ValueError(f"Unknown analysis style: {style_name}")
+                            
+                            todo_file.write(f"# {style_name} {alg_name} for PSA-CMA-ES all_benchmarks\n")
+                            todo_file.write(f"{cmd}\n\n")
                     else:
-                        self.logger.warning(f"CSV file not found: {csv_path}")
+                        self.logger.warning(f"All benchmarks CSV file not found: {all_benchmarks_csv_path}")
+                else:
+                    self.logger.info("Skipping PSA-CMA-ES all_benchmarks commands (all_benchmarks disabled)")
+                
+                # Handle leave-one-out comparison datasets if compare is enabled
+                if benchmark_config.get('compare', False):
+                    absent_dir = datasets_dir / 'PSACMAES' / 'absent'
+                    if absent_dir.exists():
+                        for excluded_benchmark in benchmark_config['sub_benchmarks']:
+                            csv_filename = "psa_vars.csv"  # The actual data file
+                            csv_path = absent_dir / excluded_benchmark / csv_filename
+                            
+                            if csv_path.exists():
+                                self.logger.info(f"Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding {excluded_benchmark}) {data_type} data: {csv_path}")
+                                
+                                # Generate commands for each algorithm in this evaluation type
+                                for alg_name, script_path in algorithms:
+                                    full_script_path = scripts_dir / script_path
+                                    
+                                    # Use relative path for CSV file since run.sh will be executed from experiment directory
+                                    relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                                    
+                                    if style_name == 'control':
+                                        cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                    elif style_name == 'library':
+                                        cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                    elif style_name == 'rounding':
+                                        cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                    else:
+                                        raise ValueError(f"Unknown analysis style: {style_name}")
+                                    
+                                    todo_file.write(f"# {style_name} {alg_name} for PSA-CMA-ES leave-one-out (excluding {excluded_benchmark})\n")
+                                    todo_file.write(f"{cmd}\n\n")
+                            else:
+                                self.logger.warning(f"Leave-one-out CSV file not found: {csv_path}")
+                    else:
+                        self.logger.warning(f"Leave-one-out directory not found: {absent_dir}")
+    
+
     
     def collect_results(self):
         """Collect and organize results."""
