@@ -30,6 +30,8 @@ class MasterExperimentRunner:
     def __init__(self, config_dir: str = "Configs", global_todo_file: str = "global_TODO.txt"):
         self.config_dir = Path(config_dir)
         self.global_todo_file = Path(global_todo_file)
+        self.global_gpu_todo_file = Path("global_TODO_GPU.txt")
+        self.global_cpu_todo_file = Path("global_TODO_CPU.txt")
         self.experiment_runners = []
         self.setup_logging()
         
@@ -117,35 +119,88 @@ class MasterExperimentRunner:
                 continue
                 
     def consolidate_todo_lists(self, experiment_runners: List[ExperimentRunner]):
-        """Consolidate all individual TODO.txt files into a global TODO.txt."""
-        self.logger.info(f"Consolidating TODO lists into: {self.global_todo_file}")
+        """Consolidate all individual TODO.txt files into separate global TODO files for GPU and CPU."""
+        self.logger.info(f"Consolidating TODO lists into separate GPU and CPU files...")
         
-        with open(self.global_todo_file, 'w') as global_todo:
-            global_todo.write("# Global TODO List - All Experiments\n")
-            global_todo.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            global_todo.write(f"# Total experiments: {len(experiment_runners)}\n\n")
+        # Initialize global TODO files
+        with open(self.global_gpu_todo_file, 'w') as gpu_todo:
+            gpu_todo.write("# Global TODO List - GPU Algorithms Only\n")
+            gpu_todo.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            gpu_todo.write(f"# Total experiments: {len(experiment_runners)}\n")
+            gpu_todo.write("# Run on GPU machine\n\n")
             
-            for i, runner in enumerate(experiment_runners, 1):
-                experiment_name = runner.config.get('experiment', {}).get('name', 'Unknown')
-                experiment_todo_file = runner.experiment_dir / "TODO.txt"
-                
-                if experiment_todo_file.exists():
-                    self.logger.info(f"Adding TODO list from experiment {i}: {experiment_name}")
+        with open(self.global_cpu_todo_file, 'w') as cpu_todo:
+            cpu_todo.write("# Global TODO List - CPU Algorithms Only\n")
+            cpu_todo.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            cpu_todo.write(f"# Total experiments: {len(experiment_runners)}\n")
+            cpu_todo.write("# Run on CPU machine\n\n")
+            
+        # Also create the combined file for backward compatibility
+        with open(self.global_todo_file, 'w') as combined_todo:
+            combined_todo.write("# Global TODO List - All Algorithms (Combined)\n")
+            combined_todo.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            combined_todo.write(f"# Total experiments: {len(experiment_runners)}\n")
+            combined_todo.write("# Note: Use global_TODO_GPU.txt and global_TODO_CPU.txt for separate execution\n\n")
+            
+        for i, runner in enumerate(experiment_runners, 1):
+            experiment_name = runner.config.get('experiment', {}).get('name', 'Unknown')
+            experiment_gpu_todo_file = runner.experiment_dir / "TODO_GPU.txt"
+            experiment_cpu_todo_file = runner.experiment_dir / "TODO_CPU.txt"
+            experiment_todo_file = runner.experiment_dir / "TODO.txt"
+            
+            self.logger.info(f"Processing TODO files from experiment {i}: {experiment_name}")
+            
+            # Process GPU TODO file
+            if experiment_gpu_todo_file.exists():
+                self.logger.info(f"Adding GPU TODO list from experiment: {experiment_name}")
+                with open(self.global_gpu_todo_file, 'a') as gpu_todo:
+                    gpu_todo.write(f"# {'='*60}\n")
+                    gpu_todo.write(f"# EXPERIMENT {i}: {experiment_name}\n")
+                    gpu_todo.write(f"# Directory: {runner.experiment_dir}\n")
+                    gpu_todo.write(f"# {'='*60}\n\n")
                     
-                    global_todo.write(f"# {'='*60}\n")
-                    global_todo.write(f"# EXPERIMENT {i}: {experiment_name}\n")
-                    global_todo.write(f"# Directory: {runner.experiment_dir}\n")
-                    global_todo.write(f"# {'='*60}\n\n")
+                    with open(experiment_gpu_todo_file, 'r') as exp_gpu_todo:
+                        content = exp_gpu_todo.read()
+                        gpu_todo.write(content)
+                        gpu_todo.write("\n\n")
+            else:
+                self.logger.warning(f"TODO_GPU.txt not found for experiment: {experiment_name}")
+            
+            # Process CPU TODO file
+            if experiment_cpu_todo_file.exists():
+                self.logger.info(f"Adding CPU TODO list from experiment: {experiment_name}")
+                with open(self.global_cpu_todo_file, 'a') as cpu_todo:
+                    cpu_todo.write(f"# {'='*60}\n")
+                    cpu_todo.write(f"# EXPERIMENT {i}: {experiment_name}\n")
+                    cpu_todo.write(f"# Directory: {runner.experiment_dir}\n")
+                    cpu_todo.write(f"# {'='*60}\n\n")
                     
-                    # Read and add the experiment's TODO content
+                    with open(experiment_cpu_todo_file, 'r') as exp_cpu_todo:
+                        content = exp_cpu_todo.read()
+                        cpu_todo.write(content)
+                        cpu_todo.write("\n\n")
+            else:
+                self.logger.warning(f"TODO_CPU.txt not found for experiment: {experiment_name}")
+            
+            # Process combined TODO file for backward compatibility
+            if experiment_todo_file.exists():
+                with open(self.global_todo_file, 'a') as combined_todo:
+                    combined_todo.write(f"# {'='*60}\n")
+                    combined_todo.write(f"# EXPERIMENT {i}: {experiment_name}\n")
+                    combined_todo.write(f"# Directory: {runner.experiment_dir}\n")
+                    combined_todo.write(f"# {'='*60}\n\n")
+                    
                     with open(experiment_todo_file, 'r') as exp_todo:
                         content = exp_todo.read()
-                        global_todo.write(content)
-                        global_todo.write("\n\n")
-                else:
-                    self.logger.warning(f"TODO.txt not found for experiment: {experiment_name}")
+                        combined_todo.write(content)
+                        combined_todo.write("\n\n")
+            else:
+                self.logger.warning(f"TODO.txt not found for experiment: {experiment_name}")
                     
-        self.logger.info(f"Global TODO list created: {self.global_todo_file}")
+        self.logger.info(f"Global TODO files created:")
+        self.logger.info(f"  - GPU algorithms: {self.global_gpu_todo_file}")
+        self.logger.info(f"  - CPU algorithms: {self.global_cpu_todo_file}")
+        self.logger.info(f"  - Combined: {self.global_todo_file}")
         
     def run_all_experiments(self):
         """Run the complete master experiment pipeline."""
@@ -178,8 +233,12 @@ class MasterExperimentRunner:
         self.consolidate_todo_lists(experiment_runners)
         
         self.logger.info("Master experiment runner completed successfully!")
-        self.logger.info(f"Global TODO list available at: {self.global_todo_file}")
-        self.logger.info("Run './run.sh [NUM_CPUS]' to execute all experiments in parallel")
+        self.logger.info(f"Global TODO files available:")
+        self.logger.info(f"  - GPU algorithms: {self.global_gpu_todo_file}")
+        self.logger.info(f"  - CPU algorithms: {self.global_cpu_todo_file}")
+        self.logger.info(f"  - Combined: {self.global_todo_file}")
+        self.logger.info("Run './run_global.sh -t global_TODO_GPU.txt -j 16' on GPU machine")
+        self.logger.info("Run './run_global.sh -t global_TODO_CPU.txt -j 16' on CPU machine")
 
 
 def main():

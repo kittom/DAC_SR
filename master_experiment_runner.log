@@ -1,99 +1,199 @@
-2025-07-25 19:54:17,744 - __main__ - INFO - Starting master experiment runner...
-2025-07-25 19:54:17,745 - __main__ - INFO - Found 1 config files: ['comprehensive_library_experiment.json']
-2025-07-25 19:54:17,745 - __main__ - INFO - Phase 1: Setting up experiments...
-2025-07-25 19:54:17,747 - __main__ - INFO - Loaded config: comprehensive_library_experiment.json
-2025-07-25 19:54:17,747 - __main__ - INFO - Setting up experiment: ComprehensiveLibraryExperiment
-2025-07-25 19:54:17,761 - __main__ - INFO - Successfully set up experiment: ComprehensiveLibraryExperiment
-2025-07-25 19:54:17,761 - __main__ - INFO - Phase 2: Generating data for all experiments...
-2025-07-25 19:54:17,761 - __main__ - INFO - Generating data for all experiments...
-2025-07-25 19:54:17,763 - __main__ - INFO - Generating data for experiment: ComprehensiveLibraryExperiment
-2025-07-25 19:54:17,764 - experiment_runner - INFO - Starting data generation...
-2025-07-25 19:54:17,765 - experiment_runner - INFO - Generating data for leadingones...
-2025-07-25 19:54:17,767 - experiment_runner - INFO - Running data generation for leadingones in generation environment
-2025-07-25 19:54:21,717 - experiment_runner - INFO - Successfully generated leadingones data
-2025-07-25 19:54:21,717 - experiment_runner - INFO - Generating data for onemax...
-2025-07-25 19:54:21,719 - experiment_runner - INFO - Running data generation for onemax in generation environment
-2025-07-25 19:54:25,305 - experiment_runner - INFO - Successfully generated onemax data
-2025-07-25 19:54:25,305 - experiment_runner - INFO - Generating data for psacmaes...
-2025-07-25 19:54:25,306 - experiment_runner - INFO - Running PSA-CMA-ES data generation in generation environment
-2025-07-25 19:54:42,135 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data
-2025-07-25 19:54:42,135 - __main__ - INFO - Phase 3: Creating TODO files for all experiments...
-2025-07-25 19:54:42,137 - __main__ - INFO - Creating TODO.txt files for all experiments...
-2025-07-25 19:54:42,139 - __main__ - INFO - Creating TODO.txt for experiment: ComprehensiveLibraryExperiment
-2025-07-25 19:54:42,140 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
-2025-07-25 19:54:42,142 - experiment_runner - INFO - Generating commands for library evaluation...
-2025-07-25 19:54:42,144 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Leadingones/GTLeadingOnes.csv
-2025-07-25 19:54:42,146 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Onemax/GTOneMax.csv
-2025-07-25 19:54:42,147 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/sphere/psa_vars.csv
-2025-07-25 19:54:42,149 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/ellipsoid/psa_vars.csv
-2025-07-25 19:54:42,151 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/rastrigin/psa_vars.csv
-2025-07-25 19:54:42,156 - experiment_runner - INFO - Generated TODO.txt with evaluation commands: Experiments/SuiteA/ComprehensiveLibraryExperiment/TODO.txt
-2025-07-25 19:54:42,156 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
-2025-07-25 19:54:42,157 - __main__ - INFO - Phase 4: Consolidating TODO lists...
-2025-07-25 19:54:42,159 - __main__ - INFO - Consolidating TODO lists into: global_TODO.txt
-2025-07-25 19:54:42,161 - __main__ - INFO - Adding TODO list from experiment 1: ComprehensiveLibraryExperiment
-2025-07-25 19:54:42,163 - __main__ - INFO - Global TODO list created: global_TODO.txt
-2025-07-25 19:54:42,163 - __main__ - INFO - Master experiment runner completed successfully!
-2025-07-25 19:54:42,163 - __main__ - INFO - Global TODO list available at: global_TODO.txt
-2025-07-25 19:54:42,166 - __main__ - INFO - Run './run.sh [NUM_CPUS]' to execute all experiments in parallel
-2025-07-25 20:28:25,651 - __main__ - INFO - Starting master experiment runner...
-2025-07-25 20:28:25,652 - __main__ - INFO - Found 2 config files: ['test_psa_aggregated_only.json', 'comprehensive_library_experiment.json']
-2025-07-25 20:28:25,652 - __main__ - INFO - Phase 1: Setting up experiments...
-2025-07-25 20:28:25,654 - __main__ - INFO - Loaded config: test_psa_aggregated_only.json
-2025-07-25 20:28:25,654 - __main__ - INFO - Setting up experiment: TestPSAAggregatedOnly
-2025-07-25 20:28:25,667 - __main__ - INFO - Successfully set up experiment: TestPSAAggregatedOnly
-2025-07-25 20:28:25,667 - __main__ - INFO - Loaded config: comprehensive_library_experiment.json
-2025-07-25 20:28:25,668 - __main__ - INFO - Setting up experiment: ComprehensiveLibraryExperiment
-2025-07-25 20:28:25,678 - __main__ - INFO - Successfully set up experiment: ComprehensiveLibraryExperiment
-2025-07-25 20:28:25,678 - __main__ - INFO - Phase 2: Generating data for all experiments...
-2025-07-25 20:28:25,679 - __main__ - INFO - Generating data for all experiments...
-2025-07-25 20:28:25,680 - __main__ - INFO - Generating data for experiment: TestPSAAggregatedOnly
-2025-07-25 20:28:25,682 - experiment_runner - INFO - Starting data generation...
-2025-07-25 20:28:25,683 - experiment_runner - INFO - Generating data for psacmaes...
-2025-07-25 20:28:25,685 - experiment_runner - INFO - Running PSA-CMA-ES data generation in generation environment
-2025-07-25 20:28:42,680 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data
-2025-07-25 20:28:42,680 - __main__ - INFO - Generating data for experiment: ComprehensiveLibraryExperiment
-2025-07-25 20:28:42,680 - experiment_runner - INFO - Starting data generation...
-2025-07-25 20:28:42,682 - experiment_runner - INFO - Generating data for leadingones...
-2025-07-25 20:28:42,684 - experiment_runner - INFO - Running data generation for leadingones in generation environment
-2025-07-25 20:28:46,933 - experiment_runner - INFO - Successfully generated leadingones data
-2025-07-25 20:28:46,933 - experiment_runner - INFO - Generating data for onemax...
-2025-07-25 20:28:46,933 - experiment_runner - INFO - Running data generation for onemax in generation environment
-2025-07-25 20:28:50,920 - experiment_runner - INFO - Successfully generated onemax data
-2025-07-25 20:28:50,920 - experiment_runner - INFO - Generating data for psacmaes...
-2025-07-25 20:28:50,923 - experiment_runner - INFO - Running PSA-CMA-ES data generation in generation environment
-2025-07-25 20:29:08,099 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data
-2025-07-25 20:29:08,099 - __main__ - INFO - Phase 3: Creating TODO files for all experiments...
-2025-07-25 20:29:08,099 - __main__ - INFO - Creating TODO.txt files for all experiments...
-2025-07-25 20:29:08,101 - __main__ - INFO - Creating TODO.txt for experiment: TestPSAAggregatedOnly
-2025-07-25 20:29:08,103 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
-2025-07-25 20:29:08,105 - experiment_runner - INFO - Generating commands for library evaluation...
-2025-07-25 20:29:08,106 - experiment_runner - INFO - Skipping individual PSA-CMA-ES benchmark commands (individual_benchmarks disabled)
-2025-07-25 20:29:08,108 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES all_benchmarks continuous data: Experiments/SuiteA/TestPSAAggregatedOnly/Datasets/PSACMAES/all_benchmarks.csv
-2025-07-25 20:29:08,110 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere) continuous data: Experiments/SuiteA/TestPSAAggregatedOnly/Datasets/PSACMAES/absent/sphere/psa_vars.csv
-2025-07-25 20:29:08,112 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid) continuous data: Experiments/SuiteA/TestPSAAggregatedOnly/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
-2025-07-25 20:29:08,114 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin) continuous data: Experiments/SuiteA/TestPSAAggregatedOnly/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
-2025-07-25 20:29:08,117 - experiment_runner - INFO - Generated TODO.txt with evaluation commands: Experiments/SuiteA/TestPSAAggregatedOnly/TODO.txt
-2025-07-25 20:29:08,117 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
-2025-07-25 20:29:08,118 - __main__ - INFO - Creating TODO.txt for experiment: ComprehensiveLibraryExperiment
-2025-07-25 20:29:08,120 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
-2025-07-25 20:29:08,123 - experiment_runner - INFO - Generating commands for library evaluation...
-2025-07-25 20:29:08,124 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Leadingones/GTLeadingOnes.csv
-2025-07-25 20:29:08,125 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Onemax/GTOneMax.csv
-2025-07-25 20:29:08,127 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/sphere/psa_vars.csv
-2025-07-25 20:29:08,128 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/ellipsoid/psa_vars.csv
-2025-07-25 20:29:08,129 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/rastrigin/psa_vars.csv
-2025-07-25 20:29:08,130 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES all_benchmarks continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/all_benchmarks.csv
-2025-07-25 20:29:08,133 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere) continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/sphere/psa_vars.csv
-2025-07-25 20:29:08,135 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid) continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
-2025-07-25 20:29:08,137 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin) continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
-2025-07-25 20:29:08,141 - experiment_runner - INFO - Generated TODO.txt with evaluation commands: Experiments/SuiteA/ComprehensiveLibraryExperiment/TODO.txt
-2025-07-25 20:29:08,141 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
-2025-07-25 20:29:08,141 - __main__ - INFO - Phase 4: Consolidating TODO lists...
-2025-07-25 20:29:08,143 - __main__ - INFO - Consolidating TODO lists into: global_TODO.txt
-2025-07-25 20:29:08,145 - __main__ - INFO - Adding TODO list from experiment 1: TestPSAAggregatedOnly
-2025-07-25 20:29:08,146 - __main__ - INFO - Adding TODO list from experiment 2: ComprehensiveLibraryExperiment
-2025-07-25 20:29:08,150 - __main__ - INFO - Global TODO list created: global_TODO.txt
-2025-07-25 20:29:08,150 - __main__ - INFO - Master experiment runner completed successfully!
-2025-07-25 20:29:08,150 - __main__ - INFO - Global TODO list available at: global_TODO.txt
-2025-07-25 20:29:08,152 - __main__ - INFO - Run './run.sh [NUM_CPUS]' to execute all experiments in parallel
+2025-07-25 20:49:06,771 - __main__ - INFO - Starting master experiment runner...
+2025-07-25 20:49:06,772 - __main__ - INFO - Found 2 config files: ['test_gpu_cpu_split.json', 'comprehensive_library_experiment.json']
+2025-07-25 20:49:06,772 - __main__ - INFO - Phase 1: Setting up experiments...
+2025-07-25 20:49:06,774 - __main__ - INFO - Loaded config: test_gpu_cpu_split.json
+2025-07-25 20:49:06,774 - __main__ - INFO - Setting up experiment: TestGPUCpuSplit
+2025-07-25 20:49:06,787 - __main__ - INFO - Successfully set up experiment: TestGPUCpuSplit
+2025-07-25 20:49:06,788 - __main__ - INFO - Loaded config: comprehensive_library_experiment.json
+2025-07-25 20:49:06,790 - __main__ - INFO - Setting up experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:49:06,801 - __main__ - INFO - Successfully set up experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:49:06,801 - __main__ - INFO - Phase 2: Generating data for all experiments...
+2025-07-25 20:49:06,803 - __main__ - INFO - Generating data for all experiments...
+2025-07-25 20:49:06,803 - __main__ - INFO - Generating data for experiment: TestGPUCpuSplit
+2025-07-25 20:49:06,804 - experiment_runner - INFO - Starting data generation...
+2025-07-25 20:49:06,806 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-25 20:49:06,808 - experiment_runner - INFO - Running data generation for leadingones in generation environment
+2025-07-25 20:49:10,449 - experiment_runner - INFO - Successfully generated leadingones data
+2025-07-25 20:49:10,449 - experiment_runner - INFO - Generating data for onemax...
+2025-07-25 20:49:10,451 - experiment_runner - INFO - Running data generation for onemax in generation environment
+2025-07-25 20:49:14,132 - experiment_runner - INFO - Successfully generated onemax data
+2025-07-25 20:49:14,132 - __main__ - INFO - Generating data for experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:49:14,132 - experiment_runner - INFO - Starting data generation...
+2025-07-25 20:49:14,133 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-25 20:49:14,135 - experiment_runner - INFO - Running data generation for leadingones in generation environment
+2025-07-25 20:49:18,373 - experiment_runner - INFO - Successfully generated leadingones data
+2025-07-25 20:49:18,374 - experiment_runner - INFO - Generating data for onemax...
+2025-07-25 20:49:18,374 - experiment_runner - INFO - Running data generation for onemax in generation environment
+2025-07-25 20:49:22,538 - experiment_runner - INFO - Successfully generated onemax data
+2025-07-25 20:49:22,539 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-25 20:49:22,539 - experiment_runner - INFO - Running PSA-CMA-ES data generation in generation environment
+2025-07-25 20:49:34,642 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data
+2025-07-25 20:49:34,643 - __main__ - INFO - Phase 3: Creating TODO files for all experiments...
+2025-07-25 20:49:34,661 - __main__ - INFO - Creating TODO.txt files for all experiments...
+2025-07-25 20:49:34,663 - __main__ - INFO - Creating TODO.txt for experiment: TestGPUCpuSplit
+2025-07-25 20:49:34,663 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-25 20:49:34,665 - experiment_runner - INFO - Generating commands for control evaluation...
+2025-07-25 20:49:34,669 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/TestGPUCpuSplit/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-25 20:49:34,684 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/TestGPUCpuSplit/Datasets/Onemax/GTOneMax.csv
+2025-07-25 20:49:34,700 - __main__ - ERROR - Failed to create TODO.txt for experiment TestGPUCpuSplit: expected str, bytes or os.PathLike object, not TextIOWrapper
+2025-07-25 20:49:34,701 - __main__ - INFO - Creating TODO.txt for experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:49:34,702 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-25 20:49:34,705 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-25 20:49:34,709 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-25 20:49:34,718 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Onemax/GTOneMax.csv
+2025-07-25 20:49:34,728 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-25 20:49:34,737 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-25 20:49:34,742 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-25 20:49:34,748 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-25 20:49:34,757 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-25 20:49:34,766 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-25 20:49:34,774 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-25 20:49:34,782 - __main__ - ERROR - Failed to create TODO.txt for experiment ComprehensiveLibraryExperiment: expected str, bytes or os.PathLike object, not TextIOWrapper
+2025-07-25 20:49:34,783 - __main__ - INFO - Phase 4: Consolidating TODO lists...
+2025-07-25 20:49:34,784 - __main__ - INFO - Consolidating TODO lists into separate GPU and CPU files...
+2025-07-25 20:49:34,792 - __main__ - INFO - Processing TODO files from experiment 1: TestGPUCpuSplit
+2025-07-25 20:49:34,792 - __main__ - INFO - Adding GPU TODO list from experiment: TestGPUCpuSplit
+2025-07-25 20:49:34,797 - __main__ - INFO - Adding CPU TODO list from experiment: TestGPUCpuSplit
+2025-07-25 20:49:34,801 - __main__ - INFO - Processing TODO files from experiment 2: ComprehensiveLibraryExperiment
+2025-07-25 20:49:34,801 - __main__ - INFO - Adding GPU TODO list from experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:49:34,805 - __main__ - INFO - Adding CPU TODO list from experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:49:34,809 - __main__ - INFO - Global TODO files created:
+2025-07-25 20:49:34,809 - __main__ - INFO -   - GPU algorithms: global_TODO_GPU.txt
+2025-07-25 20:49:34,811 - __main__ - INFO -   - CPU algorithms: global_TODO_CPU.txt
+2025-07-25 20:49:34,814 - __main__ - INFO -   - Combined: global_TODO_test.txt
+2025-07-25 20:49:34,815 - __main__ - INFO - Master experiment runner completed successfully!
+2025-07-25 20:49:34,817 - __main__ - INFO - Global TODO files available:
+2025-07-25 20:49:34,817 - __main__ - INFO -   - GPU algorithms: global_TODO_GPU.txt
+2025-07-25 20:49:34,819 - __main__ - INFO -   - CPU algorithms: global_TODO_CPU.txt
+2025-07-25 20:49:34,819 - __main__ - INFO -   - Combined: global_TODO_test.txt
+2025-07-25 20:49:34,820 - __main__ - INFO - Run './run_global.sh -t global_TODO_GPU.txt -j 16' on GPU machine
+2025-07-25 20:49:34,820 - __main__ - INFO - Run './run_global.sh -t global_TODO_CPU.txt -j 16' on CPU machine
+2025-07-25 20:50:03,431 - __main__ - INFO - Starting master experiment runner...
+2025-07-25 20:50:03,432 - __main__ - INFO - Found 2 config files: ['test_gpu_cpu_split.json', 'comprehensive_library_experiment.json']
+2025-07-25 20:50:03,433 - __main__ - INFO - Phase 1: Setting up experiments...
+2025-07-25 20:50:03,434 - __main__ - INFO - Loaded config: test_gpu_cpu_split.json
+2025-07-25 20:50:03,435 - __main__ - INFO - Setting up experiment: TestGPUCpuSplit
+2025-07-25 20:50:03,447 - __main__ - INFO - Successfully set up experiment: TestGPUCpuSplit
+2025-07-25 20:50:03,448 - __main__ - INFO - Loaded config: comprehensive_library_experiment.json
+2025-07-25 20:50:03,449 - __main__ - INFO - Setting up experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:50:03,461 - __main__ - INFO - Successfully set up experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:50:03,461 - __main__ - INFO - Phase 2: Generating data for all experiments...
+2025-07-25 20:50:03,463 - __main__ - INFO - Generating data for all experiments...
+2025-07-25 20:50:03,465 - __main__ - INFO - Generating data for experiment: TestGPUCpuSplit
+2025-07-25 20:50:03,466 - experiment_runner - INFO - Starting data generation...
+2025-07-25 20:50:03,468 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-25 20:50:03,470 - experiment_runner - INFO - Running data generation for leadingones in generation environment
+2025-07-25 20:50:07,655 - experiment_runner - INFO - Successfully generated leadingones data
+2025-07-25 20:50:07,655 - experiment_runner - INFO - Generating data for onemax...
+2025-07-25 20:50:07,655 - experiment_runner - INFO - Running data generation for onemax in generation environment
+2025-07-25 20:50:11,703 - experiment_runner - INFO - Successfully generated onemax data
+2025-07-25 20:50:11,703 - __main__ - INFO - Generating data for experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:50:11,703 - experiment_runner - INFO - Starting data generation...
+2025-07-25 20:50:11,703 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-25 20:50:11,705 - experiment_runner - INFO - Running data generation for leadingones in generation environment
+2025-07-25 20:50:15,372 - experiment_runner - INFO - Successfully generated leadingones data
+2025-07-25 20:50:15,373 - experiment_runner - INFO - Generating data for onemax...
+2025-07-25 20:50:15,373 - experiment_runner - INFO - Running data generation for onemax in generation environment
+2025-07-25 20:50:19,539 - experiment_runner - INFO - Successfully generated onemax data
+2025-07-25 20:50:19,539 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-25 20:50:19,540 - experiment_runner - INFO - Running PSA-CMA-ES data generation in generation environment
+2025-07-25 20:50:30,371 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data
+2025-07-25 20:50:30,372 - __main__ - INFO - Phase 3: Creating TODO files for all experiments...
+2025-07-25 20:50:30,372 - __main__ - INFO - Creating TODO.txt files for all experiments...
+2025-07-25 20:50:30,372 - __main__ - INFO - Creating TODO.txt for experiment: TestGPUCpuSplit
+2025-07-25 20:50:30,374 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-25 20:50:30,376 - experiment_runner - INFO - Generating commands for control evaluation...
+2025-07-25 20:50:30,379 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/TestGPUCpuSplit/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-25 20:50:30,397 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/TestGPUCpuSplit/Datasets/Onemax/GTOneMax.csv
+2025-07-25 20:50:30,413 - experiment_runner - INFO - Created TODO files:
+2025-07-25 20:50:30,413 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/TestGPUCpuSplit/TODO_GPU.txt
+2025-07-25 20:50:30,415 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/TestGPUCpuSplit/TODO_CPU.txt
+2025-07-25 20:50:30,419 - __main__ - ERROR - Failed to create TODO.txt for experiment TestGPUCpuSplit: name 'todo_file' is not defined
+2025-07-25 20:50:30,419 - __main__ - INFO - Creating TODO.txt for experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:50:30,420 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-25 20:50:30,421 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-25 20:50:30,424 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-25 20:50:30,433 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Onemax/GTOneMax.csv
+2025-07-25 20:50:30,441 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-25 20:50:30,449 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-25 20:50:30,455 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-25 20:50:30,462 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-25 20:50:30,470 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-25 20:50:30,478 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-25 20:50:30,486 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-25 20:50:30,496 - experiment_runner - INFO - Created TODO files:
+2025-07-25 20:50:30,496 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/ComprehensiveLibraryExperiment/TODO_GPU.txt
+2025-07-25 20:50:30,497 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/ComprehensiveLibraryExperiment/TODO_CPU.txt
+2025-07-25 20:50:30,499 - __main__ - ERROR - Failed to create TODO.txt for experiment ComprehensiveLibraryExperiment: name 'todo_file' is not defined
+2025-07-25 20:50:30,499 - __main__ - INFO - Phase 4: Consolidating TODO lists...
+2025-07-25 20:50:30,501 - __main__ - INFO - Consolidating TODO lists into separate GPU and CPU files...
+2025-07-25 20:50:30,508 - __main__ - INFO - Processing TODO files from experiment 1: TestGPUCpuSplit
+2025-07-25 20:50:30,508 - __main__ - INFO - Adding GPU TODO list from experiment: TestGPUCpuSplit
+2025-07-25 20:50:30,512 - __main__ - INFO - Adding CPU TODO list from experiment: TestGPUCpuSplit
+2025-07-25 20:50:30,518 - __main__ - INFO - Processing TODO files from experiment 2: ComprehensiveLibraryExperiment
+2025-07-25 20:50:30,518 - __main__ - INFO - Adding GPU TODO list from experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:50:30,521 - __main__ - INFO - Adding CPU TODO list from experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:50:30,526 - __main__ - INFO - Global TODO files created:
+2025-07-25 20:50:30,526 - __main__ - INFO -   - GPU algorithms: global_TODO_GPU.txt
+2025-07-25 20:50:30,528 - __main__ - INFO -   - CPU algorithms: global_TODO_CPU.txt
+2025-07-25 20:50:30,530 - __main__ - INFO -   - Combined: global_TODO_test.txt
+2025-07-25 20:50:30,530 - __main__ - INFO - Master experiment runner completed successfully!
+2025-07-25 20:50:30,531 - __main__ - INFO - Global TODO files available:
+2025-07-25 20:50:30,532 - __main__ - INFO -   - GPU algorithms: global_TODO_GPU.txt
+2025-07-25 20:50:30,533 - __main__ - INFO -   - CPU algorithms: global_TODO_CPU.txt
+2025-07-25 20:50:30,535 - __main__ - INFO -   - Combined: global_TODO_test.txt
+2025-07-25 20:50:30,537 - __main__ - INFO - Run './run_global.sh -t global_TODO_GPU.txt -j 16' on GPU machine
+2025-07-25 20:50:30,539 - __main__ - INFO - Run './run_global.sh -t global_TODO_CPU.txt -j 16' on CPU machine
+2025-07-25 20:52:01,847 - __main__ - INFO - Starting master experiment runner...
+2025-07-25 20:52:01,848 - __main__ - INFO - Found 1 config files: ['comprehensive_library_experiment.json']
+2025-07-25 20:52:01,848 - __main__ - INFO - Phase 1: Setting up experiments...
+2025-07-25 20:52:01,850 - __main__ - INFO - Loaded config: comprehensive_library_experiment.json
+2025-07-25 20:52:01,850 - __main__ - INFO - Setting up experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:52:01,863 - __main__ - INFO - Successfully set up experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:52:01,864 - __main__ - INFO - Phase 2: Generating data for all experiments...
+2025-07-25 20:52:01,865 - __main__ - INFO - Generating data for all experiments...
+2025-07-25 20:52:01,866 - __main__ - INFO - Generating data for experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:52:01,868 - experiment_runner - INFO - Starting data generation...
+2025-07-25 20:52:01,869 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-25 20:52:01,870 - experiment_runner - INFO - Running data generation for leadingones in generation environment
+2025-07-25 20:52:05,577 - experiment_runner - INFO - Successfully generated leadingones data
+2025-07-25 20:52:05,577 - experiment_runner - INFO - Generating data for onemax...
+2025-07-25 20:52:05,577 - experiment_runner - INFO - Running data generation for onemax in generation environment
+2025-07-25 20:52:09,913 - experiment_runner - INFO - Successfully generated onemax data
+2025-07-25 20:52:09,913 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-25 20:52:09,914 - experiment_runner - INFO - Running PSA-CMA-ES data generation in generation environment
+2025-07-25 20:52:20,338 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data
+2025-07-25 20:52:20,338 - __main__ - INFO - Phase 3: Creating TODO files for all experiments...
+2025-07-25 20:52:20,338 - __main__ - INFO - Creating TODO.txt files for all experiments...
+2025-07-25 20:52:20,338 - __main__ - INFO - Creating TODO.txt for experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:52:20,340 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-25 20:52:20,341 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-25 20:52:20,344 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-25 20:52:20,353 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/Onemax/GTOneMax.csv
+2025-07-25 20:52:20,364 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-25 20:52:20,373 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-25 20:52:20,381 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-25 20:52:20,388 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-25 20:52:20,398 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-25 20:52:20,407 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-25 20:52:20,416 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/ComprehensiveLibraryExperiment/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-25 20:52:20,426 - experiment_runner - INFO - Created TODO files:
+2025-07-25 20:52:20,426 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/ComprehensiveLibraryExperiment/TODO_GPU.txt
+2025-07-25 20:52:20,428 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/ComprehensiveLibraryExperiment/TODO_CPU.txt
+2025-07-25 20:52:20,431 - __main__ - ERROR - Failed to create TODO.txt for experiment ComprehensiveLibraryExperiment: name 'todo_file' is not defined
+2025-07-25 20:52:20,431 - __main__ - INFO - Phase 4: Consolidating TODO lists...
+2025-07-25 20:52:20,433 - __main__ - INFO - Consolidating TODO lists into separate GPU and CPU files...
+2025-07-25 20:52:20,441 - __main__ - INFO - Processing TODO files from experiment 1: ComprehensiveLibraryExperiment
+2025-07-25 20:52:20,441 - __main__ - INFO - Adding GPU TODO list from experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:52:20,446 - __main__ - INFO - Adding CPU TODO list from experiment: ComprehensiveLibraryExperiment
+2025-07-25 20:52:20,452 - __main__ - INFO - Global TODO files created:
+2025-07-25 20:52:20,452 - __main__ - INFO -   - GPU algorithms: global_TODO_GPU.txt
+2025-07-25 20:52:20,454 - __main__ - INFO -   - CPU algorithms: global_TODO_CPU.txt
+2025-07-25 20:52:20,456 - __main__ - INFO -   - Combined: global_TODO.txt
+2025-07-25 20:52:20,457 - __main__ - INFO - Master experiment runner completed successfully!
+2025-07-25 20:52:20,459 - __main__ - INFO - Global TODO files available:
+2025-07-25 20:52:20,461 - __main__ - INFO -   - GPU algorithms: global_TODO_GPU.txt
+2025-07-25 20:52:20,461 - __main__ - INFO -   - CPU algorithms: global_TODO_CPU.txt
+2025-07-25 20:52:20,463 - __main__ - INFO -   - Combined: global_TODO.txt
+2025-07-25 20:52:20,463 - __main__ - INFO - Run './run_global.sh -t global_TODO_GPU.txt -j 16' on GPU machine
+2025-07-25 20:52:20,464 - __main__ - INFO - Run './run_global.sh -t global_TODO_CPU.txt -j 16' on CPU machine

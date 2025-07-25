@@ -262,45 +262,65 @@ class ExperimentRunner:
                     continue
                     
                 self.logger.info(f"Generating commands for {style_name} evaluation...")
-                self._generate_evaluation_commands(style_name, datasets_dir, results_dir, f)
+                self._generate_evaluation_commands(style_name, datasets_dir, results_dir, todo_path)
         
         self.logger.info(f"Generated TODO.txt with evaluation commands: {todo_path}")
         self.logger.info("Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel")
     
-    def _generate_evaluation_commands(self, style_name: str, datasets_dir: Path, results_dir: Path, todo_file):
+    def _generate_evaluation_commands(self, style_name: str, datasets_dir: Path, results_dir: Path, todo_file_path):
         """Generate evaluation commands for individual algorithms based on script contents."""
         scripts_dir = self.project_root / 'Scripts'
         
         # Get noise level from config
         noise_level = self.config['data_generation']['noise']['level']
         
-        # Define which algorithms are in each evaluation type
+        # Define which algorithms are in each evaluation type, with GPU/CPU classification
         algorithm_sets = {
-            'control': [
-                ('deepsr', 'unrounded/control_library/deepsr.sh'),
-                ('pysr', 'unrounded/control_library/pysr.sh'),
-                ('kan', 'unrounded/control_library/kan.sh'),
-                ('qlattice', 'unrounded/control_library/qlattice.sh'),
-                ('e2e_transformer', 'unrounded/control_library/e2e_transformer.sh'),
-                ('tpsr', 'unrounded/control_library/tpsr.sh'),
-                ('linear', 'unrounded/control_library/linear.sh')
-            ],
-            'library': [
-                ('deepsr', 'unrounded/algorithm_library/deepsr_lib.sh'),
-                ('pysr', 'unrounded/algorithm_library/pysr_lib.sh'),
-                ('tpsr', 'unrounded/algorithm_library/tpsr_lib.sh'),
-                ('linear', 'unrounded/algorithm_library/linear_lib.sh')
-            ],
-            'rounding': [
-                ('deepsr', 'rounded/deepsr.sh'),
-                ('pysr', 'rounded/pysr.sh'),
-                ('tpsr', 'rounded/tpsr.sh'),
-                ('linear', 'rounded/linear.sh')
-            ]
+            'control': {
+                'gpu': [
+                    ('deepsr', 'unrounded/control_library/deepsr.sh'),
+                    ('kan', 'unrounded/control_library/kan.sh'),
+                    ('e2e_transformer', 'unrounded/control_library/e2e_transformer.sh'),
+                    ('tpsr', 'unrounded/control_library/tpsr.sh')
+                ],
+                'cpu': [
+                    ('pysr', 'unrounded/control_library/pysr.sh'),
+                    ('qlattice', 'unrounded/control_library/qlattice.sh'),
+                    ('linear', 'unrounded/control_library/linear.sh')
+                ]
+            },
+            'library': {
+                'gpu': [
+                    ('deepsr', 'unrounded/algorithm_library/deepsr_lib.sh'),
+                    ('tpsr', 'unrounded/algorithm_library/tpsr_lib.sh')
+                ],
+                'cpu': [
+                    ('pysr', 'unrounded/algorithm_library/pysr_lib.sh'),
+                    ('linear', 'unrounded/algorithm_library/linear_lib.sh')
+                ]
+            },
+            'rounding': {
+                'gpu': [
+                    ('deepsr', 'rounded/deepsr.sh'),
+                    ('tpsr', 'rounded/tpsr.sh')
+                ],
+                'cpu': [
+                    ('pysr', 'rounded/pysr.sh'),
+                    ('linear', 'rounded/linear.sh')
+                ]
+            }
         }
         
         # Get the algorithms for this evaluation type
-        algorithms = algorithm_sets.get(style_name, [])
+        algorithms = algorithm_sets.get(style_name, {'gpu': [], 'cpu': []})
+        
+        # Create separate TODO files for GPU and CPU algorithms
+        gpu_todo_file = self.experiment_dir / "TODO_GPU.txt"
+        cpu_todo_file = self.experiment_dir / "TODO_CPU.txt"
+        
+        # Initialize the files
+        gpu_todo_file.write_text("")
+        cpu_todo_file.write_text("")
         
         # Process each benchmark's CSV files
         for benchmark_name, benchmark_config in self.config['data_generation']['benchmarks'].items():
@@ -320,8 +340,8 @@ class ExperimentRunner:
                 if csv_path.exists():
                     self.logger.info(f"Adding individual algorithm commands for {benchmark_name} {data_type} data: {csv_path}")
                     
-                    # Generate commands for each algorithm in this evaluation type
-                    for alg_name, script_path in algorithms:
+                    # Generate commands for GPU algorithms
+                    for alg_name, script_path in algorithms['gpu']:
                         full_script_path = scripts_dir / script_path
                         
                         # Use relative path for CSV file since run.sh will be executed from experiment directory
@@ -337,8 +357,28 @@ class ExperimentRunner:
                         else:
                             raise ValueError(f"Unknown analysis style: {style_name}")
                         
-                        todo_file.write(f"# {style_name} {alg_name} for {benchmark_name}\n")
-                        todo_file.write(f"{cmd}\n\n")
+                        with open(gpu_todo_file, 'a') as f:
+                            f.write(f"# {style_name} {alg_name} for {benchmark_name}\n{cmd}\n\n")
+                    
+                    # Generate commands for CPU algorithms
+                    for alg_name, script_path in algorithms['cpu']:
+                        full_script_path = scripts_dir / script_path
+                        
+                        # Use relative path for CSV file since run.sh will be executed from experiment directory
+                        relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                        
+                        if style_name == 'control':
+                            cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                        elif style_name == 'library':
+                            problem_type = 'leading_ones' if benchmark_name == 'leadingones' else 'one_max'
+                            cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{problem_type}" "{noise_level}"'
+                        elif style_name == 'rounding':
+                            cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                        else:
+                            raise ValueError(f"Unknown analysis style: {style_name}")
+                        
+                        with open(cpu_todo_file, 'a') as f:
+                            f.write(f"# {style_name} {alg_name} for {benchmark_name}\n{cmd}\n\n")
                 else:
                     self.logger.warning(f"CSV file not found: {csv_path}")
             
@@ -355,8 +395,8 @@ class ExperimentRunner:
                         if csv_path.exists():
                             self.logger.info(f"Adding individual algorithm commands for PSA-CMA-ES {sub_benchmark} {data_type} data: {csv_path}")
                             
-                            # Generate commands for each algorithm in this evaluation type
-                            for alg_name, script_path in algorithms:
+                            # Generate commands for GPU algorithms
+                            for alg_name, script_path in algorithms['gpu']:
                                 full_script_path = scripts_dir / script_path
                                 
                                 # Use relative path for CSV file since run.sh will be executed from experiment directory
@@ -371,25 +411,41 @@ class ExperimentRunner:
                                 else:
                                     raise ValueError(f"Unknown analysis style: {style_name}")
                                 
-                                todo_file.write(f"# {style_name} {alg_name} for PSA-CMA-ES {sub_benchmark}\n")
-                                todo_file.write(f"{cmd}\n\n")
+                                with open(gpu_todo_file, 'a') as f:
+                                    f.write(f"# {style_name} {alg_name} for PSA-CMA-ES {sub_benchmark}\n{cmd}\n\n")
+                            
+                            # Generate commands for CPU algorithms
+                            for alg_name, script_path in algorithms['cpu']:
+                                full_script_path = scripts_dir / script_path
+                                
+                                # Use relative path for CSV file since run.sh will be executed from experiment directory
+                                relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                                
+                                if style_name == 'control':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                elif style_name == 'library':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                elif style_name == 'rounding':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                else:
+                                    raise ValueError(f"Unknown analysis style: {style_name}")
+                                
+                                with open(cpu_todo_file, 'a') as f:
+                                    f.write(f"# {style_name} {alg_name} for PSA-CMA-ES {sub_benchmark}\n{cmd}\n\n")
                         else:
                             self.logger.warning(f"CSV file not found: {csv_path}")
-                else:
-                    self.logger.info("Skipping individual PSA-CMA-ES benchmark commands (individual_benchmarks disabled)")
                 
-                # Handle all_benchmarks.csv if enabled
-                if benchmark_config.get('all_benchmarks', True):
-                    all_benchmarks_csv_path = datasets_dir / 'PSACMAES' / 'all_benchmarks.csv'
-                    if all_benchmarks_csv_path.exists():
-                        self.logger.info(f"Adding individual algorithm commands for PSA-CMA-ES all_benchmarks {data_type} data: {all_benchmarks_csv_path}")
+                # Handle aggregated PSA-CMA-ES data if enabled
+                if benchmark_config.get('all_benchmarks', False):
+                    csv_path = datasets_dir / 'PSACMAES' / 'all_benchmarks.csv'
+                    
+                    if csv_path.exists():
+                        self.logger.info(f"Adding individual algorithm commands for PSA-CMA-ES aggregated data: {csv_path}")
                         
-                        # Generate commands for each algorithm in this evaluation type
-                        for alg_name, script_path in algorithms:
+                        # Generate commands for GPU algorithms
+                        for alg_name, script_path in algorithms['gpu']:
                             full_script_path = scripts_dir / script_path
-                            
-                            # Use relative path for CSV file since run.sh will be executed from experiment directory
-                            relative_csv_path = all_benchmarks_csv_path.relative_to(self.experiment_dir)
+                            relative_csv_path = csv_path.relative_to(self.experiment_dir)
                             
                             if style_name == 'control':
                                 cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
@@ -400,48 +456,140 @@ class ExperimentRunner:
                             else:
                                 raise ValueError(f"Unknown analysis style: {style_name}")
                             
-                            todo_file.write(f"# {style_name} {alg_name} for PSA-CMA-ES all_benchmarks\n")
-                            todo_file.write(f"{cmd}\n\n")
-                    else:
-                        self.logger.warning(f"All benchmarks CSV file not found: {all_benchmarks_csv_path}")
-                else:
-                    self.logger.info("Skipping PSA-CMA-ES all_benchmarks commands (all_benchmarks disabled)")
-                
-                # Handle leave-one-out comparison datasets if compare is enabled
-                if benchmark_config.get('compare', False):
-                    absent_dir = datasets_dir / 'PSACMAES' / 'absent'
-                    if absent_dir.exists():
-                        for excluded_benchmark in benchmark_config['sub_benchmarks']:
-                            csv_filename = "psa_vars.csv"  # The actual data file
-                            csv_path = absent_dir / excluded_benchmark / csv_filename
+                            with open(gpu_todo_file, 'a') as f:
+                                f.write(f"# {style_name} {alg_name} for PSA-CMA-ES all_benchmarks\n{cmd}\n\n")
+                        
+                        # Generate commands for CPU algorithms
+                        for alg_name, script_path in algorithms['cpu']:
+                            full_script_path = scripts_dir / script_path
+                            relative_csv_path = csv_path.relative_to(self.experiment_dir)
                             
-                            if csv_path.exists():
-                                self.logger.info(f"Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding {excluded_benchmark}) {data_type} data: {csv_path}")
-                                
-                                # Generate commands for each algorithm in this evaluation type
-                                for alg_name, script_path in algorithms:
-                                    full_script_path = scripts_dir / script_path
-                                    
-                                    # Use relative path for CSV file since run.sh will be executed from experiment directory
-                                    relative_csv_path = csv_path.relative_to(self.experiment_dir)
-                                    
-                                    if style_name == 'control':
-                                        cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
-                                    elif style_name == 'library':
-                                        cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
-                                    elif style_name == 'rounding':
-                                        cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
-                                    else:
-                                        raise ValueError(f"Unknown analysis style: {style_name}")
-                                    
-                                    todo_file.write(f"# {style_name} {alg_name} for PSA-CMA-ES leave-one-out (excluding {excluded_benchmark})\n")
-                                    todo_file.write(f"{cmd}\n\n")
+                            if style_name == 'control':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                            elif style_name == 'library':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                            elif style_name == 'rounding':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                             else:
-                                self.logger.warning(f"Leave-one-out CSV file not found: {csv_path}")
+                                raise ValueError(f"Unknown analysis style: {style_name}")
+                            
+                            with open(cpu_todo_file, 'a') as f:
+                                f.write(f"# {style_name} {alg_name} for PSA-CMA-ES all_benchmarks\n{cmd}\n\n")
                     else:
-                        self.logger.warning(f"Leave-one-out directory not found: {absent_dir}")
-    
-
+                        self.logger.warning(f"CSV file not found: {csv_path}")
+                
+                # Handle leave-one-out analysis if enabled
+                if benchmark_config.get('compare', False):
+                    for sub_benchmark in benchmark_config['sub_benchmarks']:
+                        sub_benchmark_lower = sub_benchmark.lower().replace('_', '')
+                        csv_path = datasets_dir / 'PSACMAES' / 'absent' / sub_benchmark_lower / 'psa_vars.csv'
+                        
+                        if csv_path.exists():
+                            self.logger.info(f"Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding {sub_benchmark}): {csv_path}")
+                            
+                            # Generate commands for GPU algorithms
+                            for alg_name, script_path in algorithms['gpu']:
+                                full_script_path = scripts_dir / script_path
+                                relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                                
+                                if style_name == 'control':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                elif style_name == 'library':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                elif style_name == 'rounding':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                else:
+                                    raise ValueError(f"Unknown analysis style: {style_name}")
+                                
+                                with open(gpu_todo_file, 'a') as f:
+                                    f.write(f"# {style_name} {alg_name} for PSA-CMA-ES leave-one-out (excluding {sub_benchmark})\n{cmd}\n\n")
+                            
+                            # Generate commands for CPU algorithms
+                            for alg_name, script_path in algorithms['cpu']:
+                                full_script_path = scripts_dir / script_path
+                                relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                                
+                                if style_name == 'control':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                elif style_name == 'library':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                elif style_name == 'rounding':
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                                else:
+                                    raise ValueError(f"Unknown analysis style: {style_name}")
+                                
+                                with open(cpu_todo_file, 'a') as f:
+                                    f.write(f"# {style_name} {alg_name} for PSA-CMA-ES leave-one-out (excluding {sub_benchmark})\n{cmd}\n\n")
+                        else:
+                            self.logger.warning(f"CSV file not found: {csv_path}")
+            
+            elif benchmark_name == 'model':
+                # Handle model-based benchmarks
+                for instance_size in benchmark_config['instance_sizes']:
+                    csv_filename = f"model_data_{instance_size}.csv"
+                    csv_path = datasets_dir / 'Model' / csv_filename
+                    
+                    if csv_path.exists():
+                        self.logger.info(f"Adding individual algorithm commands for model data {instance_size}: {csv_path}")
+                        
+                        # Generate commands for GPU algorithms
+                        for alg_name, script_path in algorithms['gpu']:
+                            full_script_path = scripts_dir / script_path
+                            relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                            
+                            if style_name == 'control':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                            elif style_name == 'library':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "model" "{noise_level}"'
+                            elif style_name == 'rounding':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                            else:
+                                raise ValueError(f"Unknown analysis style: {style_name}")
+                            
+                            with open(gpu_todo_file, 'a') as f:
+                                f.write(f"# {style_name} {alg_name} for model data {instance_size}\n{cmd}\n\n")
+                        
+                        # Generate commands for CPU algorithms
+                        for alg_name, script_path in algorithms['cpu']:
+                            full_script_path = scripts_dir / script_path
+                            relative_csv_path = csv_path.relative_to(self.experiment_dir)
+                            
+                            if style_name == 'control':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                            elif style_name == 'library':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "model" "{noise_level}"'
+                            elif style_name == 'rounding':
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
+                            else:
+                                raise ValueError(f"Unknown analysis style: {style_name}")
+                            
+                            with open(cpu_todo_file, 'a') as f:
+                                f.write(f"# {style_name} {alg_name} for model data {instance_size}\n{cmd}\n\n")
+                    else:
+                        self.logger.warning(f"CSV file not found: {csv_path}")
+        
+        # Write the combined TODO file for backward compatibility
+        with open(todo_file_path, 'w') as f:
+            f.write("# Combined TODO List - GPU and CPU Algorithms\n")
+            f.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"# Analysis Style: {style_name}\n\n")
+            
+            # Add GPU algorithms section
+            f.write("# GPU Algorithms\n")
+            f.write("# ==============\n")
+            if gpu_todo_file.exists():
+                f.write(gpu_todo_file.read_text())
+            
+            # Add CPU algorithms section
+            f.write("# CPU Algorithms\n")
+            f.write("# ==============\n")
+            if cpu_todo_file.exists():
+                f.write(cpu_todo_file.read_text())
+        
+        self.logger.info(f"Created TODO files:")
+        self.logger.info(f"  - GPU algorithms: {gpu_todo_file}")
+        self.logger.info(f"  - CPU algorithms: {cpu_todo_file}")
+        self.logger.info(f"  - Combined: {todo_file}")
     
     def collect_results(self):
         """Collect and organize results."""

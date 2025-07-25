@@ -1,179 +1,124 @@
-# Global TODO List - All Experiments
-# Generated: 2025-07-25 20:29:08
-# Total experiments: 2
+# Global TODO List - All Algorithms (Combined)
+# Generated: 2025-07-25 20:52:20
+# Total experiments: 1
+# Note: Use global_TODO_GPU.txt and global_TODO_CPU.txt for separate execution
 
 # ============================================================
-# EXPERIMENT 1: TestPSAAggregatedOnly
-# Directory: Experiments/SuiteA/TestPSAAggregatedOnly
-# ============================================================
-
-# Evaluation commands for parallel execution
-# Experiment: TestPSAAggregatedOnly
-# Generated: 2025-07-25 20:29:08
-
-# library deepsr for PSA-CMA-ES all_benchmarks
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES all_benchmarks
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
-
-# library tpsr for PSA-CMA-ES all_benchmarks
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
-
-# library linear for PSA-CMA-ES all_benchmarks
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
-
-# library deepsr for PSA-CMA-ES leave-one-out (excluding sphere)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
-
-# library tpsr for PSA-CMA-ES leave-one-out (excluding sphere)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
-
-# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
-
-# library deepsr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
-
-# library tpsr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
-
-# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
-
-# library deepsr for PSA-CMA-ES leave-one-out (excluding rastrigin)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
-
-# library tpsr for PSA-CMA-ES leave-one-out (excluding rastrigin)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
-
-# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
-
-
-
-# ============================================================
-# EXPERIMENT 2: ComprehensiveLibraryExperiment
+# EXPERIMENT 1: ComprehensiveLibraryExperiment
 # Directory: Experiments/SuiteA/ComprehensiveLibraryExperiment
 # ============================================================
 
 # Evaluation commands for parallel execution
 # Experiment: ComprehensiveLibraryExperiment
-# Generated: 2025-07-25 20:29:08
+# Generated: 2025-07-25 20:52:20
 
+ ==============
 # library deepsr for leadingones
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "1e-12"
-
-# library pysr for leadingones
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "1e-12"
 
 # library tpsr for leadingones
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "1e-12"
 
-# library linear for leadingones
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "1e-12"
-
 # library deepsr for onemax
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/Onemax/GTOneMax.csv" "one_max" "1e-12"
-
-# library pysr for onemax
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/Onemax/GTOneMax.csv" "one_max" "1e-12"
 
 # library tpsr for onemax
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/Onemax/GTOneMax.csv" "one_max" "1e-12"
 
-# library linear for onemax
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/Onemax/GTOneMax.csv" "one_max" "1e-12"
-
 # library deepsr for PSA-CMA-ES sphere
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/sphere/psa_vars.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES sphere
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/sphere/psa_vars.csv" "psacmaes" "1e-12"
 
 # library tpsr for PSA-CMA-ES sphere
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/sphere/psa_vars.csv" "psacmaes" "1e-12"
 
-# library linear for PSA-CMA-ES sphere
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/sphere/psa_vars.csv" "psacmaes" "1e-12"
-
 # library deepsr for PSA-CMA-ES ellipsoid
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES ellipsoid
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
 
 # library tpsr for PSA-CMA-ES ellipsoid
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
 
-# library linear for PSA-CMA-ES ellipsoid
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
-
 # library deepsr for PSA-CMA-ES rastrigin
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES rastrigin
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
 
 # library tpsr for PSA-CMA-ES rastrigin
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
 
-# library linear for PSA-CMA-ES rastrigin
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
-
 # library deepsr for PSA-CMA-ES all_benchmarks
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES all_benchmarks
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
 
 # library tpsr for PSA-CMA-ES all_benchmarks
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
 
-# library linear for PSA-CMA-ES all_benchmarks
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
-
 # library deepsr for PSA-CMA-ES leave-one-out (excluding sphere)
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
 
 # library tpsr for PSA-CMA-ES leave-one-out (excluding sphere)
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
 
-# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
-
 # library deepsr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
-
-# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
 
 # library tpsr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
 
-# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
-
 # library deepsr for PSA-CMA-ES leave-one-out (excluding rastrigin)
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/deepsr_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
 
-# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
-bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
-
 # library tpsr for PSA-CMA-ES leave-one-out (excluding rastrigin)
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/tpsr_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
+
+# CPU Algorithms
+# ==============
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "1e-12"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "1e-12"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/Onemax/GTOneMax.csv" "one_max" "1e-12"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/Onemax/GTOneMax.csv" "one_max" "1e-12"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/sphere/psa_vars.csv" "psacmaes" "1e-12"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/sphere/psa_vars.csv" "psacmaes" "1e-12"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/all_benchmarks.csv" "psacmaes" "1e-12"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psacmaes" "1e-12"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psacmaes" "1e-12"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
 
 # library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
 bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psacmaes" "1e-12"
