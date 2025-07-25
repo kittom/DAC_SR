@@ -32,7 +32,7 @@ def generate_leadingones_model_csv(model_path=MODEL_PATH, n_values=N_VALUES, out
             # Get action from model (no exploration)
             action, _ = model.predict(state, deterministic=True)
             if rounded:
-            bitflips = int(np.clip(np.round(1 + action[0] * (n - 1)), 1, n))
+                bitflips = int(np.clip(np.round(1 + action[0] * (n - 1)), 1, n))
             else:
                 bitflips = float(np.clip(1 + action[0] * (n - 1), 1, n))
             data.append([n, current_state, bitflips])

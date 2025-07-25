@@ -30,6 +30,10 @@ Experiments/*/Datasets/**
 Experiments/Experiment1/Datasets/
 Experiments/Experiment1/Datasets/**
 
+# Ignore all Experiment directories and their contents
+Experiments/
+Experiments/**
+
 # Python
 __pycache__/
 *.py[cod]

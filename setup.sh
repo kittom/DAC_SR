@@ -1,108 +1,56 @@
 #!/bin/bash
 
-# Setup script for DAC_SR conda environments
+# Automated setup for DAC_SR conda environments using environment.yml files and mamba for speed
 # This script assumes conda is already installed and accessible
 
 set -e  # Exit on any error
 
-echo "Setting up conda environments for DAC_SR project..."
+ENV_DIR="setup_environments"
+ENVS=(analysis dso_env dso_env_rounding e2e_transformer evaluation generation kan linear psa_cmaes pysr_env q_lat tpsr)
 
-# Check if conda is available
+# Ensure conda is available
 if ! command -v conda &> /dev/null; then
     echo "ERROR: conda is not available. Please install conda first."
     exit 1
 fi
 
-echo "Conda version: $(conda --version)"
-
-# Accept conda channel Terms of Service if needed
-echo "Accepting conda channel Terms of Service..."
-conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main || true
-conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r || true
-
-# Create DeepSR environment (dso_env) with Python 3.7
-echo "Creating dso_env environment for DeepSR (Python 3.7)..."
-conda create -n dso_env python=3.7 -y
-
-# Create E2E_Transformer environment (e2e_transformer) with Python 3.8
-echo "Creating e2e_transformer environment for E2E_Transformer (Python 3.8)..."
-conda env create --name e2e_transformer --file=SR_algorithms/E2E_Transformer/e2e_Transformer/environment.yml
-
-# Create pykan environment (kan) with Python 3.10
-echo "Creating kan environment for pykan (Python 3.10)..."
-conda create -n kan python=3.10 -y
-
-# Create Q_Lattice environment (q_lat) with latest Python
-echo "Creating q_lat environment for Q_Lattice (Python 3.13)..."
-conda create -n q_lat python=3.8 -y
-
-# Create generation environment for data generation and DeepRL models
-echo "Creating generation environment for data generation and DeepRL models (Python 3.10)..."
-conda create -n generation python=3.10 -y
-
-# Create PySR environment (pysr_env) with Python 3.10
-# PySR requires Python >=3.8, using 3.10 for compatibility
-conda create -n pysr_env python=3.10 -y
-
-# Create evaluation environment (evaluation) with Python 3.10
-echo "Creating evaluation environment for results analysis and visualization (Python 3.10)..."
-conda create -n evaluation python=3.10 -y
-
-# Install requirements for each environment
-
 # Ensure conda activate works in this shell
-source ~/miniconda3/etc/profile.d/conda.sh
+source ~/miniconda3/etc/profile.d/conda.sh || source $(conda info --base)/etc/profile.d/conda.sh
 
-# DeepSR
-echo "Installing requirements for DeepSR..."
-conda activate dso_env
-pip install --upgrade setuptools pip
-pip install -e ./SR_algorithms/DeepSR/deep-symbolic-optimization/dso
-conda deactivate
+# Install mamba if not already installed
+if ! conda list | grep -q "^mamba[[:space:]]"; then
+    echo "Mamba not found. Installing mamba for faster environment solving..."
+    conda install mamba -c conda-forge -y
+else
+    echo "Mamba is already installed."
+fi
 
-# E2E_Transformer
-echo "Installing requirements for E2E_Transformer..."
-conda activate e2e_transformer
-pip install git+https://github.com/pakamienny/sympytorch
-conda deactivate
+for env in "${ENVS[@]}"; do
+    YML_FILE="$ENV_DIR/${env}_environment.yml"
+    if [ ! -f "$YML_FILE" ]; then
+        echo "WARNING: $YML_FILE not found, skipping $env."
+        continue
+    fi
+    # Check if environment already exists
+    if conda env list | grep -q "^$env[[:space:]]"; then
+        echo "Environment $env already exists, skipping."
+        continue
+    fi
+    echo "\n========================================="
+    echo "Creating conda environment: $env"
+    echo "Using YAML: $YML_FILE"
+    echo "========================================="
+    mamba env create -f "$YML_FILE"
+    echo "Environment $env setup complete."
+done
 
-# pykan
-echo "Installing requirements for pykan..."
-conda activate kan
-pip install -r SR_algorithms/pykan/requirements.txt
-conda deactivate
-
-# Q_Lattice
-echo "Installing requirements for Q_Lattice..."
-conda activate q_lat
-pip3 install -r SR_algorithms/Q_Lattice/Code/requirements.txt
-conda deactivate
-
-# PySR
-echo "Installing requirements for PySR..."
-conda activate pysr_env
-pip install -r SR_algorithms/PySR/requirements.txt
-conda deactivate
-
-# Evaluation
-echo "Installing requirements for evaluation..."
-conda activate evaluation
-pip install -r Evaluation/requirements.txt
-conda deactivate
-
-echo ""
-echo "All conda environments created successfully!"
-echo ""
-echo "Available environments:"
+echo "\nAll conda environments created successfully!"
+echo "\nAvailable environments:"
 conda env list
-echo ""
-echo "To activate an environment, use:"
-echo "  conda activate dso_env      # For DeepSR"
-echo "  conda activate e2e_transformer  # For E2E_Transformer"
-echo "  conda activate kan          # For pykan"
-echo "  conda activate q_lat        # For Q_Lattice"
-echo "  conda activate generation   # For data generation and DeepRL models"
-echo "  conda activate pysr_env        # For PySR"
-echo "  conda activate evaluation   # For evaluation"
-echo ""
-echo "Setup complete!" 
+
+echo "\nTo activate an environment, use:"
+for env in "${ENVS[@]}"; do
+    echo "  conda activate $env"
+done
+
+echo "\nSetup complete!" 

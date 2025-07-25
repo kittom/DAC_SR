@@ -28,20 +28,28 @@ echo "=========================================="
 echo "Running All Symbolic Regression Algorithms"
 echo "=========================================="
 echo "CSV File: $CSV_FILE"
-echo "Noise Parameter: $NOISE"
+if [ -n "$NOISE" ]; then
+    echo "Noise Parameter: $NOISE"
+else
+    echo "Noise Parameter: (not provided, will use model defaults)"
+fi
 echo "=========================================="
 
 # Function to run an algorithm and check for success
 run_and_check() {
     local algorithm_name="$1"
     local script_path="$2"
-    
+
     echo ""
     echo "Running $algorithm_name..."
     echo "----------------------------------------"
-    
+
     if [ -f "$script_path" ]; then
-        bash "$script_path" "$CSV_FILE" "$NOISE"
+        if [ -n "$NOISE" ]; then
+            bash "$script_path" "$CSV_FILE" "$NOISE"
+        else
+            bash "$script_path" "$CSV_FILE"
+        fi
         if [ $? -eq 0 ]; then
             echo "✓ $algorithm_name completed successfully"
         else
@@ -52,7 +60,7 @@ run_and_check() {
     fi
 }
 
-# Run all algorithms with noise parameter
+# Run all algorithms
 run_and_check "DeepSR" "$SCRIPT_DIR/unrounded/control_library/deepsr.sh"
 run_and_check "PySR" "$SCRIPT_DIR/unrounded/control_library/pysr.sh"
 run_and_check "KAN" "$SCRIPT_DIR/unrounded/control_library/kan.sh"

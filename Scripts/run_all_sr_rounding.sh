@@ -40,13 +40,20 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Run E2E Transformer (rounding)
-echo "\n--- Running E2E Transformer (rounding) ---"
-bash "$SCRIPTS_DIR/rounded/e2e_transformer.sh" "$CSV_FILE"
+# Run TPSR (rounding)
+echo "\n--- Running TPSR (rounding) ---"
+bash "$SCRIPTS_DIR/rounded/tpsr.sh" "$CSV_FILE" "$NOISE"
 if [ $? -ne 0 ]; then
-    echo "Error: E2E Transformer (rounding) failed! Exiting."
+    echo "Error: TPSR (rounding) failed! Exiting."
     exit 1
 fi
 
+# Run Linear Regression (rounding)
+echo "\n--- Running Linear Regression (rounding) ---"
+bash "$SCRIPTS_DIR/rounded/linear.sh" "$CSV_FILE" "$NOISE"
+if [ $? -ne 0 ]; then
+    echo "Error: Linear Regression (rounding) failed! Exiting."
+    exit 1
+fi
 
 echo "\nAll (rounding-enabled) symbolic regression algorithms completed." 
