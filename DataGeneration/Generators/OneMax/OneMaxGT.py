@@ -5,7 +5,7 @@ import math
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
 
-def generate_one_max_ground_truth(instance_sizes=None, data_type='continuous', output_dir=None):
+def generate_one_max_ground_truth(instance_sizes=None, data_type='continuous', output_dir=None, evaluation_type=None):
     """
     Generate ground truth data for OneMax problem.
     """
@@ -46,24 +46,26 @@ def generate_one_max_ground_truth(instance_sizes=None, data_type='continuous', o
     ground_truth_equation = "sqrt(x1/(x1-x2))" if data_type == 'continuous' else "round(sqrt(x1/(x1-x2)))"
     
     if data_type == 'continuous':
-        # Create two results files for continuous data with ground truth as first column
-        # 1. For control library evaluation (results.csv)
-        control_results_path = os.path.join(out_dir, 'results.csv')
-        control_results_data = {
-            'ground_truth': [ground_truth_equation]
-        }
-        control_results_df = pd.DataFrame(control_results_data)
-        control_results_df.to_csv(control_results_path, index=False)
-        print(f"Control library results file created: {control_results_path}")
+        # Create results file based on evaluation type
+        if evaluation_type == 'control' or evaluation_type is None:
+            # For control library evaluation (results.csv)
+            control_results_path = os.path.join(out_dir, 'results.csv')
+            control_results_data = {
+                'ground_truth': [ground_truth_equation]
+            }
+            control_results_df = pd.DataFrame(control_results_data)
+            control_results_df.to_csv(control_results_path, index=False)
+            print(f"Control library results file created: {control_results_path}")
         
-        # 2. For tailored library evaluation (results_lib.csv)
-        tailored_results_path = os.path.join(out_dir, 'results_lib.csv')
-        tailored_results_data = {
-            'ground_truth': [ground_truth_equation]
-        }
-        tailored_results_df = pd.DataFrame(tailored_results_data)
-        tailored_results_df.to_csv(tailored_results_path, index=False)
-        print(f"Tailored library results file created: {tailored_results_path}")
+        if evaluation_type == 'library' or evaluation_type is None:
+            # For tailored library evaluation (results_lib.csv)
+            tailored_results_path = os.path.join(out_dir, 'results_lib.csv')
+            tailored_results_data = {
+                'ground_truth': [ground_truth_equation]
+            }
+            tailored_results_df = pd.DataFrame(tailored_results_data)
+            tailored_results_df.to_csv(tailored_results_path, index=False)
+            print(f"Tailored library results file created: {tailored_results_path}")
         
     else:  # discrete
         # Create one results file for discrete data (rounding evaluation)
@@ -89,7 +91,9 @@ if __name__ == "__main__":
                        help='Type of data to generate')
     parser.add_argument('--output-dir', type=str, default=None,
                        help='Output directory for the generated data')
+    parser.add_argument('--evaluation-type', choices=['control', 'library', 'rounding'], default=None,
+                       help='Type of evaluation to prepare results for')
     
     args = parser.parse_args()
     
-    df = generate_one_max_ground_truth(args.instance_sizes, args.data_type, args.output_dir) 
+    df = generate_one_max_ground_truth(args.instance_sizes, args.data_type, args.output_dir, args.evaluation_type) 

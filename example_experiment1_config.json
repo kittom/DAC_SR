@@ -1,0 +1,130 @@
+{
+  "experiment": {
+    "name": "Experiment 1 - Continuous Data Only",
+    "description": "Learning Ground Truth Equations for Benchmark Problems with continuous data only",
+    "version": "1.0",
+    "created": "2024-01-01",
+    "author": "User"
+  },
+  
+  "data_generation": {
+    "benchmarks": {
+      "leadingones": {
+        "enabled": true,
+        "instance_sizes": [10, 20, 30, 40, 50, 100, 200, 500],
+        "data_type": "continuous"
+      },
+      "onemax": {
+        "enabled": true,
+        "instance_sizes": [10, 20, 30, 40, 50, 100, 200, 500],
+        "data_type": "continuous"
+      },
+      "psacmaes": {
+        "enabled": true,
+        "benchmarks": ["Sphere", "Ellipsoid", "Rastrigin", "Noisy_Ellipsoid", "Schaffer", "Noisy_Rastrigin"],
+        "data_type": "continuous",
+        "iterations": 1000
+      },
+      "model": {
+        "enabled": false,
+        "model_name": "",
+        "data_type": "continuous",
+        "iterations": 1000
+      }
+    },
+    "noise": {
+      "enabled": false,
+      "level": 1e-12,
+      "type": "gaussian"
+    },
+    "dropout": {
+      "enabled": false,
+      "rate": 0.0,
+      "type": "random_rows"
+    }
+  },
+  
+  "evaluation": {
+    "analysis_styles": {
+      "control": {
+        "enabled": true,
+        "description": "Full mathematical function library evaluation"
+      },
+      "library": {
+        "enabled": true,
+        "description": "Tailored library evaluation with minimal function sets"
+      },
+      "rounding": {
+        "enabled": true,
+        "description": "Rounding-enabled evaluation with discrete data"
+      }
+    },
+    "algorithms": {
+      "deepsr": {
+        "enabled": true,
+        "conda_env": "deepsr"
+      },
+      "pysr": {
+        "enabled": true,
+        "conda_env": "pysr"
+      },
+      "kan": {
+        "enabled": true,
+        "conda_env": "kan"
+      },
+      "qlattice": {
+        "enabled": true,
+        "conda_env": "feynman"
+      },
+      "e2e_transformer": {
+        "enabled": true,
+        "conda_env": "e2e_transformer"
+      },
+      "tpsr": {
+        "enabled": true,
+        "conda_env": "tpsr"
+      },
+      "linear": {
+        "enabled": true,
+        "conda_env": "linear"
+      }
+    },
+    "metrics": {
+      "nmse": true,
+      "r2_score": true,
+      "mae": true,
+      "mse": true
+    },
+    "stopping_criteria": {
+      "max_iterations": 100,
+      "min_iterations": 10,
+      "convergence_threshold": 1e-12,
+      "time_limit_seconds": 3600
+    }
+  },
+  
+  "output": {
+    "base_directory": "Experiments",
+    "suite_name": "SuiteA",
+    "experiment_name": "Experiment1_Config",
+    "results_format": "csv",
+    "save_intermediate_results": true,
+    "create_summary_report": true
+  },
+  
+  "execution": {
+    "parallel": {
+      "enabled": false,
+      "max_workers": 4
+    },
+    "logging": {
+      "level": "INFO",
+      "save_logs": true,
+      "log_file": "experiment.log"
+    },
+    "cleanup": {
+      "remove_intermediate_files": false,
+      "compress_results": false
+    }
+  }
+} 

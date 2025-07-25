@@ -22,13 +22,13 @@ echo "PSA-CMA-ES Data Generation (Continuous Only)"
 echo "=========================================="
 
 # Create datasets directory if it doesn't exist
-mkdir -p "$OUTPUT_DIR/PSACMAES/continuous"
+mkdir -p "$OUTPUT_DIR/PSACMAES"
 
-# Generate continuous PSA-CMA-ES datasets
-echo "Generating continuous PSA-CMA-ES datasets for all benchmarks..."
-python3 "$PYTHON_SCRIPT" --iterations 1000 --data-type continuous --output-root "$OUTPUT_DIR/PSACMAES/continuous"
+# Generate PSA-CMA-ES datasets
+echo "Generating PSA-CMA-ES datasets for all benchmarks..."
+python3 "$PYTHON_SCRIPT" --iterations 1000 --data-type continuous --output-root "$OUTPUT_DIR/PSACMAES"
 
 echo "=========================================="
 echo "PSA-CMA-ES data generation completed!"
-echo "Continuous datasets saved to: $OUTPUT_DIR/PSACMAES/continuous"
+echo "Datasets saved to: $OUTPUT_DIR/PSACMAES"
 echo "==========================================" 

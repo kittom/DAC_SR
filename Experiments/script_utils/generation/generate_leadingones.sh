@@ -22,13 +22,13 @@ echo "LeadingOnes Data Generation (Continuous Only)"
 echo "=========================================="
 
 # Create datasets directory if it doesn't exist
-mkdir -p "$OUTPUT_DIR/LeadingOnes/continuous"
+mkdir -p "$OUTPUT_DIR/LeadingOnes"
 
-# Generate continuous LeadingOnes datasets
-echo "Generating continuous LeadingOnes datasets for all portfolio sizes..."
-python3 "$PYTHON_SCRIPT" 10 20 30 40 50 100 200 500 --data-type continuous --output-dir "$OUTPUT_DIR/LeadingOnes/continuous"
+# Generate LeadingOnes datasets
+echo "Generating LeadingOnes datasets for all portfolio sizes..."
+python3 "$PYTHON_SCRIPT" 10 20 30 40 50 100 200 500 --data-type continuous --output-dir "$OUTPUT_DIR/LeadingOnes"
 
 echo "=========================================="
 echo "LeadingOnes data generation completed!"
-echo "Continuous datasets saved to: $OUTPUT_DIR/LeadingOnes/continuous"
+echo "Datasets saved to: $OUTPUT_DIR/LeadingOnes"
 echo "==========================================" 

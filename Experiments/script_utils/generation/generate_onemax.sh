@@ -22,13 +22,13 @@ echo "OneMax Data Generation (Continuous Only)"
 echo "=========================================="
 
 # Create datasets directory if it doesn't exist
-mkdir -p "$OUTPUT_DIR/OneMax/continuous"
+mkdir -p "$OUTPUT_DIR/OneMax"
 
-# Generate continuous OneMax datasets
-echo "Generating continuous OneMax datasets for all portfolio sizes..."
-python3 "$PYTHON_SCRIPT" 10 20 30 40 50 100 200 500 --data-type continuous --output-dir "$OUTPUT_DIR/OneMax/continuous"
+# Generate OneMax datasets
+echo "Generating OneMax datasets for all portfolio sizes..."
+python3 "$PYTHON_SCRIPT" 10 20 30 40 50 100 200 500 --data-type continuous --output-dir "$OUTPUT_DIR/OneMax"
 
 echo "=========================================="
 echo "OneMax data generation completed!"
-echo "Continuous datasets saved to: $OUTPUT_DIR/OneMax/continuous"
+echo "Datasets saved to: $OUTPUT_DIR/OneMax"
 echo "==========================================" 
