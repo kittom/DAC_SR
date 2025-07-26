@@ -405,7 +405,7 @@ class ExperimentRunner:
                                 if style_name == 'control':
                                     cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                                 elif style_name == 'library':
-                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psa" "{noise_level}"'
                                 elif style_name == 'rounding':
                                     cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                                 else:
@@ -424,7 +424,7 @@ class ExperimentRunner:
                                 if style_name == 'control':
                                     cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                                 elif style_name == 'library':
-                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psa" "{noise_level}"'
                                 elif style_name == 'rounding':
                                     cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                                 else:
@@ -450,7 +450,7 @@ class ExperimentRunner:
                             if style_name == 'control':
                                 cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                             elif style_name == 'library':
-                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psa" "{noise_level}"'
                             elif style_name == 'rounding':
                                 cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                             else:
@@ -467,7 +467,7 @@ class ExperimentRunner:
                             if style_name == 'control':
                                 cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                             elif style_name == 'library':
-                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psa" "{noise_level}"'
                             elif style_name == 'rounding':
                                 cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                             else:
@@ -495,7 +495,7 @@ class ExperimentRunner:
                                 if style_name == 'control':
                                     cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                                 elif style_name == 'library':
-                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psa" "{noise_level}"'
                                 elif style_name == 'rounding':
                                     cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                                 else:
@@ -512,7 +512,7 @@ class ExperimentRunner:
                                 if style_name == 'control':
                                     cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                                 elif style_name == 'library':
-                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psacmaes" "{noise_level}"'
+                                    cmd = f'bash "{full_script_path}" "{relative_csv_path}" "psa" "{noise_level}"'
                                 elif style_name == 'rounding':
                                     cmd = f'bash "{full_script_path}" "{relative_csv_path}" "{noise_level}"'
                                 else:
@@ -589,7 +589,7 @@ class ExperimentRunner:
         self.logger.info(f"Created TODO files:")
         self.logger.info(f"  - GPU algorithms: {gpu_todo_file}")
         self.logger.info(f"  - CPU algorithms: {cpu_todo_file}")
-        self.logger.info(f"  - Combined: {todo_file}")
+        self.logger.info(f"  - Combined: {todo_file_path}")
     
     def collect_results(self):
         """Collect and organize results."""

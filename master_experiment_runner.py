@@ -161,6 +161,8 @@ class MasterExperimentRunner:
                     
                     with open(experiment_gpu_todo_file, 'r') as exp_gpu_todo:
                         content = exp_gpu_todo.read()
+                        # Convert relative paths to absolute paths
+                        content = content.replace('"Datasets/', f'"{runner.experiment_dir}/Datasets/')
                         gpu_todo.write(content)
                         gpu_todo.write("\n\n")
             else:
@@ -177,6 +179,8 @@ class MasterExperimentRunner:
                     
                     with open(experiment_cpu_todo_file, 'r') as exp_cpu_todo:
                         content = exp_cpu_todo.read()
+                        # Convert relative paths to absolute paths
+                        content = content.replace('"Datasets/', f'"{runner.experiment_dir}/Datasets/')
                         cpu_todo.write(content)
                         cpu_todo.write("\n\n")
             else:
@@ -192,6 +196,8 @@ class MasterExperimentRunner:
                     
                     with open(experiment_todo_file, 'r') as exp_todo:
                         content = exp_todo.read()
+                        # Convert relative paths to absolute paths
+                        content = content.replace('"Datasets/', f'"{runner.experiment_dir}/Datasets/')
                         combined_todo.write(content)
                         combined_todo.write("\n\n")
             else:

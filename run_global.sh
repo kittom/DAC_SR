@@ -62,7 +62,7 @@ if command -v parallel &> /dev/null; then
     # Execute commands using GNU Parallel
     parallel --bar --jobs "$NUM_CPUS" --tagstring "[{1}/{2}]" \
              --joblog "global_experiment_joblog.txt" \
-             :::: <(grep "^bash " "$TODO_FILE" | nl -v1) \
+             :::: <(grep "^bash " "$TODO_FILE") \
              ::: "$TOTAL_COMMANDS"
              
 else
