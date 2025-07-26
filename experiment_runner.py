@@ -143,30 +143,36 @@ class ExperimentRunner:
         # Run the generator with conda environment activation
         conda_env = 'generation'  # Use the generation environment for data generation
         
-        # If rounding is enabled, prioritize it for data generation to ensure results_rounding.csv is created
-        # Otherwise use the first enabled evaluation type
-        if 'rounding' in enabled_evaluations:
-            evaluation_type = 'rounding'
-        elif len(enabled_evaluations) > 0:
-            evaluation_type = enabled_evaluations[0]
-        else:
-            evaluation_type = None
+        # Call the data generation script for each enabled evaluation type
+        # This ensures both results.csv and results_lib.csv are generated when both are enabled
+        for evaluation_type in enabled_evaluations:
+            cmd = [
+                '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script)
+            ] + size_args + ['--data-type', data_type, '--output-dir', str(benchmark_dir), '--evaluation-type', evaluation_type]
+            
+            self.logger.info(f"Running data generation for {benchmark_name} ({evaluation_type}) in {conda_env} environment")
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            
+            if result.returncode != 0:
+                self.logger.error(f"Data generation failed for {benchmark_name} ({evaluation_type}): {result.stderr}")
+                raise RuntimeError(f"Data generation failed for {benchmark_name} ({evaluation_type})")
+            else:
+                self.logger.info(f"Successfully generated {benchmark_name} data for {evaluation_type}")
         
-        evaluation_type_arg = f"--evaluation-type {evaluation_type}" if evaluation_type else ""
-        cmd = [
-            '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script)
-        ] + size_args + ['--data-type', data_type, '--output-dir', str(benchmark_dir)]
-        if evaluation_type:
-            cmd.extend(['--evaluation-type', evaluation_type])
-        
-        self.logger.info(f"Running data generation for {benchmark_name} in {conda_env} environment")
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        
-        if result.returncode != 0:
-            self.logger.error(f"Data generation failed for {benchmark_name}: {result.stderr}")
-            raise RuntimeError(f"Data generation failed for {benchmark_name}")
-        else:
-            self.logger.info(f"Successfully generated {benchmark_name} data")
+        # If no evaluation types are enabled, run without evaluation type (generates all files)
+        if not enabled_evaluations:
+            cmd = [
+                '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script)
+            ] + size_args + ['--data-type', data_type, '--output-dir', str(benchmark_dir)]
+            
+            self.logger.info(f"Running data generation for {benchmark_name} (all types) in {conda_env} environment")
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            
+            if result.returncode != 0:
+                self.logger.error(f"Data generation failed for {benchmark_name}: {result.stderr}")
+                raise RuntimeError(f"Data generation failed for {benchmark_name}")
+            else:
+                self.logger.info(f"Successfully generated {benchmark_name} data for all evaluation types")
     
     def _generate_psacmaes_data(self, config: Dict, datasets_dir: Path):
         """Generate PSA-CMA-ES benchmark data."""
@@ -192,46 +198,71 @@ class ExperimentRunner:
         if eval_config['rounding']['enabled']:
             enabled_evaluations.append('rounding')
         
-        # If rounding is enabled, prioritize it for data generation to ensure results_rounding.csv is created
-        # Otherwise use the first enabled evaluation type
-        if 'rounding' in enabled_evaluations:
-            evaluation_type = 'rounding'
-        elif len(enabled_evaluations) > 0:
-            evaluation_type = enabled_evaluations[0]
-        else:
-            evaluation_type = None
+        # Call the data generation script for each enabled evaluation type
+        # This ensures both results.csv and results_lib.csv are generated when both are enabled
+        for evaluation_type in enabled_evaluations:
+            cmd = [
+                '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script),
+                '--iterations', str(iterations), '--data-type', data_type, '--output-root', str(benchmark_dir),
+                '--evaluation-type', evaluation_type
+            ]
+            
+            # Add compare flag if enabled in config
+            if config.get('compare', False):
+                cmd.append('--compare')
+            
+            # Add individual_benchmarks flag if enabled in config
+            individual_benchmarks = config.get('individual_benchmarks', True)
+            cmd.extend(['--individual-benchmarks', str(individual_benchmarks).lower()])
+            
+            # Add all_benchmarks flag if enabled in config
+            all_benchmarks = config.get('all_benchmarks', True)
+            cmd.extend(['--all-benchmarks', str(all_benchmarks).lower()])
+            
+            # Add sub-benchmarks from config
+            if 'sub_benchmarks' in config:
+                cmd.extend(['--sub-benchmarks'] + config['sub_benchmarks'])
+            
+            self.logger.info(f"Running PSA-CMA-ES data generation ({evaluation_type}) in {conda_env} environment")
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            
+            if result.returncode != 0:
+                self.logger.error(f"PSA-CMA-ES data generation failed ({evaluation_type}): {result.stderr}")
+                raise RuntimeError(f"PSA-CMA-ES data generation failed ({evaluation_type})")
+            else:
+                self.logger.info(f"Successfully generated PSA-CMA-ES data for {evaluation_type}")
         
-        cmd = [
-            '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script),
-            '--iterations', str(iterations), '--data-type', data_type, '--output-root', str(benchmark_dir)
-        ]
-        if evaluation_type:
-            cmd.extend(['--evaluation-type', evaluation_type])
-        
-        # Add compare flag if enabled in config
-        if config.get('compare', False):
-            cmd.append('--compare')
-        
-        # Add individual_benchmarks flag if enabled in config
-        individual_benchmarks = config.get('individual_benchmarks', True)
-        cmd.extend(['--individual-benchmarks', str(individual_benchmarks).lower()])
-        
-        # Add all_benchmarks flag if enabled in config
-        all_benchmarks = config.get('all_benchmarks', True)
-        cmd.extend(['--all-benchmarks', str(all_benchmarks).lower()])
-        
-        # Add sub-benchmarks from config
-        if 'sub_benchmarks' in config:
-            cmd.extend(['--sub-benchmarks'] + config['sub_benchmarks'])
-        
-        self.logger.info(f"Running PSA-CMA-ES data generation in {conda_env} environment")
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        
-        if result.returncode != 0:
-            self.logger.error(f"PSA-CMA-ES data generation failed: {result.stderr}")
-            raise RuntimeError("PSA-CMA-ES data generation failed")
-        else:
-            self.logger.info("Successfully generated PSA-CMA-ES data")
+        # If no evaluation types are enabled, run without evaluation type (generates all files)
+        if not enabled_evaluations:
+            cmd = [
+                '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script),
+                '--iterations', str(iterations), '--data-type', data_type, '--output-root', str(benchmark_dir)
+            ]
+            
+            # Add compare flag if enabled in config
+            if config.get('compare', False):
+                cmd.append('--compare')
+            
+            # Add individual_benchmarks flag if enabled in config
+            individual_benchmarks = config.get('individual_benchmarks', True)
+            cmd.extend(['--individual-benchmarks', str(individual_benchmarks).lower()])
+            
+            # Add all_benchmarks flag if enabled in config
+            all_benchmarks = config.get('all_benchmarks', True)
+            cmd.extend(['--all-benchmarks', str(all_benchmarks).lower()])
+            
+            # Add sub-benchmarks from config
+            if 'sub_benchmarks' in config:
+                cmd.extend(['--sub-benchmarks'] + config['sub_benchmarks'])
+            
+            self.logger.info(f"Running PSA-CMA-ES data generation (all types) in {conda_env} environment")
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            
+            if result.returncode != 0:
+                self.logger.error(f"PSA-CMA-ES data generation failed: {result.stderr}")
+                raise RuntimeError("PSA-CMA-ES data generation failed")
+            else:
+                self.logger.info("Successfully generated PSA-CMA-ES data for all evaluation types")
     
     def _generate_model_data(self, config: Dict, datasets_dir: Path):
         """Generate model-specific data."""

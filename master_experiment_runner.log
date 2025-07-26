@@ -2517,3 +2517,335 @@
 2025-07-26 16:17:44,404 - __main__ - INFO -   - Combined: global_TODO.txt
 2025-07-26 16:17:44,406 - __main__ - INFO - Run './run_global.sh -t global_TODO_GPU.txt -j 16' on GPU machine
 2025-07-26 16:17:44,408 - __main__ - INFO - Run './run_global.sh -t global_TODO_CPU.txt -j 16' on CPU machine
+2025-07-26 16:54:14,566 - __main__ - INFO - Starting master experiment runner...
+2025-07-26 16:54:14,567 - __main__ - INFO - Found 6 config files: ['suitea_noise_001.json', 'suitea_noise_005.json', 'suitea_noise_04.json', 'suitea_noise_01.json', 'suitea_no_noise.json', 'suitea_noise_02.json']
+2025-07-26 16:54:14,568 - __main__ - INFO - Phase 1: Setting up experiments...
+2025-07-26 16:54:14,569 - __main__ - INFO - Loaded config: suitea_noise_001.json
+2025-07-26 16:54:14,569 - __main__ - INFO - Setting up experiment: SuiteA_Noise001
+2025-07-26 16:54:14,579 - __main__ - INFO - Successfully set up experiment: SuiteA_Noise001
+2025-07-26 16:54:14,579 - __main__ - INFO - Loaded config: suitea_noise_005.json
+2025-07-26 16:54:14,580 - __main__ - INFO - Setting up experiment: SuiteA_Noise005
+2025-07-26 16:54:14,588 - __main__ - INFO - Successfully set up experiment: SuiteA_Noise005
+2025-07-26 16:54:14,589 - __main__ - INFO - Loaded config: suitea_noise_04.json
+2025-07-26 16:54:14,590 - __main__ - INFO - Setting up experiment: SuiteA_Noise04
+2025-07-26 16:54:14,597 - __main__ - INFO - Successfully set up experiment: SuiteA_Noise04
+2025-07-26 16:54:14,598 - __main__ - INFO - Loaded config: suitea_noise_01.json
+2025-07-26 16:54:14,598 - __main__ - INFO - Setting up experiment: SuiteA_Noise01
+2025-07-26 16:54:14,606 - __main__ - INFO - Successfully set up experiment: SuiteA_Noise01
+2025-07-26 16:54:14,606 - __main__ - INFO - Loaded config: suitea_no_noise.json
+2025-07-26 16:54:14,607 - __main__ - INFO - Setting up experiment: SuiteA_NoNoise
+2025-07-26 16:54:14,614 - __main__ - INFO - Successfully set up experiment: SuiteA_NoNoise
+2025-07-26 16:54:14,614 - __main__ - INFO - Loaded config: suitea_noise_02.json
+2025-07-26 16:54:14,615 - __main__ - INFO - Setting up experiment: SuiteA_Noise02
+2025-07-26 16:54:14,625 - __main__ - INFO - Successfully set up experiment: SuiteA_Noise02
+2025-07-26 16:54:14,625 - __main__ - INFO - Phase 2: Generating data for all experiments...
+2025-07-26 16:54:14,626 - __main__ - INFO - Generating data for all experiments...
+2025-07-26 16:54:14,628 - __main__ - INFO - Generating data for experiment: SuiteA_Noise001
+2025-07-26 16:54:14,630 - experiment_runner - INFO - Starting data generation...
+2025-07-26 16:54:14,631 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-26 16:54:14,634 - experiment_runner - INFO - Running data generation for leadingones (control) in generation environment
+2025-07-26 16:54:18,079 - experiment_runner - INFO - Successfully generated leadingones data for control
+2025-07-26 16:54:18,079 - experiment_runner - INFO - Running data generation for leadingones (library) in generation environment
+2025-07-26 16:54:21,345 - experiment_runner - INFO - Successfully generated leadingones data for library
+2025-07-26 16:54:21,345 - experiment_runner - INFO - Generating data for onemax...
+2025-07-26 16:54:21,347 - experiment_runner - INFO - Running data generation for onemax (control) in generation environment
+2025-07-26 16:54:24,363 - experiment_runner - INFO - Successfully generated onemax data for control
+2025-07-26 16:54:24,363 - experiment_runner - INFO - Running data generation for onemax (library) in generation environment
+2025-07-26 16:54:27,270 - experiment_runner - INFO - Successfully generated onemax data for library
+2025-07-26 16:54:27,270 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-26 16:54:27,272 - experiment_runner - INFO - Running PSA-CMA-ES data generation (control) in generation environment
+2025-07-26 16:54:36,213 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for control
+2025-07-26 16:54:36,213 - experiment_runner - INFO - Running PSA-CMA-ES data generation (library) in generation environment
+2025-07-26 16:54:45,122 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for library
+2025-07-26 16:54:45,122 - __main__ - INFO - Generating data for experiment: SuiteA_Noise005
+2025-07-26 16:54:45,124 - experiment_runner - INFO - Starting data generation...
+2025-07-26 16:54:45,126 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-26 16:54:45,128 - experiment_runner - INFO - Running data generation for leadingones (control) in generation environment
+2025-07-26 16:54:48,010 - experiment_runner - INFO - Successfully generated leadingones data for control
+2025-07-26 16:54:48,011 - experiment_runner - INFO - Running data generation for leadingones (library) in generation environment
+2025-07-26 16:54:50,896 - experiment_runner - INFO - Successfully generated leadingones data for library
+2025-07-26 16:54:50,896 - experiment_runner - INFO - Generating data for onemax...
+2025-07-26 16:54:50,898 - experiment_runner - INFO - Running data generation for onemax (control) in generation environment
+2025-07-26 16:54:53,810 - experiment_runner - INFO - Successfully generated onemax data for control
+2025-07-26 16:54:53,810 - experiment_runner - INFO - Running data generation for onemax (library) in generation environment
+2025-07-26 16:54:57,198 - experiment_runner - INFO - Successfully generated onemax data for library
+2025-07-26 16:54:57,198 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-26 16:54:57,200 - experiment_runner - INFO - Running PSA-CMA-ES data generation (control) in generation environment
+2025-07-26 16:55:07,193 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for control
+2025-07-26 16:55:07,193 - experiment_runner - INFO - Running PSA-CMA-ES data generation (library) in generation environment
+2025-07-26 16:55:17,315 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for library
+2025-07-26 16:55:17,316 - __main__ - INFO - Generating data for experiment: SuiteA_Noise04
+2025-07-26 16:55:17,317 - experiment_runner - INFO - Starting data generation...
+2025-07-26 16:55:17,319 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-26 16:55:17,321 - experiment_runner - INFO - Running data generation for leadingones (control) in generation environment
+2025-07-26 16:55:20,682 - experiment_runner - INFO - Successfully generated leadingones data for control
+2025-07-26 16:55:20,682 - experiment_runner - INFO - Running data generation for leadingones (library) in generation environment
+2025-07-26 16:55:23,990 - experiment_runner - INFO - Successfully generated leadingones data for library
+2025-07-26 16:55:23,990 - experiment_runner - INFO - Generating data for onemax...
+2025-07-26 16:55:23,991 - experiment_runner - INFO - Running data generation for onemax (control) in generation environment
+2025-07-26 16:55:27,679 - experiment_runner - INFO - Successfully generated onemax data for control
+2025-07-26 16:55:27,679 - experiment_runner - INFO - Running data generation for onemax (library) in generation environment
+2025-07-26 16:55:31,360 - experiment_runner - INFO - Successfully generated onemax data for library
+2025-07-26 16:55:31,361 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-26 16:55:31,361 - experiment_runner - INFO - Running PSA-CMA-ES data generation (control) in generation environment
+2025-07-26 16:55:40,684 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for control
+2025-07-26 16:55:40,684 - experiment_runner - INFO - Running PSA-CMA-ES data generation (library) in generation environment
+2025-07-26 16:55:51,012 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for library
+2025-07-26 16:55:51,012 - __main__ - INFO - Generating data for experiment: SuiteA_Noise01
+2025-07-26 16:55:51,014 - experiment_runner - INFO - Starting data generation...
+2025-07-26 16:55:51,016 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-26 16:55:51,018 - experiment_runner - INFO - Running data generation for leadingones (control) in generation environment
+2025-07-26 16:55:54,196 - experiment_runner - INFO - Successfully generated leadingones data for control
+2025-07-26 16:55:54,196 - experiment_runner - INFO - Running data generation for leadingones (library) in generation environment
+2025-07-26 16:55:57,431 - experiment_runner - INFO - Successfully generated leadingones data for library
+2025-07-26 16:55:57,432 - experiment_runner - INFO - Generating data for onemax...
+2025-07-26 16:55:57,432 - experiment_runner - INFO - Running data generation for onemax (control) in generation environment
+2025-07-26 16:56:00,618 - experiment_runner - INFO - Successfully generated onemax data for control
+2025-07-26 16:56:00,618 - experiment_runner - INFO - Running data generation for onemax (library) in generation environment
+2025-07-26 16:56:03,751 - experiment_runner - INFO - Successfully generated onemax data for library
+2025-07-26 16:56:03,751 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-26 16:56:03,752 - experiment_runner - INFO - Running PSA-CMA-ES data generation (control) in generation environment
+2025-07-26 16:56:12,516 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for control
+2025-07-26 16:56:12,516 - experiment_runner - INFO - Running PSA-CMA-ES data generation (library) in generation environment
+2025-07-26 16:56:20,703 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for library
+2025-07-26 16:56:20,703 - __main__ - INFO - Generating data for experiment: SuiteA_NoNoise
+2025-07-26 16:56:20,703 - experiment_runner - INFO - Starting data generation...
+2025-07-26 16:56:20,705 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-26 16:56:20,707 - experiment_runner - INFO - Running data generation for leadingones (control) in generation environment
+2025-07-26 16:56:23,257 - experiment_runner - INFO - Successfully generated leadingones data for control
+2025-07-26 16:56:23,257 - experiment_runner - INFO - Running data generation for leadingones (library) in generation environment
+2025-07-26 16:56:25,821 - experiment_runner - INFO - Successfully generated leadingones data for library
+2025-07-26 16:56:25,821 - experiment_runner - INFO - Generating data for onemax...
+2025-07-26 16:56:25,823 - experiment_runner - INFO - Running data generation for onemax (control) in generation environment
+2025-07-26 16:56:28,393 - experiment_runner - INFO - Successfully generated onemax data for control
+2025-07-26 16:56:28,393 - experiment_runner - INFO - Running data generation for onemax (library) in generation environment
+2025-07-26 16:56:30,935 - experiment_runner - INFO - Successfully generated onemax data for library
+2025-07-26 16:56:30,935 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-26 16:56:30,937 - experiment_runner - INFO - Running PSA-CMA-ES data generation (control) in generation environment
+2025-07-26 16:56:39,046 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for control
+2025-07-26 16:56:39,046 - experiment_runner - INFO - Running PSA-CMA-ES data generation (library) in generation environment
+2025-07-26 16:56:47,226 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for library
+2025-07-26 16:56:47,227 - __main__ - INFO - Generating data for experiment: SuiteA_Noise02
+2025-07-26 16:56:47,228 - experiment_runner - INFO - Starting data generation...
+2025-07-26 16:56:47,230 - experiment_runner - INFO - Generating data for leadingones...
+2025-07-26 16:56:47,233 - experiment_runner - INFO - Running data generation for leadingones (control) in generation environment
+2025-07-26 16:56:49,789 - experiment_runner - INFO - Successfully generated leadingones data for control
+2025-07-26 16:56:49,790 - experiment_runner - INFO - Running data generation for leadingones (library) in generation environment
+2025-07-26 16:56:52,346 - experiment_runner - INFO - Successfully generated leadingones data for library
+2025-07-26 16:56:52,346 - experiment_runner - INFO - Generating data for onemax...
+2025-07-26 16:56:52,348 - experiment_runner - INFO - Running data generation for onemax (control) in generation environment
+2025-07-26 16:56:54,921 - experiment_runner - INFO - Successfully generated onemax data for control
+2025-07-26 16:56:54,922 - experiment_runner - INFO - Running data generation for onemax (library) in generation environment
+2025-07-26 16:56:57,485 - experiment_runner - INFO - Successfully generated onemax data for library
+2025-07-26 16:56:57,485 - experiment_runner - INFO - Generating data for psacmaes...
+2025-07-26 16:56:57,487 - experiment_runner - INFO - Running PSA-CMA-ES data generation (control) in generation environment
+2025-07-26 16:57:06,069 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for control
+2025-07-26 16:57:06,070 - experiment_runner - INFO - Running PSA-CMA-ES data generation (library) in generation environment
+2025-07-26 16:57:15,745 - experiment_runner - INFO - Successfully generated PSA-CMA-ES data for library
+2025-07-26 16:57:15,745 - __main__ - INFO - Phase 3: Creating TODO files for all experiments...
+2025-07-26 16:57:15,747 - __main__ - INFO - Creating TODO.txt files for all experiments...
+2025-07-26 16:57:15,748 - __main__ - INFO - Creating TODO.txt for experiment: SuiteA_Noise001
+2025-07-26 16:57:15,750 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-26 16:57:15,753 - experiment_runner - INFO - Generating commands for control evaluation...
+2025-07-26 16:57:15,754 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:15,770 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:15,783 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:15,795 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:15,807 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:15,819 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:15,831 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:15,845 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:15,860 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:15,873 - experiment_runner - INFO - Added control evaluation commands to TODO files
+2025-07-26 16:57:15,874 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-26 16:57:15,875 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:15,885 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:15,892 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:15,898 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:15,905 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:15,914 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:15,922 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:15,930 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:15,938 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:15,947 - experiment_runner - INFO - Added library evaluation commands to TODO files
+2025-07-26 16:57:15,951 - experiment_runner - INFO - Generated TODO files:
+2025-07-26 16:57:15,951 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/SuiteA_Noise001/TODO_GPU.txt
+2025-07-26 16:57:15,953 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/SuiteA_Noise001/TODO_CPU.txt
+2025-07-26 16:57:15,954 - experiment_runner - INFO -   - Combined: Experiments/SuiteA/SuiteA_Noise001/TODO.txt
+2025-07-26 16:57:15,956 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
+2025-07-26 16:57:15,958 - __main__ - INFO - Creating TODO.txt for experiment: SuiteA_Noise005
+2025-07-26 16:57:15,960 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-26 16:57:15,963 - experiment_runner - INFO - Generating commands for control evaluation...
+2025-07-26 16:57:15,964 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:15,981 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:15,993 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,006 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,020 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,036 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,051 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,065 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,081 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,095 - experiment_runner - INFO - Added control evaluation commands to TODO files
+2025-07-26 16:57:16,095 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-26 16:57:16,097 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,106 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,113 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,117 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,124 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,134 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,143 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,151 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,159 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,167 - experiment_runner - INFO - Added library evaluation commands to TODO files
+2025-07-26 16:57:16,170 - experiment_runner - INFO - Generated TODO files:
+2025-07-26 16:57:16,171 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/SuiteA_Noise005/TODO_GPU.txt
+2025-07-26 16:57:16,172 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/SuiteA_Noise005/TODO_CPU.txt
+2025-07-26 16:57:16,174 - experiment_runner - INFO -   - Combined: Experiments/SuiteA/SuiteA_Noise005/TODO.txt
+2025-07-26 16:57:16,175 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
+2025-07-26 16:57:16,177 - __main__ - INFO - Creating TODO.txt for experiment: SuiteA_Noise04
+2025-07-26 16:57:16,179 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-26 16:57:16,182 - experiment_runner - INFO - Generating commands for control evaluation...
+2025-07-26 16:57:16,183 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,198 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,212 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,226 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,237 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,249 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,261 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,276 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,291 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,305 - experiment_runner - INFO - Added control evaluation commands to TODO files
+2025-07-26 16:57:16,305 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-26 16:57:16,307 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,318 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,325 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,331 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,338 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,347 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,356 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,365 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,374 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,382 - experiment_runner - INFO - Added library evaluation commands to TODO files
+2025-07-26 16:57:16,385 - experiment_runner - INFO - Generated TODO files:
+2025-07-26 16:57:16,385 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/SuiteA_Noise04/TODO_GPU.txt
+2025-07-26 16:57:16,386 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/SuiteA_Noise04/TODO_CPU.txt
+2025-07-26 16:57:16,388 - experiment_runner - INFO -   - Combined: Experiments/SuiteA/SuiteA_Noise04/TODO.txt
+2025-07-26 16:57:16,389 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
+2025-07-26 16:57:16,391 - __main__ - INFO - Creating TODO.txt for experiment: SuiteA_Noise01
+2025-07-26 16:57:16,393 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-26 16:57:16,396 - experiment_runner - INFO - Generating commands for control evaluation...
+2025-07-26 16:57:16,398 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,415 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,425 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,437 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,449 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,461 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,472 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,488 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,502 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,517 - experiment_runner - INFO - Added control evaluation commands to TODO files
+2025-07-26 16:57:16,517 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-26 16:57:16,518 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,527 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,534 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,540 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,547 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,556 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,564 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,573 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,582 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,590 - experiment_runner - INFO - Added library evaluation commands to TODO files
+2025-07-26 16:57:16,594 - experiment_runner - INFO - Generated TODO files:
+2025-07-26 16:57:16,594 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/SuiteA_Noise01/TODO_GPU.txt
+2025-07-26 16:57:16,595 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/SuiteA_Noise01/TODO_CPU.txt
+2025-07-26 16:57:16,597 - experiment_runner - INFO -   - Combined: Experiments/SuiteA/SuiteA_Noise01/TODO.txt
+2025-07-26 16:57:16,598 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
+2025-07-26 16:57:16,601 - __main__ - INFO - Creating TODO.txt for experiment: SuiteA_NoNoise
+2025-07-26 16:57:16,603 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-26 16:57:16,605 - experiment_runner - INFO - Generating commands for control evaluation...
+2025-07-26 16:57:16,607 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,625 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,638 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,650 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,664 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,675 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,688 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,703 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,719 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,733 - experiment_runner - INFO - Added control evaluation commands to TODO files
+2025-07-26 16:57:16,733 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-26 16:57:16,734 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,744 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,752 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,761 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,769 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,778 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,786 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,794 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,803 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,812 - experiment_runner - INFO - Added library evaluation commands to TODO files
+2025-07-26 16:57:16,815 - experiment_runner - INFO - Generated TODO files:
+2025-07-26 16:57:16,815 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/SuiteA_NoNoise/TODO_GPU.txt
+2025-07-26 16:57:16,817 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/SuiteA_NoNoise/TODO_CPU.txt
+2025-07-26 16:57:16,818 - experiment_runner - INFO -   - Combined: Experiments/SuiteA/SuiteA_NoNoise/TODO.txt
+2025-07-26 16:57:16,820 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
+2025-07-26 16:57:16,822 - __main__ - INFO - Creating TODO.txt for experiment: SuiteA_Noise02
+2025-07-26 16:57:16,824 - experiment_runner - INFO - Generating evaluation commands for parallel execution...
+2025-07-26 16:57:16,827 - experiment_runner - INFO - Generating commands for control evaluation...
+2025-07-26 16:57:16,828 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,844 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,857 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,868 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,880 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,892 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:16,904 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:16,919 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,933 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,947 - experiment_runner - INFO - Added control evaluation commands to TODO files
+2025-07-26 16:57:16,947 - experiment_runner - INFO - Generating commands for library evaluation...
+2025-07-26 16:57:16,949 - experiment_runner - INFO - Adding individual algorithm commands for leadingones continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/Leadingones/GTLeadingOnes.csv
+2025-07-26 16:57:16,959 - experiment_runner - INFO - Adding individual algorithm commands for onemax continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/Onemax/GTOneMax.csv
+2025-07-26 16:57:16,967 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES sphere continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/sphere/psa_vars.csv
+2025-07-26 16:57:16,975 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES ellipsoid continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/ellipsoid/psa_vars.csv
+2025-07-26 16:57:16,984 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES rastrigin continuous data: Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/rastrigin/psa_vars.csv
+2025-07-26 16:57:16,992 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES aggregated data: Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/all_benchmarks.csv
+2025-07-26 16:57:17,001 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding sphere): Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/sphere/psa_vars.csv
+2025-07-26 16:57:17,010 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding ellipsoid): Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv
+2025-07-26 16:57:17,019 - experiment_runner - INFO - Adding individual algorithm commands for PSA-CMA-ES leave-one-out (excluding rastrigin): Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv
+2025-07-26 16:57:17,027 - experiment_runner - INFO - Added library evaluation commands to TODO files
+2025-07-26 16:57:17,030 - experiment_runner - INFO - Generated TODO files:
+2025-07-26 16:57:17,030 - experiment_runner - INFO -   - GPU algorithms: Experiments/SuiteA/SuiteA_Noise02/TODO_GPU.txt
+2025-07-26 16:57:17,032 - experiment_runner - INFO -   - CPU algorithms: Experiments/SuiteA/SuiteA_Noise02/TODO_CPU.txt
+2025-07-26 16:57:17,034 - experiment_runner - INFO -   - Combined: Experiments/SuiteA/SuiteA_Noise02/TODO.txt
+2025-07-26 16:57:17,035 - experiment_runner - INFO - Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel
+2025-07-26 16:57:17,037 - __main__ - INFO - Phase 4: Consolidating TODO lists...
+2025-07-26 16:57:17,039 - __main__ - INFO - Consolidating TODO lists into separate GPU and CPU files...
+2025-07-26 16:57:17,049 - __main__ - INFO - Processing TODO files from experiment 1: SuiteA_Noise001
+2025-07-26 16:57:17,049 - __main__ - INFO - Adding GPU TODO list from experiment: SuiteA_Noise001
+2025-07-26 16:57:17,054 - __main__ - INFO - Adding CPU TODO list from experiment: SuiteA_Noise001
+2025-07-26 16:57:17,061 - __main__ - INFO - Processing TODO files from experiment 2: SuiteA_Noise005
+2025-07-26 16:57:17,061 - __main__ - INFO - Adding GPU TODO list from experiment: SuiteA_Noise005
+2025-07-26 16:57:17,065 - __main__ - INFO - Adding CPU TODO list from experiment: SuiteA_Noise005
+2025-07-26 16:57:17,072 - __main__ - INFO - Processing TODO files from experiment 3: SuiteA_Noise04
+2025-07-26 16:57:17,072 - __main__ - INFO - Adding GPU TODO list from experiment: SuiteA_Noise04
+2025-07-26 16:57:17,076 - __main__ - INFO - Adding CPU TODO list from experiment: SuiteA_Noise04
+2025-07-26 16:57:17,084 - __main__ - INFO - Processing TODO files from experiment 4: SuiteA_Noise01
+2025-07-26 16:57:17,084 - __main__ - INFO - Adding GPU TODO list from experiment: SuiteA_Noise01
+2025-07-26 16:57:17,089 - __main__ - INFO - Adding CPU TODO list from experiment: SuiteA_Noise01
+2025-07-26 16:57:17,097 - __main__ - INFO - Processing TODO files from experiment 5: SuiteA_NoNoise
+2025-07-26 16:57:17,097 - __main__ - INFO - Adding GPU TODO list from experiment: SuiteA_NoNoise
+2025-07-26 16:57:17,101 - __main__ - INFO - Adding CPU TODO list from experiment: SuiteA_NoNoise
+2025-07-26 16:57:17,107 - __main__ - INFO - Processing TODO files from experiment 6: SuiteA_Noise02
+2025-07-26 16:57:17,107 - __main__ - INFO - Adding GPU TODO list from experiment: SuiteA_Noise02
+2025-07-26 16:57:17,112 - __main__ - INFO - Adding CPU TODO list from experiment: SuiteA_Noise02
+2025-07-26 16:57:17,119 - __main__ - INFO - Global TODO files created:
+2025-07-26 16:57:17,119 - __main__ - INFO -   - GPU algorithms: global_TODO_GPU.txt
+2025-07-26 16:57:17,121 - __main__ - INFO -   - CPU algorithms: global_TODO_CPU.txt
+2025-07-26 16:57:17,123 - __main__ - INFO -   - Combined: global_TODO.txt
+2025-07-26 16:57:17,125 - __main__ - INFO - Master experiment runner completed successfully!
+2025-07-26 16:57:17,127 - __main__ - INFO - Global TODO files available:
+2025-07-26 16:57:17,129 - __main__ - INFO -   - GPU algorithms: global_TODO_GPU.txt
+2025-07-26 16:57:17,131 - __main__ - INFO -   - CPU algorithms: global_TODO_CPU.txt
+2025-07-26 16:57:17,133 - __main__ - INFO -   - Combined: global_TODO.txt
+2025-07-26 16:57:17,135 - __main__ - INFO - Run './run_global.sh -t global_TODO_GPU.txt -j 16' on GPU machine
+2025-07-26 16:57:17,138 - __main__ - INFO - Run './run_global.sh -t global_TODO_CPU.txt -j 16' on CPU machine

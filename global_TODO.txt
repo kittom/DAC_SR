@@ -1,5 +1,5 @@
 # Global TODO List - All Algorithms (Combined)
-# Generated: 2025-07-26 16:17:44
+# Generated: 2025-07-26 16:57:17
 # Total experiments: 6
 # Note: Use global_TODO_GPU.txt and global_TODO_CPU.txt for separate execution
 
@@ -9,7 +9,7 @@
 # ============================================================
 
 # Combined TODO List - GPU and CPU Algorithms
-# Generated: 2025-07-26 16:17:43
+# Generated: 2025-07-26 16:57:15
 # Experiment: SuiteA_Noise001
 
 # GPU Algorithms
@@ -321,7 +321,7 @@ bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear
 # ============================================================
 
 # Combined TODO List - GPU and CPU Algorithms
-# Generated: 2025-07-26 16:17:43
+# Generated: 2025-07-26 16:57:16
 # Experiment: SuiteA_Noise005
 
 # GPU Algorithms
@@ -633,7 +633,7 @@ bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear
 # ============================================================
 
 # Combined TODO List - GPU and CPU Algorithms
-# Generated: 2025-07-26 16:17:43
+# Generated: 2025-07-26 16:57:16
 # Experiment: SuiteA_Noise04
 
 # GPU Algorithms
@@ -945,7 +945,7 @@ bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear
 # ============================================================
 
 # Combined TODO List - GPU and CPU Algorithms
-# Generated: 2025-07-26 16:17:43
+# Generated: 2025-07-26 16:57:16
 # Experiment: SuiteA_Noise01
 
 # GPU Algorithms
@@ -1257,7 +1257,7 @@ bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear
 # ============================================================
 
 # Combined TODO List - GPU and CPU Algorithms
-# Generated: 2025-07-26 16:17:44
+# Generated: 2025-07-26 16:57:16
 # Experiment: SuiteA_NoNoise
 
 # GPU Algorithms
@@ -1569,7 +1569,7 @@ bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear
 # ============================================================
 
 # Combined TODO List - GPU and CPU Algorithms
-# Generated: 2025-07-26 16:17:44
+# Generated: 2025-07-26 16:57:17
 # Experiment: SuiteA_Noise02
 
 # GPU Algorithms
