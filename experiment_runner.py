@@ -251,23 +251,47 @@ class ExperimentRunner:
         # Create TODO.txt file with evaluation commands
         todo_path = self.experiment_dir / 'TODO.txt'
         
-        with open(todo_path, 'w') as f:
-            f.write("# Evaluation commands for parallel execution\n")
-            f.write(f"# Experiment: {self.config['experiment']['name']}\n")
-            f.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-            
-            # Generate commands for each enabled analysis style
-            for style_name, style_config in eval_config['analysis_styles'].items():
-                if not style_config['enabled']:
-                    continue
-                    
-                self.logger.info(f"Generating commands for {style_name} evaluation...")
-                self._generate_evaluation_commands(style_name, datasets_dir, results_dir, todo_path)
+        # Create separate TODO files for GPU and CPU algorithms
+        gpu_todo_file = self.experiment_dir / "TODO_GPU.txt"
+        cpu_todo_file = self.experiment_dir / "TODO_CPU.txt"
         
-        self.logger.info(f"Generated TODO.txt with evaluation commands: {todo_path}")
+        # Initialize the files
+        gpu_todo_file.write_text("")
+        cpu_todo_file.write_text("")
+        
+        # Generate commands for each enabled analysis style
+        for style_name, style_config in eval_config['analysis_styles'].items():
+            if not style_config['enabled']:
+                continue
+                
+            self.logger.info(f"Generating commands for {style_name} evaluation...")
+            self._generate_evaluation_commands(style_name, datasets_dir, results_dir, todo_path, gpu_todo_file, cpu_todo_file)
+        
+        # Write the combined TODO file for backward compatibility
+        with open(todo_path, 'w') as f:
+            f.write("# Combined TODO List - GPU and CPU Algorithms\n")
+            f.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"# Experiment: {self.config['experiment']['name']}\n\n")
+            
+            # Add GPU algorithms section
+            f.write("# GPU Algorithms\n")
+            f.write("# ==============\n")
+            if gpu_todo_file.exists():
+                f.write(gpu_todo_file.read_text())
+            
+            # Add CPU algorithms section
+            f.write("# CPU Algorithms\n")
+            f.write("# ==============\n")
+            if cpu_todo_file.exists():
+                f.write(cpu_todo_file.read_text())
+        
+        self.logger.info(f"Generated TODO files:")
+        self.logger.info(f"  - GPU algorithms: {gpu_todo_file}")
+        self.logger.info(f"  - CPU algorithms: {cpu_todo_file}")
+        self.logger.info(f"  - Combined: {todo_path}")
         self.logger.info("Run './run.sh [NUM_CPUS]' in the experiment directory to execute evaluations in parallel")
     
-    def _generate_evaluation_commands(self, style_name: str, datasets_dir: Path, results_dir: Path, todo_file_path):
+    def _generate_evaluation_commands(self, style_name: str, datasets_dir: Path, results_dir: Path, todo_file_path, gpu_todo_file, cpu_todo_file):
         """Generate evaluation commands for individual algorithms based on script contents."""
         scripts_dir = self.project_root / 'Scripts'
         
@@ -313,14 +337,6 @@ class ExperimentRunner:
         
         # Get the algorithms for this evaluation type
         algorithms = algorithm_sets.get(style_name, {'gpu': [], 'cpu': []})
-        
-        # Create separate TODO files for GPU and CPU algorithms
-        gpu_todo_file = self.experiment_dir / "TODO_GPU.txt"
-        cpu_todo_file = self.experiment_dir / "TODO_CPU.txt"
-        
-        # Initialize the files
-        gpu_todo_file.write_text("")
-        cpu_todo_file.write_text("")
         
         # Process each benchmark's CSV files
         for benchmark_name, benchmark_config in self.config['data_generation']['benchmarks'].items():
@@ -568,28 +584,7 @@ class ExperimentRunner:
                     else:
                         self.logger.warning(f"CSV file not found: {csv_path}")
         
-        # Write the combined TODO file for backward compatibility
-        with open(todo_file_path, 'w') as f:
-            f.write("# Combined TODO List - GPU and CPU Algorithms\n")
-            f.write(f"# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            f.write(f"# Analysis Style: {style_name}\n\n")
-            
-            # Add GPU algorithms section
-            f.write("# GPU Algorithms\n")
-            f.write("# ==============\n")
-            if gpu_todo_file.exists():
-                f.write(gpu_todo_file.read_text())
-            
-            # Add CPU algorithms section
-            f.write("# CPU Algorithms\n")
-            f.write("# ==============\n")
-            if cpu_todo_file.exists():
-                f.write(cpu_todo_file.read_text())
-        
-        self.logger.info(f"Created TODO files:")
-        self.logger.info(f"  - GPU algorithms: {gpu_todo_file}")
-        self.logger.info(f"  - CPU algorithms: {cpu_todo_file}")
-        self.logger.info(f"  - Combined: {todo_file_path}")
+        self.logger.info(f"Added {style_name} evaluation commands to TODO files")
     
     def collect_results(self):
         """Collect and organize results."""
