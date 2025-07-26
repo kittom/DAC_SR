@@ -156,22 +156,22 @@ class ExperimentRunner:
             if result.returncode != 0:
                 self.logger.error(f"Data generation failed for {benchmark_name} ({evaluation_type}): {result.stderr}")
                 raise RuntimeError(f"Data generation failed for {benchmark_name} ({evaluation_type})")
-            else:
+        else:
                 self.logger.info(f"Successfully generated {benchmark_name} data for {evaluation_type}")
         
         # If no evaluation types are enabled, run without evaluation type (generates all files)
         if not enabled_evaluations:
-            cmd = [
-                '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script)
-            ] + size_args + ['--data-type', data_type, '--output-dir', str(benchmark_dir)]
-            
+        cmd = [
+            '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script)
+        ] + size_args + ['--data-type', data_type, '--output-dir', str(benchmark_dir)]
+        
             self.logger.info(f"Running data generation for {benchmark_name} (all types) in {conda_env} environment")
-            result = subprocess.run(cmd, capture_output=True, text=True)
-            
-            if result.returncode != 0:
-                self.logger.error(f"Data generation failed for {benchmark_name}: {result.stderr}")
-                raise RuntimeError(f"Data generation failed for {benchmark_name}")
-            else:
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        
+        if result.returncode != 0:
+            self.logger.error(f"Data generation failed for {benchmark_name}: {result.stderr}")
+            raise RuntimeError(f"Data generation failed for {benchmark_name}")
+        else:
                 self.logger.info(f"Successfully generated {benchmark_name} data for all evaluation types")
     
     def _generate_psacmaes_data(self, config: Dict, datasets_dir: Path):
@@ -229,39 +229,39 @@ class ExperimentRunner:
             if result.returncode != 0:
                 self.logger.error(f"PSA-CMA-ES data generation failed ({evaluation_type}): {result.stderr}")
                 raise RuntimeError(f"PSA-CMA-ES data generation failed ({evaluation_type})")
-            else:
+        else:
                 self.logger.info(f"Successfully generated PSA-CMA-ES data for {evaluation_type}")
         
         # If no evaluation types are enabled, run without evaluation type (generates all files)
         if not enabled_evaluations:
-            cmd = [
-                '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script),
-                '--iterations', str(iterations), '--data-type', data_type, '--output-root', str(benchmark_dir)
-            ]
-            
-            # Add compare flag if enabled in config
-            if config.get('compare', False):
-                cmd.append('--compare')
-            
-            # Add individual_benchmarks flag if enabled in config
-            individual_benchmarks = config.get('individual_benchmarks', True)
-            cmd.extend(['--individual-benchmarks', str(individual_benchmarks).lower()])
-            
-            # Add all_benchmarks flag if enabled in config
-            all_benchmarks = config.get('all_benchmarks', True)
-            cmd.extend(['--all-benchmarks', str(all_benchmarks).lower()])
-            
-            # Add sub-benchmarks from config
-            if 'sub_benchmarks' in config:
-                cmd.extend(['--sub-benchmarks'] + config['sub_benchmarks'])
-            
+        cmd = [
+            '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script),
+            '--iterations', str(iterations), '--data-type', data_type, '--output-root', str(benchmark_dir)
+        ]
+        
+        # Add compare flag if enabled in config
+        if config.get('compare', False):
+            cmd.append('--compare')
+        
+        # Add individual_benchmarks flag if enabled in config
+        individual_benchmarks = config.get('individual_benchmarks', True)
+        cmd.extend(['--individual-benchmarks', str(individual_benchmarks).lower()])
+        
+        # Add all_benchmarks flag if enabled in config
+        all_benchmarks = config.get('all_benchmarks', True)
+        cmd.extend(['--all-benchmarks', str(all_benchmarks).lower()])
+        
+        # Add sub-benchmarks from config
+        if 'sub_benchmarks' in config:
+            cmd.extend(['--sub-benchmarks'] + config['sub_benchmarks'])
+        
             self.logger.info(f"Running PSA-CMA-ES data generation (all types) in {conda_env} environment")
-            result = subprocess.run(cmd, capture_output=True, text=True)
-            
-            if result.returncode != 0:
-                self.logger.error(f"PSA-CMA-ES data generation failed: {result.stderr}")
-                raise RuntimeError("PSA-CMA-ES data generation failed")
-            else:
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        
+        if result.returncode != 0:
+            self.logger.error(f"PSA-CMA-ES data generation failed: {result.stderr}")
+            raise RuntimeError("PSA-CMA-ES data generation failed")
+        else:
                 self.logger.info("Successfully generated PSA-CMA-ES data for all evaluation types")
     
     def _generate_model_data(self, config: Dict, datasets_dir: Path):
@@ -289,13 +289,13 @@ class ExperimentRunner:
         # Initialize the files
         gpu_todo_file.write_text("")
         cpu_todo_file.write_text("")
-        
-        # Generate commands for each enabled analysis style
-        for style_name, style_config in eval_config['analysis_styles'].items():
-            if not style_config['enabled']:
-                continue
-                
-            self.logger.info(f"Generating commands for {style_name} evaluation...")
+            
+            # Generate commands for each enabled analysis style
+            for style_name, style_config in eval_config['analysis_styles'].items():
+                if not style_config['enabled']:
+                    continue
+                    
+                self.logger.info(f"Generating commands for {style_name} evaluation...")
             self._generate_evaluation_commands(style_name, datasets_dir, results_dir, todo_path, gpu_todo_file, cpu_todo_file)
         
         # Write the combined TODO file for backward compatibility

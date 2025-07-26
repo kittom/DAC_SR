@@ -1,0 +1,3 @@
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv" "0.01"
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv" "0.01"
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv" "0.01"
