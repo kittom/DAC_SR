@@ -1,0 +1,2506 @@
+# Global TODO List - CPU Algorithms Only
+# Generated: 2025-07-27 18:02:13
+# Total experiments: 18
+# Run on CPU machine
+
+# ============================================================
+# EXPERIMENT 1: SuiteA_Noise001
+# Directory: Experiments/SuiteA/SuiteA_Noise001
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv" "0.01"
+
+# control qlattice for leadingones
+
+# control linear for leadingones
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Onemax/GTOneMax.csv" "0.01"
+
+# control qlattice for onemax
+
+# control linear for onemax
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/sphere/psa_vars.csv" "0.01"
+
+# control qlattice for PSA-CMA-ES sphere
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/sphere/psa_vars.csv" "0.01"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.01"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.01"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.01"
+
+# control qlattice for PSA-CMA-ES rastrigin
+
+# control linear for PSA-CMA-ES rastrigin
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/all_benchmarks.csv" "0.01"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+
+# control linear for PSA-CMA-ES all_benchmarks
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.01"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.01"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.01"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+
+# library pysr for leadingones
+
+# library linear for leadingones
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Onemax/GTOneMax.csv" "one_max" "0.01"
+
+# library linear for onemax
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.01"
+
+# library linear for PSA-CMA-ES sphere
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.01"
+
+# library linear for PSA-CMA-ES ellipsoid
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.01"
+
+# library linear for PSA-CMA-ES rastrigin
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.01"
+
+# library linear for PSA-CMA-ES all_benchmarks
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.01"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.01"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.01"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+
+
+
+# ============================================================
+# EXPERIMENT 2: SuiteB_LargeInstances
+# Directory: Experiments/SuiteB/SuiteB_LargeInstances
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+
+# control linear for leadingones
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+
+# control linear for onemax
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+
+# control linear for PSA-CMA-ES sphere
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+
+# control linear for PSA-CMA-ES ellipsoid
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+
+# control linear for PSA-CMA-ES rastrigin
+
+# control pysr for PSA-CMA-ES all_benchmarks
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+
+# control linear for PSA-CMA-ES all_benchmarks
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+
+# library pysr for leadingones
+
+# library linear for leadingones
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+
+
+
+# ============================================================
+# EXPERIMENT 3: SuiteA_Noise005
+# Directory: Experiments/SuiteA/SuiteA_Noise005
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Leadingones/GTLeadingOnes.csv" "0.05"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Leadingones/GTLeadingOnes.csv" "0.05"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Leadingones/GTLeadingOnes.csv" "0.05"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Onemax/GTOneMax.csv" "0.05"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Onemax/GTOneMax.csv" "0.05"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Onemax/GTOneMax.csv" "0.05"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/sphere/psa_vars.csv" "0.05"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/sphere/psa_vars.csv" "0.05"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/sphere/psa_vars.csv" "0.05"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.05"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.05"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.05"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.05"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.05"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.05"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/all_benchmarks.csv" "0.05"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/all_benchmarks.csv" "0.05"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/all_benchmarks.csv" "0.05"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.05"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.05"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.05"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.05"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.05"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.05"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.05"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.05"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.05"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.05"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.05"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Onemax/GTOneMax.csv" "one_max" "0.05"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/Onemax/GTOneMax.csv" "one_max" "0.05"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.05"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.05"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.05"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.05"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.05"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.05"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.05"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.05"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.05"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.05"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.05"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.05"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.05"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise005/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.05"
+
+
+
+# ============================================================
+# EXPERIMENT 4: SuiteB_MediumInstances_Dropout10
+# Directory: Experiments/SuiteB/SuiteB_MediumInstances_Dropout10
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 5: SuiteB_MediumInstances_Dropout25
+# Directory: Experiments/SuiteB/SuiteB_MediumInstances_Dropout25
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 6: SuiteA_Noise04
+# Directory: Experiments/SuiteA/SuiteA_Noise04
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Leadingones/GTLeadingOnes.csv" "0.4"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Leadingones/GTLeadingOnes.csv" "0.4"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Leadingones/GTLeadingOnes.csv" "0.4"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Onemax/GTOneMax.csv" "0.4"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Onemax/GTOneMax.csv" "0.4"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Onemax/GTOneMax.csv" "0.4"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/sphere/psa_vars.csv" "0.4"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/sphere/psa_vars.csv" "0.4"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/sphere/psa_vars.csv" "0.4"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.4"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.4"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.4"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.4"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.4"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.4"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/all_benchmarks.csv" "0.4"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/all_benchmarks.csv" "0.4"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/all_benchmarks.csv" "0.4"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.4"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.4"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.4"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.4"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.4"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.4"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.4"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.4"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.4"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.4"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.4"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Onemax/GTOneMax.csv" "one_max" "0.4"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/Onemax/GTOneMax.csv" "one_max" "0.4"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.4"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.4"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.4"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.4"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.4"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.4"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.4"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.4"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.4"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.4"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.4"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.4"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.4"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise04/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.4"
+
+
+
+# ============================================================
+# EXPERIMENT 7: SuiteA_Noise01
+# Directory: Experiments/SuiteA/SuiteA_Noise01
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise01/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 8: SuiteA_NoNoise
+# Directory: Experiments/SuiteA/SuiteA_NoNoise
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Leadingones/GTLeadingOnes.csv" "0.0"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Leadingones/GTLeadingOnes.csv" "0.0"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Leadingones/GTLeadingOnes.csv" "0.0"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Onemax/GTOneMax.csv" "0.0"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Onemax/GTOneMax.csv" "0.0"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Onemax/GTOneMax.csv" "0.0"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/sphere/psa_vars.csv" "0.0"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/sphere/psa_vars.csv" "0.0"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/sphere/psa_vars.csv" "0.0"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.0"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.0"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.0"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.0"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.0"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.0"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/all_benchmarks.csv" "0.0"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/all_benchmarks.csv" "0.0"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/all_benchmarks.csv" "0.0"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.0"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.0"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.0"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.0"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.0"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.0"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.0"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.0"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.0"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.0"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.0"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Onemax/GTOneMax.csv" "one_max" "0.0"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/Onemax/GTOneMax.csv" "one_max" "0.0"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.0"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.0"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.0"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.0"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.0"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.0"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.0"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.0"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.0"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.0"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.0"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.0"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.0"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_NoNoise/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.0"
+
+
+
+# ============================================================
+# EXPERIMENT 9: SuiteB_SmallInstances_Dropout10
+# Directory: Experiments/SuiteB/SuiteB_SmallInstances_Dropout10
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 10: SuiteB_LargeInstances_Dropout50
+# Directory: Experiments/SuiteB/SuiteB_LargeInstances_Dropout50
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 11: SuiteB_SmallInstances_Dropout25
+# Directory: Experiments/SuiteB/SuiteB_SmallInstances_Dropout25
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 12: SuiteB_MediumInstances
+# Directory: Experiments/SuiteB/SuiteB_MediumInstances
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 13: SuiteB_MediumInstances_Dropout50
+# Directory: Experiments/SuiteB/SuiteB_MediumInstances_Dropout50
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_MediumInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 14: SuiteB_SmallInstances
+# Directory: Experiments/SuiteB/SuiteB_SmallInstances
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 15: SuiteB_LargeInstances_Dropout25
+# Directory: Experiments/SuiteB/SuiteB_LargeInstances_Dropout25
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout25/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 16: SuiteB_SmallInstances_Dropout50
+# Directory: Experiments/SuiteB/SuiteB_SmallInstances_Dropout50
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_SmallInstances_Dropout50/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+
+# ============================================================
+# EXPERIMENT 17: SuiteA_Noise02
+# Directory: Experiments/SuiteA/SuiteA_Noise02
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Leadingones/GTLeadingOnes.csv" "0.2"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Leadingones/GTLeadingOnes.csv" "0.2"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Leadingones/GTLeadingOnes.csv" "0.2"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Onemax/GTOneMax.csv" "0.2"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Onemax/GTOneMax.csv" "0.2"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Onemax/GTOneMax.csv" "0.2"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/sphere/psa_vars.csv" "0.2"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/sphere/psa_vars.csv" "0.2"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/sphere/psa_vars.csv" "0.2"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.2"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.2"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.2"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.2"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.2"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.2"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/all_benchmarks.csv" "0.2"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/all_benchmarks.csv" "0.2"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/all_benchmarks.csv" "0.2"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.2"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.2"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.2"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.2"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.2"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.2"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.2"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.2"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.2"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.2"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.2"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Onemax/GTOneMax.csv" "one_max" "0.2"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/Onemax/GTOneMax.csv" "one_max" "0.2"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.2"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.2"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.2"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.2"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.2"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.2"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.2"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.2"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.2"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.2"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.2"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.2"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.2"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteA/SuiteA_Noise02/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.2"
+
+
+
+# ============================================================
+# EXPERIMENT 18: SuiteB_LargeInstances_Dropout10
+# Directory: Experiments/SuiteB/SuiteB_LargeInstances_Dropout10
+# ============================================================
+
+# control pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control qlattice for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "0.1"
+
+# control pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control qlattice for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "0.1"
+
+# control pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "0.1"
+
+# control pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control qlattice for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/qlattice.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# control linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/linear.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "0.1"
+
+# library pysr for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library linear for leadingones
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Leadingones/GTLeadingOnes.csv" "leading_ones" "0.1"
+
+# library pysr for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library linear for onemax
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/Onemax/GTOneMax.csv" "one_max" "0.1"
+
+# library pysr for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES sphere
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES ellipsoid
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES rastrigin
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES all_benchmarks
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/all_benchmarks.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding sphere)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/sphere/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding ellipsoid)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/ellipsoid/psa_vars.csv" "psa" "0.1"
+
+# library pysr for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/pysr_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+# library linear for PSA-CMA-ES leave-one-out (excluding rastrigin)
+bash "/cs/home/mk422/Documents/DAC_SR/Scripts/unrounded/algorithm_library/linear_lib.sh" "Experiments/SuiteB/SuiteB_LargeInstances_Dropout10/Datasets/PSACMAES/absent/rastrigin/psa_vars.csv" "psa" "0.1"
+
+
+

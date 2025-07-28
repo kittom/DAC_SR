@@ -1,3 +1,0 @@
-s/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv" "0.01"$/d
-s/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv" "0.01"$/d
-s/home/mk422/Documents/DAC_SR/Scripts/unrounded/control_library/pysr.sh" "Experiments/SuiteA/SuiteA_Noise001/Datasets/Leadingones/GTLeadingOnes.csv" "0.01"$/d

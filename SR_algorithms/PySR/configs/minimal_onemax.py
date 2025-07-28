@@ -5,6 +5,7 @@
 BINARY_OPERATORS = ["+", "-", "/"]
 UNARY_OPERATORS = ["sqrt"]
 
-# Note: No power operator (^) needed for OneMax
+# Note: No power operator (^) needed for OneMax - sqrt is sufficient
 # No trigonometric functions needed
-# No exponential/logarithmic functions needed 
+# No exponential/logarithmic functions needed
+# No absolute value needed - sqrt handles positive values 

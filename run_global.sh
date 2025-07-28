@@ -59,17 +59,36 @@ cp "$TODO_FILE" "$BACKUP_FILE"
 echo "Backup created: $BACKUP_FILE"
 echo ""
 
+# Function to safely remove a command from the TODO file
+remove_command() {
+    local cmd="$1"
+    local todo_file="$2"
+    
+    # Create a temporary file
+    local temp_file="${todo_file}.tmp.$$"
+    
+    # Use awk to remove the exact line (more reliable than grep)
+    awk -v cmd="$cmd" '$0 != cmd' "$todo_file" > "$temp_file"
+    
+    # Only replace if the temp file is different (safety check)
+    if [[ -f "$temp_file" ]] && [[ $(wc -l < "$temp_file") -lt $(wc -l < "$todo_file") ]]; then
+        mv "$temp_file" "$todo_file"
+        return 0
+    else
+        rm -f "$temp_file"
+        return 1
+    fi
+}
+
 # Check if GNU Parallel is available
 if command -v parallel &> /dev/null; then
     echo "Using GNU Parallel for execution..."
     echo ""
     
-    # Create a temporary file with just the commands for parallel
-    grep "^[^#]" "$TODO_FILE" | grep -v "^$" > "${TODO_FILE}.parallel"
-    
     # Function to execute a command and mark it as completed
     execute_command() {
         local cmd="$1"
+        local todo_file="$2"
         
         echo "Executing: $cmd"
         
@@ -77,24 +96,27 @@ if command -v parallel &> /dev/null; then
         if eval "$cmd"; then
             echo "✓ Success: $cmd"
             # Mark this command as completed by removing it from the TODO file
-            (
-                flock -x 200
-                # Use grep to create a new file without the matching line
-                grep -v -F "$cmd" "$TODO_FILE" > "${TODO_FILE}.tmp" && mv "${TODO_FILE}.tmp" "$TODO_FILE"
-            ) 200>"$TODO_FILE.lock"
+            if remove_command "$cmd" "$todo_file"; then
+                echo "  Command removed from TODO file"
+            else
+                echo "  Warning: Could not remove command from TODO file"
+            fi
         else
             echo "✗ Failed: $cmd"
         fi
     }
     
     export -f execute_command
-    export TODO_FILE
+    export -f remove_command
+    
+    # Create a temporary file with just the commands for parallel
+    grep "^[^#]" "$TODO_FILE" | grep -v "^$" > "${TODO_FILE}.parallel"
     
     # Execute commands using GNU Parallel with the function
-    # Use the temporary file for input, so we don't modify the original during execution
+    # Pass both the command and the TODO file path to the function
     parallel --bar --jobs "$NUM_CPUS" --tagstring "[{1}/{2}]" \
              --joblog "global_experiment_joblog.txt" \
-             execute_command :::: "${TODO_FILE}.parallel"
+             execute_command :::: "${TODO_FILE}.parallel" ::: "$TODO_FILE"
              
     # Clean up temporary file
     rm -f "${TODO_FILE}.parallel"
@@ -115,12 +137,12 @@ else
             (
                 if eval "$line"; then
                     echo "[$COUNTER/$TOTAL_COMMANDS] ✓ Success: $line"
-                    # Remove the command from the TODO file (use a lock to avoid race conditions)
-                    (
-                        flock -x 200
-                        # Use grep to create a new file without the matching line
-                        grep -v -F "$line" "$TODO_FILE" > "${TODO_FILE}.tmp" && mv "${TODO_FILE}.tmp" "$TODO_FILE"
-                    ) 200>"$TODO_FILE.lock"
+                    # Remove the command from the TODO file
+                    if remove_command "$line" "$TODO_FILE"; then
+                        echo "  Command removed from TODO file"
+                    else
+                        echo "  Warning: Could not remove command from TODO file"
+                    fi
                 else
                     echo "[$COUNTER/$TOTAL_COMMANDS] ✗ Failed: $line"
                 fi
@@ -136,9 +158,6 @@ else
     # Wait for all remaining jobs
     wait
 fi
-
-# Clean up lock file
-rm -f "$TODO_FILE.lock"
 
 echo ""
 echo "=== Global Experiment Runner Complete ==="

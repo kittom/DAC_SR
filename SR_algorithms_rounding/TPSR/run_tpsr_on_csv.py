@@ -12,7 +12,7 @@ from symbolicregression.trainer import Trainer
 from symbolicregression.e2e_model import Transformer, pred_for_sample_no_refine
 from tpsr import tpsr_fit
 
-def run_tpsr_with_convergence(X, Y, params, equation_env, noise_threshold, max_horizon=200, min_horizon=10):
+def run_tpsr_with_convergence(X, Y, params, equation_env, noise_threshold, max_horizon=10, min_horizon=5):
     """
     Run TPSR with convergence-based stopping.
     
@@ -22,8 +22,8 @@ def run_tpsr_with_convergence(X, Y, params, equation_env, noise_threshold, max_h
         params: TPSR parameters
         equation_env: Equation environment
         noise_threshold: Convergence threshold (noise level)
-        max_horizon: Maximum MCTS horizon
-        min_horizon: Minimum horizon before stopping
+        max_horizon: Maximum MCTS horizon (reduced from 200 to 10 for speed)
+        min_horizon: Minimum horizon before stopping (reduced from 10 to 5)
     
     Returns:
         tuple: (equation_string, final_reward, horizon_used)
@@ -36,16 +36,38 @@ def run_tpsr_with_convergence(X, Y, params, equation_env, noise_threshold, max_h
     print(f"Reward threshold: {reward_threshold:.6f}")
     print(f"Max horizon: {max_horizon}, Min horizon: {min_horizon}")
     
-    # Set up TPSR (E2E backbone, CPU)
+    # Set up TPSR with optimized parameters for speed
     parser = get_parser()
     tpsr_params = parser.parse_args([])  # empty list to use defaults
-    tpsr_params.cpu = True
-    tpsr_params.device = torch.device("cpu")
+    
+    # Check if GPU is available and use it for better performance
+    if torch.cuda.is_available():
+        print("GPU detected - using GPU for TPSR")
+        tpsr_params.cpu = False
+        tpsr_params.device = torch.device("cuda")
+    else:
+        print("No GPU detected - using CPU")
+        tpsr_params.cpu = True
+        tpsr_params.device = torch.device("cpu")
+    
     tpsr_params.debug = False
     tpsr_params.backbone_model = 'e2e'
     
-    # Override horizon parameters
-    tpsr_params.horizon = max_horizon
+    # OPTIMIZED PARAMETERS FOR SPEED
+    tpsr_params.horizon = max_horizon  # Reduced from 200 to 50
+    tpsr_params.width = 2  # Reduced from 3 to 2 for faster search
+    tpsr_params.rollout = 2  # Reduced from 3 to 2 for faster rollouts
+    tpsr_params.ucb_constant = 0.5  # Reduced from 1.0 for more exploration
+    tpsr_params.ucb_base = 5.0  # Reduced from 10.0 for faster convergence
+    tpsr_params.print_freq = 10  # Print progress more frequently
+    
+    print(f"Optimized TPSR parameters:")
+    print(f"  - Horizon: {tpsr_params.horizon}")
+    print(f"  - Width: {tpsr_params.width}")
+    print(f"  - Rollout: {tpsr_params.rollout}")
+    print(f"  - UCB constant: {tpsr_params.ucb_constant}")
+    print(f"  - UCB base: {tpsr_params.ucb_base}")
+    print(f"  - Device: {tpsr_params.device}")
     
     # Build environment and model
     np.random.seed(tpsr_params.seed)
@@ -98,8 +120,8 @@ def main():
     parser = argparse.ArgumentParser(description="Run TPSR symbolic regression with convergence-based stopping")
     parser.add_argument("csv_file", help="Path to the CSV file")
     parser.add_argument("--noise", type=float, default=1e-12, help="Noise threshold for convergence (default: 1e-12)")
-    parser.add_argument("--max-horizon", type=int, default=200, help="Maximum MCTS horizon (default: 200)")
-    parser.add_argument("--min-horizon", type=int, default=10, help="Minimum horizon before stopping (default: 10)")
+    parser.add_argument("--max-horizon", type=int, default=10, help="Maximum MCTS horizon (default: 10, optimized for speed)")
+    parser.add_argument("--min-horizon", type=int, default=5, help="Minimum horizon before stopping (default: 5, optimized for speed)")
     args = parser.parse_args()
     
     csv_file = args.csv_file

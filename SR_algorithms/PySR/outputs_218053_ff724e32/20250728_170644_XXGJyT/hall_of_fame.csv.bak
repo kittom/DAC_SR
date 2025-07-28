@@ -1,0 +1,3 @@
+Complexity,Loss,Equation
+1,1.9300636,"1.8591889"
+7,1.7717884,"sqrt(sqrt(sqrt(x1)))"

@@ -96,21 +96,67 @@ def run_pysr_with_minimal_library(X, y, problem_type, noise_threshold, max_itera
     # Load minimal configuration
     binary_operators, unary_operators = load_minimal_config(problem_type)
     
+    # Calculate optimal parameters based on dataset size and tuning guide
+    n_samples = X.shape[0]
+    n_features = X.shape[1]
+    
+    # Set parsimony based on expected minimum loss (noise_threshold / 5-10)
+    parsimony = max(noise_threshold / 8.0, 1e-8)
+    
+    # Optimize population size for single CPU
+    population_size = 50  # Conservative for single CPU
+    
+    # Set ncycles_per_iteration for single CPU (lower than cluster settings)
+    ncycles_per_iteration = 1000  # Good balance for single CPU
+    
+    # Adaptive settings based on dataset size
+    if n_samples > 1000:
+        # For large datasets, use batching and adjust parameters
+        use_batching = True
+        population_size = min(population_size, 30)  # Smaller population for large datasets
+    else:
+        use_batching = False
+    
     print(f"Running PySR with minimal library for {problem_type}")
     print(f"Binary operators: {binary_operators}")
     print(f"Unary operators: {unary_operators}")
     print(f"Convergence threshold: {noise_threshold}")
+    print(f"Dataset size: {n_samples} samples, {n_features} features")
+    print(f"Parsimony: {parsimony:.2e}, Population: {population_size}, Cycles: {ncycles_per_iteration}")
+    print(f"Batching: {use_batching}, Turbo: True")
     
-    # Create PySR model with minimal library
+    # Create a unique output directory for this run to avoid conflicts in parallel execution
+    import uuid
+    unique_output_dir = f"outputs_{os.getpid()}_{uuid.uuid4().hex[:8]}"
+    
+    # Create fresh PySR model with minimal library for each run
+    # This ensures fairness in experiments by avoiding any cached state
     model = PySRRegressor(
         niterations=1,  # We'll control iterations manually
         binary_operators=binary_operators,
         unary_operators=unary_operators,
         progress=False,  # Disable progress bar for cleaner output
         model_selection="best",
-        maxsize=20,
-        procs=0,  # Use all available cores
-        output_directory="outputs"
+        maxsize=25,  # Increased from 20 for better exploration
+        procs=1,  # Single CPU for fairness
+        output_directory=unique_output_dir,
+        # Optimized parameters from tuning guide
+        population_size=population_size,
+        ncycles_per_iteration=ncycles_per_iteration,
+        parsimony=parsimony,
+        weight_optimize=0.001,  # Important for optimization frequency
+        turbo=True,  # 20%+ speedup with advanced loop vectorization
+        # Dataset optimization
+        batching=use_batching,  # Use batching for large datasets
+        # Complexity settings - adjust based on available operators
+        complexity_of_operators={op: 2.0 for op in unary_operators} if unary_operators else None,
+        # Additional robustness settings
+        adaptive_parsimony_scaling=100,  # Helps with exploration
+        warmup_maxsize_by=0.5,  # Start with smaller expressions
+        # Loss function optimization
+        loss="L2DistLoss()",  # Standard L2 loss for regression
+        # Precision settings
+        precision=32  # Use 32-bit precision for speed
     )
     
     print(f"Max iterations: {max_iterations}, Min iterations: {min_iterations}")
@@ -127,7 +173,7 @@ def run_pysr_with_minimal_library(X, y, problem_type, noise_threshold, max_itera
             model.fit(X, y)
             
             # Check convergence
-            best_loss = get_best_loss_from_hof(outputs_dir)
+            best_loss = get_best_loss_from_hof(unique_output_dir)
             
             print(f"  Current best loss: {best_loss:.6f}")
             
@@ -140,8 +186,8 @@ def run_pysr_with_minimal_library(X, y, problem_type, noise_threshold, max_itera
             print(f"  Error in iteration {iteration + 1}: {e}")
             break
     
-    # Get final results
-    hof_files = glob.glob(os.path.join(outputs_dir, "*/hall_of_fame.csv"))
+    # Get final results from the unique output directory
+    hof_files = glob.glob(os.path.join(unique_output_dir, "*/hall_of_fame.csv"))
     if hof_files:
         hof_path = max(hof_files, key=os.path.getmtime)
         equation, final_loss = extract_best_equation_from_hof(hof_path)
@@ -152,6 +198,16 @@ def run_pysr_with_minimal_library(X, y, problem_type, noise_threshold, max_itera
     elapsed_time = time.time() - start_time
     print(f"PySR completed in {elapsed_time:.2f} seconds")
     print(f"Final loss: {final_loss:.6f}")
+    
+    # Clean up the unique output directory after extracting results
+    # This ensures fairness in experiments and prevents accumulation of temporary files
+    try:
+        import shutil
+        if os.path.exists(unique_output_dir):
+            shutil.rmtree(unique_output_dir)
+            print(f"Cleaned up output directory: {unique_output_dir}")
+    except Exception as e:
+        print(f"Warning: Could not clean up output directory {unique_output_dir}: {e}")
     
     return equation, final_loss, iteration + 1
 
