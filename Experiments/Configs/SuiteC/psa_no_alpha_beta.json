@@ -1,52 +1,38 @@
 {
     "experiment": {
-        "name": "SmallInstances_Dropout25",
-        "description": "SuiteB SmallInstances experiment with 25% dropout and smaller budget",
-        "suite": "SuiteB"
+        "name": "PSANoAlphaBeta",
+        "description": "SuiteC experiment: PSA-CMA-ES data generation without Alpha and Beta values",
+        "suite": "SuiteC"
     },
     "data_generation": {
         "benchmarks": {
-            "leadingones": {
-                "enabled": true,
-                "instance_sizes": [
-                    10,
-                    20
-                ],
-                "data_type": "continuous"
-            },
-            "onemax": {
-                "enabled": true,
-                "instance_sizes": [
-                    10,
-                    20
-                ],
-                "data_type": "continuous"
-            },
             "psacmaes": {
                 "enabled": true,
                 "sub_benchmarks": [
-                    "sphere"
+                    "sphere",
+                    "ellipsoid",
+                    "noisy_ellipsoid"
                 ],
                 "instance_sizes": [
-                    2,
-                    3
+                    10
                 ],
                 "data_type": "continuous",
+                "budget_factor": 100,
+                "restarts": 3,
                 "compare": true,
                 "individual_benchmarks": true,
                 "all_benchmarks": true,
-                "budget_factor": 50,
-                "restarts": 3
+                "remove_alpha_beta": true
             }
         },
         "noise": {
-            "enabled": true,
-            "level": "0.1",
+            "enabled": false,
+            "level": "0.0",
             "type": "gaussian"
         },
         "dropout": {
-            "enabled": true,
-            "rate": 0.25,
+            "enabled": false,
+            "rate": 0.0,
             "type": "random_rows"
         }
     },
@@ -80,8 +66,8 @@
     },
     "output": {
         "base_directory": "Experiments",
-        "suite_name": "SuiteB",
-        "experiment_name": "SmallInstances_Dropout25",
+        "suite_name": "SuiteC",
+        "experiment_name": "PSANoAlphaBeta",
         "results_format": "csv",
         "save_intermediate_results": true,
         "create_summary_report": true
@@ -101,4 +87,4 @@
             "compress_results": false
         }
     }
-}
+} 

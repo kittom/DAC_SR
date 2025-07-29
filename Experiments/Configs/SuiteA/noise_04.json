@@ -1,48 +1,27 @@
 {
     "experiment": {
-        "name": "SuiteA_Noise04",
-        "description": "SuiteA experiment with 0.4 noise: LeadingOnes, OneMax, and PSA-CMA-ES benchmarks",
+        "name": "Noise04",
+        "description": "SuiteA experiment with 0.4 noise: sphere, ellipsoid, and noisy_ellipsoid benchmarks at 10D",
         "suite": "SuiteA"
     },
     "data_generation": {
         "benchmarks": {
-            "leadingones": {
-                "enabled": true,
-                "instance_sizes": [
-                    10,
-                    20,
-                    30,
-                    40,
-                    50
-                ],
-                "data_type": "continuous"
-            },
-            "onemax": {
-                "enabled": true,
-                "instance_sizes": [
-                    10,
-                    20,
-                    30,
-                    40,
-                    50
-                ],
-                "data_type": "continuous"
-            },
             "psacmaes": {
                 "enabled": true,
                 "sub_benchmarks": [
-                    "sphere"
+                    "sphere",
+                    "ellipsoid",
+                    "noisy_ellipsoid"
                 ],
                 "instance_sizes": [
-                    2,
-                    3
+                    10
                 ],
                 "data_type": "continuous",
+                "budget_factor": 100,
+                "restarts": 3,
                 "compare": true,
                 "individual_benchmarks": true,
-                "all_benchmarks": true,
-                "budget_factor": 500,
-                "restarts": 5
+                "all_benchmarks": true
             }
         },
         "noise": {
@@ -87,7 +66,7 @@
     "output": {
         "base_directory": "Experiments",
         "suite_name": "SuiteA",
-        "experiment_name": "SuiteA_Noise04",
+        "experiment_name": "Noise04",
         "results_format": "csv",
         "save_intermediate_results": true,
         "create_summary_report": true

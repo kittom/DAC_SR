@@ -1,8 +1,8 @@
 {
     "experiment": {
-        "name": "SmallInstances_Dropout25",
-        "description": "SuiteB SmallInstances experiment with 25% dropout and smaller budget",
-        "suite": "SuiteB"
+        "name": "LeadingOnesDeepRL",
+        "description": "SuiteD experiment: LeadingOnes data generation using DeepRL model with expected noise of 1.1",
+        "suite": "SuiteD"
     },
     "data_generation": {
         "benchmarks": {
@@ -10,43 +10,25 @@
                 "enabled": true,
                 "instance_sizes": [
                     10,
-                    20
-                ],
-                "data_type": "continuous"
-            },
-            "onemax": {
-                "enabled": true,
-                "instance_sizes": [
-                    10,
-                    20
-                ],
-                "data_type": "continuous"
-            },
-            "psacmaes": {
-                "enabled": true,
-                "sub_benchmarks": [
-                    "sphere"
-                ],
-                "instance_sizes": [
-                    2,
-                    3
+                    20,
+                    30,
+                    40,
+                    50
                 ],
                 "data_type": "continuous",
-                "compare": true,
-                "individual_benchmarks": true,
-                "all_benchmarks": true,
-                "budget_factor": 50,
-                "restarts": 3
+                "use_deeprl_model": true,
+                "deeprl_model_path": "DataGeneration/DeepRL_Models/LeadingOnes_direct",
+                "expected_noise": 1.1
             }
         },
         "noise": {
-            "enabled": true,
-            "level": "0.1",
+            "enabled": false,
+            "level": "0.0",
             "type": "gaussian"
         },
         "dropout": {
-            "enabled": true,
-            "rate": 0.25,
+            "enabled": false,
+            "rate": 0.0,
             "type": "random_rows"
         }
     },
@@ -80,8 +62,8 @@
     },
     "output": {
         "base_directory": "Experiments",
-        "suite_name": "SuiteB",
-        "experiment_name": "SmallInstances_Dropout25",
+        "suite_name": "SuiteD",
+        "experiment_name": "LeadingOnesDeepRL",
         "results_format": "csv",
         "save_intermediate_results": true,
         "create_summary_report": true
@@ -101,4 +83,4 @@
             "compress_results": false
         }
     }
-}
+} 

@@ -1,7 +1,7 @@
 {
     "experiment": {
-        "name": "SuiteB_LargeInstances_Dropout10",
-        "description": "SuiteB_LargeInstances experiment with dropout rate 10.0%",
+        "name": "LargeInstances_Dropout10",
+        "description": "SuiteB LargeInstances experiment with 10% dropout and larger budget",
         "suite": "SuiteB"
     },
     "data_generation": {
@@ -9,16 +9,18 @@
             "leadingones": {
                 "enabled": true,
                 "instance_sizes": [
-                    100,
-                    150
+                    30,
+                    40,
+                    50
                 ],
                 "data_type": "continuous"
             },
             "onemax": {
                 "enabled": true,
                 "instance_sizes": [
-                    100,
-                    150
+                    30,
+                    40,
+                    50
                 ],
                 "data_type": "continuous"
             },
@@ -28,15 +30,15 @@
                     "sphere"
                 ],
                 "instance_sizes": [
-                    2,
-                    3
+                    5,
+                    10
                 ],
                 "data_type": "continuous",
                 "compare": true,
                 "individual_benchmarks": true,
                 "all_benchmarks": true,
-                "budget_factor": 500,
-                "restarts": 5
+                "budget_factor": 200,
+                "restarts": 3
             }
         },
         "noise": {
@@ -81,7 +83,7 @@
     "output": {
         "base_directory": "Experiments",
         "suite_name": "SuiteB",
-        "experiment_name": "SuiteB_LargeInstances_Dropout10",
+        "experiment_name": "LargeInstances_Dropout10",
         "results_format": "csv",
         "save_intermediate_results": true,
         "create_summary_report": true

@@ -109,7 +109,11 @@ class ExperimentRunner:
             self.logger.info(f"Generating data for {benchmark_name}...")
             
             if benchmark_name in ['leadingones', 'onemax']:
-                self._generate_discrete_benchmark_data(benchmark_name, benchmark_config, datasets_dir)
+                # Check if this is a DeepRL LeadingOnes experiment
+                if benchmark_name == 'leadingones' and benchmark_config.get('use_deeprl_model', False):
+                    self._generate_leadingones_deeprl_data(benchmark_config, datasets_dir)
+                else:
+                    self._generate_discrete_benchmark_data(benchmark_name, benchmark_config, datasets_dir)
             elif benchmark_name == 'psacmaes':
                 self._generate_psacmaes_data(benchmark_config, datasets_dir)
             elif benchmark_name == 'model':
@@ -237,6 +241,10 @@ for root, dirs, files in os.walk(datasets_dir):
                 '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script)
             ] + size_args + ['--data-type', data_type, '--output-dir', str(benchmark_dir), '--evaluation-type', evaluation_type]
             
+            # Add noisy parameters if specified
+            if config.get('add_noisy_parameters', 0) > 0:
+                cmd.extend(['--add-noisy-parameters', str(config.get('add_noisy_parameters', 0))])
+            
             self.logger.info(f"Running data generation for {benchmark_name} ({evaluation_type}) in {conda_env} environment")
             result = subprocess.run(cmd, capture_output=True, text=True)
             
@@ -251,6 +259,10 @@ for root, dirs, files in os.walk(datasets_dir):
             cmd = [
                 '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script)
             ] + size_args + ['--data-type', data_type, '--output-dir', str(benchmark_dir)]
+            
+            # Add noisy parameters if specified
+            if config.get('add_noisy_parameters', 0) > 0:
+                cmd.extend(['--add-noisy-parameters', str(config.get('add_noisy_parameters', 0))])
             
             self.logger.info(f"Running data generation for {benchmark_name} (all types) in {conda_env} environment")
             result = subprocess.run(cmd, capture_output=True, text=True)
@@ -295,6 +307,12 @@ for root, dirs, files in os.walk(datasets_dir):
                 '--evaluation-type', evaluation_type
             ]
             
+            # Add new parameters for SuiteC experiments
+            if config.get('remove_alpha_beta', False):
+                cmd.append('--remove-alpha-beta')
+            if config.get('add_noisy_parameters', 0) > 0:
+                cmd.extend(['--add-noisy-parameters', str(config.get('add_noisy_parameters', 0))])
+            
             # Add compare flag if enabled in config
             if config.get('compare', False):
                 cmd.append('--compare')
@@ -329,6 +347,12 @@ for root, dirs, files in os.walk(datasets_dir):
                 '--data-type', data_type, '--output-root', str(benchmark_dir)
             ]
             
+            # Add new parameters for SuiteC experiments
+            if config.get('remove_alpha_beta', False):
+                cmd.append('--remove-alpha-beta')
+            if config.get('add_noisy_parameters', 0) > 0:
+                cmd.extend(['--add-noisy-parameters', str(config.get('add_noisy_parameters', 0))])
+            
             # Add compare flag if enabled in config
             if config.get('compare', False):
                 cmd.append('--compare')
@@ -358,6 +382,36 @@ for root, dirs, files in os.walk(datasets_dir):
         """Generate model-specific data."""
         # This would be implemented based on specific model requirements
         self.logger.warning("Model data generation not yet implemented")
+    
+    def _generate_leadingones_deeprl_data(self, config: Dict, datasets_dir: Path):
+        """Generate LeadingOnes data using DeepRL model."""
+        data_type = config['data_type']
+        
+        # Create benchmark directory
+        benchmark_dir = datasets_dir / 'LeadingOnes'
+        benchmark_dir.mkdir(parents=True, exist_ok=True)
+        
+        generator_script = self.project_root / 'DataGeneration' / 'Generators' / 'LeadingOnes' / 'generate_leadingones_deeprl_data.py'
+        
+        # Run the generator with conda environment activation
+        conda_env = 'generation'  # Use the generation environment for data generation
+        
+        cmd = [
+            '/home/mk422/miniconda3/bin/conda', 'run', '-n', conda_env, 'python3', str(generator_script),
+            '--instance-sizes'] + [str(dim) for dim in config.get('instance_sizes', [10, 20, 30, 40, 50])] + [
+            '--output-root', str(benchmark_dir),
+            '--data-type', data_type,
+            '--expected-noise', str(config.get('expected_noise', 1.1))
+        ]
+        
+        self.logger.info(f"Running LeadingOnes DeepRL data generation in {conda_env} environment")
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        
+        if result.returncode != 0:
+            self.logger.error(f"LeadingOnes DeepRL data generation failed: {result.stderr}")
+            raise RuntimeError("LeadingOnes DeepRL data generation failed")
+        else:
+            self.logger.info("Successfully generated LeadingOnes DeepRL data")
     
 
     

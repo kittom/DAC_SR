@@ -29,4 +29,7 @@ dependencies:
       - ioh>=0.3.0
       - fsspec==2025.7.0
       - Farama-Notifications==0.0.4
-      - stable_baselines3==2.6.0 
+      - stable_baselines3==2.6.0
+      - torch>=2.3,<3.0
+      - torchvision
+      - torchaudio 

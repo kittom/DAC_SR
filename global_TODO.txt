@@ -1,16 +1,16 @@
 # Global TODO List - All Algorithms (Combined)
-# Generated: 2025-07-29 18:18:33
+# Generated: 2025-07-29 18:50:49
 # Total experiments: 1
 # Note: Use global_TODO_GPU.txt and global_TODO_CPU.txt for separate execution
 
 # ============================================================
-# EXPERIMENT 1: SuiteC_PSATest
-# Directory: Experiments/SuiteC/SuiteC_PSATest
+# EXPERIMENT 1: LeadingOnesDeepRL
+# Directory: Experiments/SuiteD/LeadingOnesDeepRL
 # ============================================================
 
 # Combined TODO List - GPU and CPU Algorithms
-# Generated: 2025-07-29 18:18:33
-# Experiment: SuiteC_PSATest
+# Generated: 2025-07-29 18:50:49
+# Experiment: LeadingOnesDeepRL
 
 # GPU Algorithms
 # ==============

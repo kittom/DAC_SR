@@ -1,7 +1,7 @@
 {
     "experiment": {
-        "name": "SuiteB_SmallInstances",
-        "description": "SuiteB_SmallInstances experiment",
+        "name": "SmallInstances",
+        "description": "SuiteB SmallInstances experiment with smaller budget",
         "suite": "SuiteB"
     },
     "data_generation": {
@@ -35,8 +35,8 @@
                 "compare": true,
                 "individual_benchmarks": true,
                 "all_benchmarks": true,
-                "budget_factor": 500,
-                "restarts": 5
+                "budget_factor": 50,
+                "restarts": 3
             }
         },
         "noise": {
@@ -81,7 +81,7 @@
     "output": {
         "base_directory": "Experiments",
         "suite_name": "SuiteB",
-        "experiment_name": "SuiteB_SmallInstances",
+        "experiment_name": "SmallInstances",
         "results_format": "csv",
         "save_intermediate_results": true,
         "create_summary_report": true

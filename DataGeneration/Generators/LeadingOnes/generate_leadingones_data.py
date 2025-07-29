@@ -14,7 +14,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..
 
 def generate_leading_ones_data(instance_sizes=None, data_type='continuous', output_dir=None, 
                               evaluation_type=None, hidden_variables=False, noise_level=0.0, 
-                              noise_type='gaussian', dropout_rate=0.0):
+                              noise_type='gaussian', dropout_rate=0.0, add_noisy_parameters=0):
     """
     Generate LeadingOnes ground truth data with various options.
     
@@ -27,6 +27,7 @@ def generate_leading_ones_data(instance_sizes=None, data_type='continuous', outp
         noise_level: Noise level to add (0.0 for no noise)
         noise_type: 'gaussian' or 'uniform' noise
         dropout_rate: Fraction of rows to randomly remove (0.0 for no dropout)
+        add_noisy_parameters: Number of noisy parameter columns to add
     """
     
     if instance_sizes is None:
@@ -88,6 +89,19 @@ def generate_leading_ones_data(instance_sizes=None, data_type='continuous', outp
             rows_to_drop = np.random.choice(original_rows, rows_to_remove, replace=False)
             df = df.drop(df.index[rows_to_drop]).reset_index(drop=True)
             print(f"Applied dropout: removed {rows_to_remove}/{original_rows} rows ({dropout_rate*100:.1f}%)")
+    
+    # Add noisy parameters if specified
+    if add_noisy_parameters > 0:
+        # Calculate min and max values from the dataset for noise range
+        all_values = df.values.flatten()
+        min_val = np.min(all_values)
+        max_val = np.max(all_values)
+        
+        for i in range(add_noisy_parameters):
+            # Generate random noise within the min/max range of the dataset
+            noisy_col = np.random.uniform(min_val, max_val, len(df))
+            df[f'noisy_param_{i+1}'] = noisy_col
+            print(f"Added noisy parameter column 'noisy_param_{i+1}' with range [{min_val:.3f}, {max_val:.3f}]")
     
     # Save to output directory
     if output_dir is None:
@@ -157,6 +171,8 @@ def main():
                        help='Type of noise to add')
     parser.add_argument('--dropout-rate', type=float, default=0.0,
                        help='Fraction of rows to randomly remove (0.0-1.0)')
+    parser.add_argument('--add-noisy-parameters', type=int, default=0,
+                       help='Number of noisy parameter columns to add')
     
     args = parser.parse_args()
     
@@ -167,6 +183,7 @@ def main():
     print(f"  Noise level: {args.noise_level}")
     print(f"  Noise type: {args.noise_type}")
     print(f"  Dropout rate: {args.dropout_rate}")
+    print(f"  Add noisy parameters: {args.add_noisy_parameters}")
     print(f"  Evaluation type: {args.evaluation_type}")
     
     df = generate_leading_ones_data(
@@ -177,7 +194,8 @@ def main():
         hidden_variables=args.hidden_variables,
         noise_level=args.noise_level,
         noise_type=args.noise_type,
-        dropout_rate=args.dropout_rate
+        dropout_rate=args.dropout_rate,
+        add_noisy_parameters=args.add_noisy_parameters
     )
     
     print("LeadingOnes data generation completed successfully!")

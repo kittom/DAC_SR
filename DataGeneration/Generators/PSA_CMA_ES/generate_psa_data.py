@@ -23,7 +23,8 @@ OUTPUT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../
 
 def run_psa_cmaes_benchmark(benchmark_name, fid, dim, budget_factor, restarts, output_dir, 
                            data_type='continuous', evaluation_type=None, hidden_variables=False, 
-                           noise_level=0.0, noise_type='gaussian', use_rounded_values=False):
+                           noise_level=0.0, noise_type='gaussian', use_rounded_values=False,
+                           remove_alpha_beta=False, add_noisy_parameters=0):
     """
     Run PSA-CMA-ES benchmark with specified parameters.
     
@@ -46,13 +47,22 @@ def run_psa_cmaes_benchmark(benchmark_name, fid, dim, budget_factor, restarts, o
     # Create output directory
     os.makedirs(output_dir, exist_ok=True)
     
-    # Determine CSV columns based on hidden_variables setting
-    if hidden_variables:
+    # Determine CSV columns based on settings
+    if remove_alpha_beta:
+        # Remove alpha and beta columns
+        csv_cols = ['lambda', 'ptnorm', 'gamma_theta', 'next_lambda_unrounded']
+        ground_truth_equation = 'x1 * exp(HIDDEN_ALPHA * (x3 - (x2^2 / HIDDEN_BETA)))'
+    elif hidden_variables:
         csv_cols = ['lambda', 'ptnorm', 'gamma_theta', 'next_lambda_unrounded']
         ground_truth_equation = 'x1 * exp(HIDDEN_ALPHA * (x3 - (x2^2 / HIDDEN_BETA)))'
     else:
         csv_cols = ['lambda', 'psa_beta', 'ptnorm', 'alpha', 'gamma_theta', 'next_lambda_unrounded']
         ground_truth_equation = 'x1 * exp(x2 * (x5 - (x3^2 / x4)))'
+    
+    # Add noisy parameter columns if requested
+    if add_noisy_parameters > 0:
+        for i in range(add_noisy_parameters):
+            csv_cols.insert(-1, f'noisy_param_{i+1}')
     
     # Run multiple restarts and combine all data
     all_restart_data = []
@@ -136,11 +146,25 @@ def run_psa_cmaes_benchmark(benchmark_name, fid, dim, budget_factor, restarts, o
                     if data_type == 'discrete':
                         next_lambda_unrounded = round(next_lambda_unrounded)
                     
-                    # Write row based on hidden_variables setting
-                    if hidden_variables:
+                    # Write row based on settings
+                    if remove_alpha_beta:
+                        row = [lambda_, ptnorm, gamma_theta, next_lambda_unrounded]
+                    elif hidden_variables:
                         row = [lambda_, ptnorm, gamma_theta, next_lambda_unrounded]
                     else:
                         row = [lambda_, psa_beta, ptnorm, alpha, gamma_theta, next_lambda_unrounded]
+                    
+                    # Add noisy parameters if requested
+                    if add_noisy_parameters > 0:
+                        # Calculate min and max values from the existing data for noise range
+                        existing_values = [lambda_, psa_beta, ptnorm, alpha, gamma_theta, next_lambda_unrounded]
+                        min_val = min(v for v in existing_values if isinstance(v, (int, float)))
+                        max_val = max(v for v in existing_values if isinstance(v, (int, float)))
+                        
+                        # Generate noisy parameters within the range of existing data
+                        for i in range(add_noisy_parameters):
+                            noisy_val = np.random.uniform(min_val, max_val)
+                            row.insert(-1, noisy_val)
                     
                     writer.writerow(row)
                     all_restart_data.append(row)
@@ -259,6 +283,8 @@ def main():
     parser.add_argument('--noise-level', type=float, default=0.0, help='Level of noise to add (default: 0.0)')
     parser.add_argument('--noise-type', choices=['gaussian', 'uniform'], default='gaussian', help='Type of noise to add')
     parser.add_argument('--use-rounded-values', action='store_true', help='Use rounded values in the final column instead of unrounded')
+    parser.add_argument('--remove-alpha-beta', action='store_true', help='Remove alpha and beta columns from output')
+    parser.add_argument('--add-noisy-parameters', type=int, default=0, help='Number of noisy parameters to add (default: 0)')
     
     # Output and organization
     parser.add_argument('--output-root', type=str, default=None, help='Optional output root directory for CSVs')
@@ -301,7 +327,8 @@ def main():
                 csv_data = run_psa_cmaes_benchmark(
                     benchmark_name, fid, dim, args.budget_factor, args.restarts, output_dir,
                     args.data_type, args.evaluation_type, args.hidden_variables,
-                    args.noise_level, args.noise_type, use_rounded_values=args.use_rounded_values
+                    args.noise_level, args.noise_type, use_rounded_values=args.use_rounded_values,
+                    remove_alpha_beta=args.remove_alpha_beta, add_noisy_parameters=args.add_noisy_parameters
                 )
                 benchmark_csvs.append((f'{benchmark_name}_{dim}D', csv_data))
         print(f"Generated individual benchmark datasets: {[name for name, _ in benchmark_csvs]}")
@@ -317,7 +344,8 @@ def main():
                 csv_data = run_psa_cmaes_benchmark(
                     benchmark_name, fid, dim, args.budget_factor, args.restarts, output_dir,
                     args.data_type, args.evaluation_type, args.hidden_variables,
-                    args.noise_level, args.noise_type, use_rounded_values=args.use_rounded_values
+                    args.noise_level, args.noise_type, use_rounded_values=args.use_rounded_values,
+                    remove_alpha_beta=args.remove_alpha_beta, add_noisy_parameters=args.add_noisy_parameters
                 )
                 benchmark_csvs.append((f'{benchmark_name}_{dim}D', csv_data))
                 temp_dirs.append(output_dir)
