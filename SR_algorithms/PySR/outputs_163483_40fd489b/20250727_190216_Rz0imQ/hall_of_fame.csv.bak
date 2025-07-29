@@ -1,3 +1,0 @@
-Complexity,Loss,Equation
-3,27.033672,"exp(-0.05224782)"
-7,15.335672,"x0 - exp(x3 - x0)"

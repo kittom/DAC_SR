@@ -1,0 +1,104 @@
+{
+    "experiment": {
+        "name": "SuiteB_LargeInstances_Dropout10",
+        "description": "SuiteB_LargeInstances experiment with dropout rate 10.0%",
+        "suite": "SuiteB"
+    },
+    "data_generation": {
+        "benchmarks": {
+            "leadingones": {
+                "enabled": true,
+                "instance_sizes": [
+                    100,
+                    150
+                ],
+                "data_type": "continuous"
+            },
+            "onemax": {
+                "enabled": true,
+                "instance_sizes": [
+                    100,
+                    150
+                ],
+                "data_type": "continuous"
+            },
+            "psacmaes": {
+                "enabled": true,
+                "sub_benchmarks": [
+                    "sphere"
+                ],
+                "instance_sizes": [
+                    2,
+                    3
+                ],
+                "data_type": "continuous",
+                "compare": true,
+                "individual_benchmarks": true,
+                "all_benchmarks": true,
+                "budget_factor": 500,
+                "restarts": 5
+            }
+        },
+        "noise": {
+            "enabled": true,
+            "level": "0.1",
+            "type": "gaussian"
+        },
+        "dropout": {
+            "enabled": true,
+            "rate": 0.1,
+            "type": "random_rows"
+        }
+    },
+    "evaluation": {
+        "analysis_styles": {
+            "control": {
+                "enabled": true,
+                "description": "Default SR algorithms with minimal configuration"
+            },
+            "library": {
+                "enabled": true,
+                "description": "SR algorithms with library configurations"
+            },
+            "rounding": {
+                "enabled": false,
+                "description": "SR algorithms with rounding support"
+            }
+        },
+        "metrics": {
+            "nmse": true,
+            "r2_score": true,
+            "mae": true,
+            "mse": true
+        },
+        "stopping_criteria": {
+            "max_iterations": 100,
+            "min_iterations": 10,
+            "convergence_threshold": 1e-12,
+            "time_limit_seconds": 3600
+        }
+    },
+    "output": {
+        "base_directory": "Experiments",
+        "suite_name": "SuiteB",
+        "experiment_name": "SuiteB_LargeInstances_Dropout10",
+        "results_format": "csv",
+        "save_intermediate_results": true,
+        "create_summary_report": true
+    },
+    "execution": {
+        "parallel": {
+            "enabled": false,
+            "max_workers": 4
+        },
+        "logging": {
+            "level": "INFO",
+            "save_logs": true,
+            "log_file": "experiment.log"
+        },
+        "cleanup": {
+            "remove_intermediate_files": false,
+            "compress_results": false
+        }
+    }
+}

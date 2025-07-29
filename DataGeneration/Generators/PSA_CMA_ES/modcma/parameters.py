@@ -206,6 +206,8 @@ class Parameters(AnnotatedStruct):
         The conjugate evolution path
     ptnorm: int
         The norm of population size evolution path
+    gamma_theta: float
+        The accumulated evolution path metric for PSA
     C: np.ndarray
         The covariance matrix
     B: np.ndarray
@@ -524,6 +526,7 @@ class Parameters(AnnotatedStruct):
         self.pcov = np.zeros((self.d, self.d), dtype=np.float64)
         self.old_invLt = self.transform_inverse(np.eye(self.d))
         self.ptnorm = 1
+        self.gamma_theta = 0.0
 
     def adapt(self) -> None:
         """Method for adapting the internal state parameters.
@@ -704,6 +707,9 @@ class Parameters(AnnotatedStruct):
         print(f"pc{self.pcnorm}")
         print()"""
         self.ptnorm = self.pmnorm + self.pcnorm
+        
+        # Update gamma_theta: gamma_theta = (1-psa_beta)^2 * gamma_theta + psa_beta * (2-psa_beta)
+        self.gamma_theta = (1 - self.psa_beta)**2 * self.gamma_theta + self.psa_beta * (2 - self.psa_beta)
 
     def adapt_population_size(self) -> None:     
         """Method to adapt the population size lambda_
@@ -737,8 +743,12 @@ class Parameters(AnnotatedStruct):
                 new_lambda_ = self.lambda_+10
                 
         elif self.pop_size_adaptation == 'psa':
+            # Store the unrounded value for external access
+            self.unrounded_lambda = new_lambda_ * np.exp(self.psa_beta * 
+                (self.gamma_theta - self.ptnorm**2 / self.alpha))
+            
             new_lambda_ *= np.exp(self.psa_beta * 
-                (1 - self.ptnorm / self.alpha))
+                (self.gamma_theta - self.ptnorm**2 / self.alpha))
             
             self.old_invLt = self.transform_inverse(np.eye(self.d))
             

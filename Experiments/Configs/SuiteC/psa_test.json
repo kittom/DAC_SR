@@ -1,0 +1,88 @@
+{
+    "experiment": {
+        "name": "SuiteC_PSATest",
+        "description": "Quick PSA-CMA-ES test configuration for debugging",
+        "suite": "SuiteC"
+    },
+    "data_generation": {
+        "benchmarks": {
+            "psacmaes": {
+                "enabled": true,
+                "sub_benchmarks": ["sphere"],
+                "instance_sizes": [2],
+                "data_type": "continuous",
+                "budget_factor": 50,
+                "restarts": 1,
+                "compare": false,
+                "individual_benchmarks": true,
+                "all_benchmarks": false
+            },
+            "leadingones": {
+                "enabled": false,
+                "instance_sizes": [],
+                "data_type": "discrete"
+            },
+            "onemax": {
+                "enabled": false,
+                "instance_sizes": [],
+                "data_type": "discrete"
+            }
+        },
+        "noise": {
+            "enabled": false,
+            "level": "0.0",
+            "type": "gaussian"
+        },
+        "dropout": {
+            "enabled": false,
+            "rate": 0.0,
+            "type": "random_rows"
+        }
+    },
+    "evaluation": {
+        "analysis_styles": {
+            "control": {
+                "enabled": false,
+                "description": "Default SR algorithms with minimal configuration"
+            },
+            "library": {
+                "enabled": false,
+                "description": "SR algorithms with library configurations"
+            },
+            "rounding": {
+                "enabled": false,
+                "description": "SR algorithms with rounding support"
+            }
+        },
+        "metrics": {
+            "nmse": true,
+            "r2_score": true,
+            "mae": true,
+            "mse": true
+        },
+        "stopping_criteria": {
+            "max_iterations": 100,
+            "min_iterations": 10,
+            "convergence_threshold": 1e-12,
+            "time_limit_seconds": 3600
+        }
+    },
+    "output": {
+        "base_directory": "Experiments",
+        "suite_name": "SuiteC",
+        "experiment_name": "SuiteC_PSATest",
+        "results_format": "csv",
+        "save_intermediate_results": true,
+        "create_summary_report": true
+    },
+    "execution": {
+        "parallel": {
+            "enabled": false,
+            "max_workers": 1
+        },
+        "logging": {
+            "level": "INFO",
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        }
+    }
+} 

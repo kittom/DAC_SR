@@ -49,9 +49,15 @@ Experiments/*/Datasets/**
 Experiments/Experiment1/Datasets/
 Experiments/Experiment1/Datasets/**
 
-# Ignore all Experiment directories and their contents
-Experiments/
-Experiments/**
+# Ignore Experiment record directory (logs, backups, etc.)
+Experiment_record/
+Experiment_record/**
+
+# Ignore generated experiment data but keep configs
+Experiments/*/Datasets/
+Experiments/*/Datasets/**
+Experiments/*/Results/
+Experiments/*/Results/**
 
 # Python
 __pycache__/
